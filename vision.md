@@ -78,12 +78,27 @@ Personal gallery section. Clickable lightbox — swipe through images. Sits befo
 ## Design Direction
 
 - Dark theme, neon accents (cyan/magenta/green)
-- Inspired by: Anti-Alias (tag-filtered portfolio, services showcase), Jascha Suess (dark product grid), Geometrik (smooth transitions)
-- Future ideas stored:
+- Inspired by: Anti-Alias (tag-filtered portfolio, services showcase), Jascha Suess (dark product grid), Geometrik (smooth transitions), **Inspo1** (dark hero with full-bleed image, section-jump buttons)
+
+### v1.1 Design Notes (brainstorming — from Rex, Mar 13)
+
+- **Hero rethink**: Swap profile pic for a big full-bleed visual — Tipper & Friends stage shot or installation photo. Make the first impression about the WORK, not Rex's face.
+- **Below hero**: Image of Rex & Rob at the computer (the duo, the teaching angle)
+- **Section-jump buttons**: Like Inspo1's "What We Do" row of categories, but "What I Do" — buttons that jump to sections on the page:
+  - Installation & Projection Mapping
+  - VJ Performance
+  - Plugins & Tools
+  - Teaching / VJ Academy
+- **Keep top nav bar**: Featured, Work, About, Connect — stays as-is
+- **Rethink "Skool" branding**: Don't just say "skool" — make the VJ Academy link/card more creative. Brainstorm better presentation.
+- **Section-jump buttons + top nav can coexist** — nav is minimal/sticky, section buttons are visual and prominent in the hero area
+
+### Future ideas stored:
   - **Image/photo gallery section** — still images of installations, performances, BTS
   - **Auto-rotating hero carousel** — cycle through best visuals instead of static profile pic
   - **Tag-filtered portfolio** — filter by: Installation, VJ Performance, Plugins, Teaching
   - **Plugin product grid** — thumbnails linking to Gumroad listings
+  - **Behind the Scenes lightbox gallery** — personal images, clickable swipe-through
 
 ---
 

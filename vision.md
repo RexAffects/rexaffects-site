@@ -47,6 +47,22 @@ The site's emphasis can shift depending on the current push:
 | VJ Academy proof | Skool screenshot or member count visual (600+ members) | Needed |
 | Plugin previews | Thumbnails or preview GIFs from Gumroad listings | Needed |
 
+### Behind the Scenes — "Who is Rex?" (drop into `rexaffects-site/images/`)
+
+Personal gallery section. Clickable lightbox — swipe through images. Sits before Connect section.
+
+| Asset | Description | Status |
+|-------|-------------|--------|
+| Rex & Maria at Burning Man | Adventure/lifestyle shot | Needed |
+| Butterfly on finger | Nature/spiritual connection | Needed |
+| Meditating at festival | Inner world, presence | Needed |
+| Rex & Maria together | The partnership | Needed |
+| Anything else that feels like *Rex* | Creating, exploring, living | Needed |
+
+**Draft statement (refine later):**
+
+> *I believe we're all vessels with a huge creative capacity. The only real choice is: do we consume or create? Once you figure out what you're called to create, that's when you feel alive — connected to something bigger than yourself. That's what drives everything I make.*
+
 ### Videos (YouTube URLs)
 
 | Slot | Description | Status |

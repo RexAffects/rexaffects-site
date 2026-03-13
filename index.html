@@ -24,6 +24,7 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#services">What I Do</a></li>
         <li><a href="#featured">Featured</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
@@ -32,23 +33,28 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero — Full-bleed image carousel -->
   <header class="hero" id="hero">
-    <div class="hero-glow"></div>
+    <div class="hero-carousel">
+      <!-- REPLACE: Add background-image URLs when images are ready -->
+      <!-- style="background-image: url('images/hero-stage.jpg')" -->
+      <div class="hero-slide active"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="profile-ring">
-        <img src="images/profile.png" alt="Rex Roberts" class="profile-pic" width="200" height="200">
-      </div>
+      <p class="hero-label">Visual Artist & VJ Instructor</p>
       <h1 class="hero-title">REXAFFECTS</h1>
-      <p class="hero-tagline">Visual Artist & VJ Instructor</p>
-      <p class="hero-sub">Projection Mapping &middot; Live Visuals &middot; Digital Art</p>
+      <p class="hero-sub">Installation Art &middot; Projection Mapping &middot; Live Visuals</p>
       <div class="hero-buttons">
-        <a href="#work" class="btn btn-primary">See My Work</a>
-        <a href="https://skool.com/vjacademy" target="_blank" rel="noopener" class="btn btn-outline">
-          <img src="images/vj-academy-logo.png" alt="" class="btn-icon" width="20" height="20">
-          VJ Academy
-        </a>
+        <a href="#services" class="btn btn-primary">See My Work</a>
       </div>
+    </div>
+    <div class="hero-dots">
+      <button class="hero-dot active" data-slide="0"><span>01</span></button>
+      <button class="hero-dot" data-slide="1"><span>02</span></button>
+      <button class="hero-dot" data-slide="2"><span>03</span></button>
     </div>
     <div class="scroll-indicator">
       <span>Scroll</span>
@@ -56,8 +62,65 @@
     </div>
   </header>
 
+  <!-- What I Do — Service grid -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="services-header fade-in">
+        <div class="section-label">My Work</div>
+        <h2 class="section-title">What I Do</h2>
+      </div>
+      <div class="services-grid">
+        <a href="#featured" class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+              <line x1="12" y1="22" x2="12" y2="15.5"></line>
+              <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+            </svg>
+          </div>
+          <h3>Installation & Projection Mapping</h3>
+          <p>Large-scale sculptures brought to life with projected light and LEDs. Handcrafted, CNC-cut, digitally augmented.</p>
+        </a>
+        <a href="#work" class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3>VJ Performance</h3>
+          <p>Live visual mixing for stages, festivals, and events. Real-time, reactive, one-of-a-kind every time.</p>
+        </a>
+        <a href="https://rexaffects.gumroad.com/" target="_blank" rel="noopener" class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3>Plugins & Tools</h3>
+          <p>Custom-built effects and tools for Resolume. Made by a VJ, for VJs.</p>
+        </a>
+        <a href="https://skool.com/vjacademy" target="_blank" rel="noopener" class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 010 7.75"></path>
+            </svg>
+          </div>
+          <h3>Learn to VJ</h3>
+          <p>600+ visual artists learning the craft at VJ Academy. Courses, community, and hands-on feedback.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Featured Project: Tessellate -->
-  <section class="section" id="featured">
+  <section class="section section-dark" id="featured">
     <div class="container">
       <div class="section-label fade-in">Featured Project</div>
       <h2 class="section-title fade-in">Tessellate</h2>
@@ -108,7 +171,7 @@
   </section>
 
   <!-- Work / Videos -->
-  <section class="section section-dark" id="work">
+  <section class="section" id="work">
     <div class="container">
       <div class="section-label fade-in">Work</div>
       <h2 class="section-title fade-in">Watch Me Work</h2>
@@ -130,15 +193,9 @@
 
         <div class="video-card fade-in">
           <div class="video-slot" id="video-2">
-            <!-- REPLACE: Tutorial video -->
-            <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <div class="video-placeholder">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
+            <iframe src="https://www.youtube.com/embed/YQ-6btKF2Hk" title="Resolume Tutorial — Generative Art" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <h3 class="video-title">Tutorial</h3>
+          <h3 class="video-title">Resolume Tutorial</h3>
         </div>
 
         <div class="video-card fade-in">
@@ -172,9 +229,12 @@
   </section>
 
   <!-- About -->
-  <section class="section" id="about">
+  <section class="section section-dark" id="about">
     <div class="container">
       <div class="about-grid">
+        <div class="about-image fade-in">
+          <img src="images/profile.png" alt="Rex Roberts" width="400" height="400">
+        </div>
         <div class="about-text fade-in">
           <div class="section-label">About</div>
           <h2 class="section-title">Rex Roberts</h2>
@@ -194,8 +254,25 @@
             and interactive installations while continuing to teach and build at VJ Academy.
           </p>
         </div>
-        <div class="about-image fade-in">
-          <img src="images/profile.png" alt="Rex Roberts" width="400" height="400">
+      </div>
+    </div>
+  </section>
+
+  <!-- Behind the Scenes (placeholder — images coming) -->
+  <section class="section" id="bts">
+    <div class="container">
+      <div class="section-label fade-in">Behind the Scenes</div>
+      <h2 class="section-title fade-in">The Person Behind the Pixels</h2>
+      <p class="section-subtitle fade-in">
+        I believe we're all vessels with a huge creative capacity. The only real choice is:
+        do we consume or create? Once you figure out what you're called to create,
+        that's when you feel alive — connected to something bigger than yourself.
+      </p>
+      <div class="bts-gallery">
+        <!-- REPLACE: Drop images into images/ folder, add them here -->
+        <!-- <div class="bts-item"><img src="images/bts-1.jpg" alt="description" loading="lazy"></div> -->
+        <div class="bts-placeholder fade-in">
+          <span>Gallery coming soon — images on the way</span>
         </div>
       </div>
     </div>
@@ -210,9 +287,9 @@
 
         <a href="https://skool.com/vjacademy" target="_blank" rel="noopener" class="connect-card fade-in">
           <img src="images/vj-academy-logo.png" alt="VJ Academy" class="connect-logo" width="60" height="60">
-          <h3>VJ Academy</h3>
-          <p>600+ members learning live visual performance. Courses, resources, and a community that actually helps.</p>
-          <span class="connect-cta">Join the Community &rarr;</span>
+          <h3>Learn to VJ</h3>
+          <p>600+ visual artists learning live performance. Courses, resources, and a community that actually helps.</p>
+          <span class="connect-cta">Join VJ Academy &rarr;</span>
         </a>
 
         <a href="https://rexaffects.gumroad.com/" target="_blank" rel="noopener" class="connect-card fade-in">

@@ -3,7 +3,9 @@
     "allow": [
       "WebFetch(domain:www.youtube.com)",
       "Bash(git fetch:*)",
-      "Bash(git -C \"C:/Github/rexaffects-site/rexaffects-site\" log --oneline --all)"
+      "Bash(git -C \"C:/Github/rexaffects-site/rexaffects-site\" log --oneline --all)",
+      "Bash(timeout /t 30 /nobreak)",
+      "Bash(gh api:*)"
     ]
   }
 }

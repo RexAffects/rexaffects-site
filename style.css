@@ -382,12 +382,16 @@ img {
   max-width: 650px;
 }
 
-/* ===== Services / What I Do ===== */
+/* ===== Services / The Craft ===== */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-top: 48px;
+}
+
+.services-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .service-card {
@@ -439,6 +443,19 @@ img {
   color: var(--text-secondary);
   font-size: 0.85rem;
   line-height: 1.6;
+}
+
+.service-card-wide {
+  padding: 40px 32px;
+}
+
+.service-card-wide h3 {
+  font-size: 1.3rem;
+}
+
+.service-card-wide p {
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 /* ===== Featured (Tessellate) ===== */
@@ -625,7 +642,7 @@ img {
 /* ===== Connect ===== */
 .connect-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-top: 40px;
 }
@@ -769,7 +786,8 @@ a.connect-card:hover {
     padding: 64px 0;
   }
 
-  .services-grid {
+  .services-grid,
+  .services-grid-2 {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -778,6 +796,12 @@ a.connect-card:hover {
     flex-direction: row;
     text-align: left;
     padding: 20px 24px;
+  }
+
+  .service-card-wide {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
   }
 
   .service-icon {

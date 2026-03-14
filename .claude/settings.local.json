@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(git fetch:*)",
+      "Bash(git -C \"C:/Github/rexaffects-site/rexaffects-site\" log --oneline --all)"
+    ]
+  }
+}

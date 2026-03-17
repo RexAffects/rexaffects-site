@@ -501,6 +501,46 @@ img {
   letter-spacing: 0.05em;
 }
 
+.video-placeholder-image {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+.video-placeholder-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-placeholder-image:hover .video-overlay {
+  opacity: 1;
+}
+
+.video-overlay svg {
+  opacity: 0.9;
+}
+
+.video-overlay span {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .featured-description {
   color: var(--text-secondary);
   font-size: 1.05rem;

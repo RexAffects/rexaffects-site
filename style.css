@@ -178,17 +178,13 @@ img {
   opacity: 1;
 }
 
-/* Atmospheric gradient placeholders — replaced when images arrive */
-.hero-slide:nth-child(1) {
-  background: linear-gradient(135deg, #0a0a2e 0%, #1a0030 30%, #0d1b3e 60%, #150a28 100%);
-}
-
+/* Gradient fallbacks for slides without images */
 .hero-slide:nth-child(2) {
-  background: linear-gradient(135deg, #0d0a1e 0%, #001a2e 40%, #0a1628 70%, #1a0a2e 100%);
+  background-image: linear-gradient(135deg, #0d0a1e 0%, #001a2e 40%, #0a1628 70%, #1a0a2e 100%);
 }
 
 .hero-slide:nth-child(3) {
-  background: linear-gradient(135deg, #1a0020 0%, #0a0a2e 35%, #200a30 65%, #0a1020 100%);
+  background-image: linear-gradient(135deg, #1a0020 0%, #0a0a2e 35%, #200a30 65%, #0a1020 100%);
 }
 
 .hero-overlay {

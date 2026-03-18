@@ -35,3 +35,49 @@ git push
 
 **Lesson Learned:**
 If GitHub Pages deployments suddenly start failing with git/submodule errors, check for orphaned submodule entries in the git index that don't have corresponding `.gitmodules` definitions.
+
+---
+
+### 2026-03-18: Site Refresh & Content Updates
+
+**Session Summary:**
+Major content updates after fixing deployment issues.
+
+**Hero Carousel (3 rotating images):**
+- Slide 1: `images/Yer dead Suwannee Tipper Speaker.png` — Stage projection at Suwannee/Tipper
+- Slide 2: `images/imagejpeg_0(12).jpg` — VJ booth with APC40 controller
+- Slide 3: `images/Installation/The Medium Rex Maria Cornelio.jpg` — Tessellate installation team photo
+
+**CSS Fix for Hero Images:**
+- Removed `background` shorthand from `.hero-slide:nth-child()` rules that was overriding `background-position: center` and `background-size: cover`
+- Changed to `background-image` only for gradient fallbacks
+- Portrait images work with default centering; can add `background-position: center top` inline if needed to focus on specific area
+
+**Learn Section:**
+- Added "Original Plugins" video (YouTube: qUst5rcKzFU) — 13-min showcase of all 7 Resolume plugins
+- Replaced placeholder in slot 1 (was "Installation & Projection Mapping" coming soon)
+- Updated subtitle: "from beginner to deep dive" → "from beginner to advanced"
+
+**Featured Project (Tessellate):**
+- Added team photo: `images/Installation/The gang Tessellate.jpg`
+- Shows image with hover overlay: "Full Build Breakdown — Coming Soon"
+- New CSS classes: `.video-placeholder-image` and `.video-overlay`
+
+**Copy Updates:**
+
+*I Build section:*
+> From large-scale installations to Resolume plugins to 3D art — I follow what excites me by building tools I wish existed and creating art I want to see in the world.
+
+*Behind the Scenes section:*
+> I believe we're all vessels with an impactful creative capacity. The only real choice is: do we consume or create? This is why I teach — so more people can figure out what they're called to create, find a medium that fits for them, and start building.
+
+**Files Added to Repo:**
+- `images/Yer dead Suwannee Tipper Speaker.png`
+- `images/imagejpeg_0(12).jpg`
+- `images/Installation/The gang Tessellate.jpg`
+- `images/Installation/The Medium Rex Maria Cornelio.jpg`
+
+**Notes for Future:**
+- Hero slot 2 originally tried Brady Backwoods image (portrait) but cropping didn't work well
+- Tessellate video placeholder ready to swap for YouTube embed when video is complete
+- "I Teach" section left unchanged — current copy works well

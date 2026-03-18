@@ -54,9 +54,14 @@ Major content updates after fixing deployment issues.
 - Portrait images work with default centering; can add `background-position: center top` inline if needed to focus on specific area
 
 **Learn Section:**
-- Added "Original Plugins" video (YouTube: qUst5rcKzFU) — 13-min showcase of all 7 Resolume plugins
+- Added plugin showcase video (YouTube: qUst5rcKzFU) — 13-min showcase of all 7 Resolume plugins
 - Replaced placeholder in slot 1 (was "Installation & Projection Mapping" coming soon)
 - Updated subtitle: "from beginner to deep dive" → "from beginner to advanced"
+- Video titles updated:
+  - Slot 1: "Plugin Showcase"
+  - Slot 2: "Resolume Tutorials" (plural)
+  - Slot 3: "Community Favorite" (was Blob Tracking V2 — Plugin Drop)
+  - Slot 4: "Inside My VJ Workflow" (was Deep Dive)
 
 **Featured Project (Tessellate):**
 - Added team photo: `images/Installation/The gang Tessellate.jpg`
@@ -70,6 +75,9 @@ Major content updates after fixing deployment issues.
 
 *Behind the Scenes section:*
 > I believe we're all vessels with an impactful creative capacity. The only real choice is: do we consume or create? This is why I teach — so more people can figure out what they're called to create, find a medium that fits for them, and start building.
+
+*About section (Rex Roberts bio):*
+> My work spans digital art, projection mapping, and live performance. Lately I've been pulling it all together — designing projection-mapped sculptures and bringing them to life with integrated lighting.
 
 **Files Added to Repo:**
 - `images/Yer dead Suwannee Tipper Speaker.png`

@@ -730,6 +730,21 @@ a.connect-card:hover {
   margin-top: auto;
 }
 
+/* Email reveal card */
+.connect-email {
+  cursor: pointer;
+}
+
+.connect-email:hover {
+  border-color: var(--cyan);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 229, 255, 0.08);
+}
+
+.connect-email.revealed .connect-cta-reveal {
+  color: var(--cyan);
+}
+
 .connect-socials {
   justify-content: center;
 }

@@ -66,6 +66,25 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
+// ===== Email reveal (anti-scrape) =====
+const emailCard = document.getElementById('emailReveal');
+emailCard.addEventListener('click', function () {
+  if (this.classList.contains('revealed')) return;
+  this.classList.add('revealed');
+  const u = 'rexaffects';
+  const d = 'yahoo.com';
+  const addr = u + '@' + d;
+  const cta = this.querySelector('.connect-cta-reveal');
+  cta.innerHTML = addr + ' &rarr;';
+  this.style.cursor = 'default';
+  // Wrap card in mailto link
+  const link = document.createElement('a');
+  link.href = 'mailto:' + addr;
+  link.className = 'connect-card connect-email revealed fade-in visible';
+  link.innerHTML = this.innerHTML;
+  this.replaceWith(link);
+});
+
 // ===== Nav blur intensifies on scroll =====
 const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {

@@ -45,7 +45,7 @@ Major content updates after fixing deployment issues.
 
 **Hero Carousel (3 rotating images):**
 - Slide 1: `images/Yer dead Suwannee Tipper Speaker.png` — Stage projection at Suwannee/Tipper
-- Slide 2: `images/imagejpeg_0(12).jpg` — VJ booth with APC40 controller
+- Slide 2: `images/Eros.png` — 3D artwork (yin-yang figures with glowing ring)
 - Slide 3: `images/Installation/The Medium Rex Maria Cornelio.jpg` — Tessellate installation team photo
 
 **CSS Fix for Hero Images:**
@@ -73,11 +73,11 @@ Major content updates after fixing deployment issues.
 
 **Files Added to Repo:**
 - `images/Yer dead Suwannee Tipper Speaker.png`
-- `images/imagejpeg_0(12).jpg`
+- `images/Eros.png`
 - `images/Installation/The gang Tessellate.jpg`
 - `images/Installation/The Medium Rex Maria Cornelio.jpg`
 
 **Notes for Future:**
-- Hero slot 2 originally tried Brady Backwoods image (portrait) but cropping didn't work well
+- Hero slot 2: tried Brady Backwoods (portrait, cropped poorly), then VJ booth imagejpeg_0(12).jpg, settled on Eros 3D artwork
 - Tessellate video placeholder ready to swap for YouTube embed when video is complete
 - "I Teach" section left unchanged — current copy works well

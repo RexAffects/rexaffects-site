@@ -706,6 +706,7 @@ a.connect-card:hover {
   height: 60px;
   object-fit: cover;
   border-radius: 12px;
+  transform: scale(1.05);
 }
 
 .connect-icon svg {

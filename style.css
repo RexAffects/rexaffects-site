@@ -659,6 +659,21 @@ img {
   transform: scale(1.03);
 }
 
+.coming-soon-box {
+  margin-top: 40px;
+  padding: 60px 40px;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.coming-soon-box p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 /* ===== Connect ===== */
 .connect-grid {
   display: grid;

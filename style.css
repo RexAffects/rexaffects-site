@@ -640,21 +640,6 @@ img {
 
 /* ===== Behind the Scenes ===== */
 .bts-gallery {
-  margin-top: 40px;
-}
-
-.bts-placeholder {
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: 16px;
-  padding: 80px 40px;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-/* Future: when images arrive, use this grid
-.bts-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 12px;
@@ -673,7 +658,6 @@ img {
 .bts-item img:hover {
   transform: scale(1.03);
 }
-*/
 
 /* ===== Connect ===== */
 .connect-grid {

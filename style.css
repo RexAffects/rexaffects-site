@@ -638,40 +638,39 @@ img {
   object-fit: cover;
 }
 
-/* ===== Behind the Scenes ===== */
-.bts-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-  margin-top: 40px;
-}
-
-.bts-item img {
+/* ===== Behind the Scenes — Gallery Carousel ===== */
+.gallery-wrap {
+  position: relative;
   width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.bts-item img:hover {
-  transform: scale(1.03);
-}
-
-.coming-soon-box {
+  height: 420px;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
   margin-top: 40px;
-  padding: 60px 40px;
-  border: 1px dashed var(--border);
-  border-radius: 16px;
-  text-align: center;
 }
 
-.coming-soon-box p {
-  color: var(--muted);
-  font-size: 1.1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.gallery-wrap.dragging {
+  cursor: grabbing;
+}
+
+.gallery-wrap canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.gallery-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.gallery-wrap.loaded::after {
+  opacity: 0;
 }
 
 /* ===== Connect ===== */
@@ -887,6 +886,10 @@ a.connect-card:hover {
 
   .connect-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-wrap {
+    height: 280px;
   }
 
   .hero-dots {

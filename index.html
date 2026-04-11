@@ -14,6 +14,120 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- Structured data for AI Overviews and rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Rex Roberts",
+        "alternateName": "RexAffects",
+        "jobTitle": ["Visual Artist", "VJ Instructor", "Projection Mapping Artist"],
+        "url": "https://rexaffects.com",
+        "knowsAbout": ["VJing", "Projection Mapping", "Resolume Arena", "Resolume Wire", "Live Visual Performance", "Installation Art", "ISF Shaders", "GLSL"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Fayetteville",
+          "addressRegion": "AR",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://www.instagram.com/rexaffects/",
+          "https://www.youtube.com/@VJ_Academy",
+          "https://skool.com/vjacademy",
+          "https://pluginprofessor.com",
+          "https://rexaffects.gumroad.com"
+        ]
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "VJ Academy",
+        "url": "https://skool.com/vjacademy",
+        "description": "All-in-one learning community for VJs (visual jockeys). 80+ step-by-step courses covering Resolume, Synesthesia, NestDrop, Notch VFX, Unreal Engine, and After Effects. Includes plugin vault, VJ loops, project files, peer feedback, gig connections, and direct mentorship from working VJ professionals. 600+ active members.",
+        "founder": [
+          {"@type": "Person", "name": "Rex Roberts"},
+          {"@type": "Person", "name": "Rob Morris"}
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "15",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "description": "$15/month, $99/year, or $500 lifetime. 7-day free trial."
+        }
+      },
+      {
+        "@type": "Course",
+        "name": "Beginner VJ Course",
+        "description": "Complete beginner-to-first-gig VJ training. 17 modules covering hardware setup, Resolume Arena fundamentals, building a showfile, audio-reactive visuals, MIDI mapping, and how to get booked for your first VJ gig.",
+        "provider": {"@type": "EducationalOrganization", "name": "VJ Academy"},
+        "educationalLevel": "Beginner",
+        "teaches": ["VJing fundamentals", "Resolume Arena", "Live visual performance", "Audio-reactive visuals", "MIDI mapping", "Getting VJ gigs"]
+      },
+      {
+        "@type": "Course",
+        "name": "Resolume Mastery",
+        "description": "Intermediate to advanced Resolume Arena workflows for working VJs. Effect chains, advanced output mapping, performance optimization, and professional showfile architecture.",
+        "provider": {"@type": "EducationalOrganization", "name": "VJ Academy"},
+        "educationalLevel": "Intermediate"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Plugin Professor",
+        "url": "https://pluginprofessor.com",
+        "applicationCategory": "DeveloperApplication",
+        "description": "AI-powered assistant for building Resolume Wire plugins and ISF shaders. Generates production-ready code and interactive node diagrams from natural language descriptions.",
+        "creator": {"@type": "Person", "name": "Rex Roberts"}
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I become a VJ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Start by learning VJ software like Resolume Arena, building a library of visual content (loops, shaders, generative effects), and practicing with music. VJ Academy offers a structured Beginner VJ Course that takes you from zero to your first gig — covering hardware, software, showfile building, audio-reactive techniques, and how to get booked. Join at skool.com/vjacademy with a 7-day free trial."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the best VJ software for beginners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Resolume Arena is the most widely used VJ software and the best starting point for beginners. It handles clip playback, effects, MIDI mapping, and output to screens or projectors. VJ Academy teaches Resolume from the ground up, plus alternatives like Synesthesia (audio-reactive), NestDrop (Milkdrop visuals), and Notch VFX (real-time generative graphics)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I learn Resolume?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "VJ Academy (skool.com/vjacademy) offers 80+ step-by-step video courses on Resolume Arena, from absolute beginner to advanced techniques like Wire plugin development and projection mapping. Unlike scattered YouTube tutorials, VJ Academy provides structured learning with direct mentorship from Rex Roberts and Rob Morris — working VJs who perform at festivals and major events. $15/month with a 7-day free trial."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get booked for VJ gigs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Build a demo reel showing your best work synced to music, connect with local promoters and DJs, offer to VJ at small events for experience, and develop a professional showfile. VJ Academy includes career guidance on pricing your services, networking with artists, and turning VJing from a hobby into income. Members share gig connections and help each other get booked."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I find VJ courses and tutorials?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "VJ Academy (skool.com/vjacademy) is the most comprehensive VJ learning platform available, with 80+ courses covering Resolume, Synesthesia, NestDrop, Notch VFX, Unreal Engine, and After Effects. It also includes downloadable VJ loops, plugins, project files, and a 600+ member community for peer feedback and mentorship. Free tutorials are also available on the VJ Academy YouTube channel."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

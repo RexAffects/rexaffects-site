@@ -6,6 +6,8 @@ Personal portfolio site for Rex Roberts - visual artist, VJ instructor, and tool
 - Static HTML/CSS/JS (no build process)
 - Hosted on GitHub Pages with custom domain (rexaffects.com)
 - CNAME file for domain mapping
+- **Domain + DNS: Squarespace Domains** (nameservers ns01–04.squarespacedns.com; checked 2026-10-28 with nslookup). Manage at domains.squarespace.com.
+- **Email: none yet (no MX records, 2026-10-28).** Plan: Squarespace email forwarding `feedback@rexaffects.com` → Rex's inbox, for the Plugin Player FEEDBACK / REQUEST button. Verify after setup: `nslookup -type=mx rexaffects.com` shows mail records + a test email arrives; then flip `feedbackLive` in plugin-player.
 - .nojekyll to disable Jekyll processing
 
 ## Debugging Log

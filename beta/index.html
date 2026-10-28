@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Beta — RexAffects</title>
+  <meta name="description" content="Free beta: plug in an Xbox, PlayStation or 8BitDo controller and play live, interactive visuals. Windows. No Resolume needed.">
+  <!-- Beta page: not indexed until the public launch. Remove this line at launch. -->
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="Plug in a controller. Play live visuals.">
+  <meta property="og:description" content="Free beta from RexAffects. Windows. No Resolume needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rexaffects.com/beta/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- TODO before ads: Meta pixel goes here (PageView + Lead on the CTA click). -->
+  <style>
+    :root {
+      --bg: #0a0a0f; --surface: #111118; --surface-hover: #1a1a24; --border: #1e1e2a;
+      --text: #e8e8ee; --text-secondary: #8888a0;
+      --cyan: #00e5ff; --magenta: #ff2d7b; --green: #00ff88;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max: 1000px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.6; }
+    a { color: var(--cyan); }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    header { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    header a { color: var(--text); text-decoration: none; font-weight: 700; letter-spacing: .02em; }
+    .hero { padding: 80px 0 60px; text-align: center;
+      background: radial-gradient(ellipse at 30% 0%, rgba(0,229,255,.15), transparent 60%),
+                  radial-gradient(ellipse at 70% 10%, rgba(255,45,123,.12), transparent 60%); }
+    .tag { display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); border: 1px solid rgba(0,255,136,.4); border-radius: 999px; padding: 4px 12px; margin-bottom: 20px; }
+    h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.1; font-weight: 800; margin-bottom: 18px; }
+    h1 span { background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lede { color: var(--text-secondary); font-size: 1.15rem; max-width: 640px; margin: 0 auto 32px; }
+    .cta { display: inline-block; background: var(--cyan); color: #000; font-weight: 700; text-decoration: none;
+      padding: 16px 32px; border-radius: 10px; font-size: 1.05rem; }
+    .cta:hover { filter: brightness(1.1); }
+    .fine { color: var(--text-secondary); font-size: .9rem; margin-top: 14px; }
+    section { padding: 56px 0; border-top: 1px solid var(--border); }
+    h2 { font-size: 1.7rem; margin-bottom: 24px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+    .card b { display: block; color: var(--cyan); font-size: .85rem; letter-spacing: .1em; margin-bottom: 6px; }
+    .card p { color: var(--text-secondary); }
+    .search { width: 100%; max-width: 420px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text); font: inherit; margin-bottom: 16px; }
+    .pads { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 18px; }
+    .pads li { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+    .pads li small { display: block; color: var(--text-secondary); }
+    .soon { color: var(--magenta) !important; }
+    .request { display: inline-block; border: 1px solid var(--cyan); color: var(--cyan); text-decoration: none;
+      padding: 10px 18px; border-radius: 10px; font-weight: 600; }
+    .faq dt { font-weight: 700; margin-top: 18px; }
+    .faq dd { color: var(--text-secondary); }
+    footer { padding: 40px 0; color: var(--text-secondary); font-size: .9rem; border-top: 1px solid var(--border); text-align: center; }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a href="/">REXAFFECTS</a></div></header>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="tag">Free beta · Windows</div>
+      <h1>Plug in a controller.<br><span>Play live visuals.</span></h1>
+      <p class="lede">Interactive visuals you perform with a game controller. Plug in your Xbox or PlayStation controller and it just works. Your camera turns on and the visuals react. No Resolume needed.</p>
+      <!-- TODO: replace with the Gumroad $0 "Player Beta" product URL (collects the email, delivers the download). -->
+      <a class="cta" href="https://rexaffects.gumroad.com/l/REPLACE-WITH-BETA-PRODUCT">Get the free beta</a>
+      <p class="fine">Drop your email and we'll send the download. Mac version coming.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="card"><b>01</b><p>Drop your email to get the free download.</p></div>
+        <div class="card"><b>02</b><p>Install the app on your Windows computer.</p></div>
+        <div class="card"><b>03</b><p>Plug in your controller. The app picks it up automatically.</p></div>
+        <div class="card"><b>04</b><p>Pick a scene and play. Hand the controller to a friend, point a projector at a wall, go.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="controllers">
+    <div class="wrap">
+      <h2>Works with your controller</h2>
+      <input class="search" id="padSearch" type="search" placeholder="Search for your controller…" aria-label="Search controllers">
+      <ul class="pads" id="padList">
+        <li data-k="xbox microsoft series one 360">Xbox controller<small>Series X|S, One, 360</small></li>
+        <li data-k="playstation ps5 ps4 dualsense dualshock sony">PlayStation controller<small>DualSense (PS5), DualShock 4 (PS4)</small></li>
+        <li data-k="8bitdo micro">8BitDo Micro<small>The one from the Phantasma video</small></li>
+        <li data-k="phone iphone android touch mobile"><span class="soon">Your phone</span><small>Coming after the beta: use your phone's touchscreen as the controller</small></li>
+      </ul>
+      <p id="padNone" class="fine" hidden>Not on the list yet. Request it below and we'll see what we can do.</p>
+      <!-- TODO: point to the request form (or keep the email). -->
+      <a class="request" href="mailto:rexaffects@yahoo.com?subject=Add%20my%20controller&body=My%20controller%20is%3A%20">Request my controller</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Questions</h2>
+      <dl class="faq">
+        <dt>Is it really free?</dt>
+        <dd>The app is free. Every scene plays with a small watermark so you can try everything. Own a scene and it plays clean.</dd>
+        <dt>I already bought a RexAffects plugin. Do I pay again?</dt>
+        <dd>No. Sign in with the email you bought it with, and scenes you already own unlock.</dd>
+        <dt>Do I need Resolume?</dt>
+        <dd>No. The app runs the visuals itself. If you do use Resolume, you'll be able to send the output into it later.</dd>
+        <dt>Mac?</dt>
+        <dd>Windows first. Mac is being tested now.</dd>
+        <dt>It's a beta. What does that mean?</dt>
+        <dd>It works, and we're polishing it with the first players. Found a bug or have an idea? Tell us. That's the whole point.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a></footer>
+
+  <script>
+    (function () {
+      var input = document.getElementById('padSearch');
+      var items = document.querySelectorAll('#padList li');
+      var none = document.getElementById('padNone');
+      input.addEventListener('input', function () {
+        var q = input.value.trim().toLowerCase(), shown = 0;
+        items.forEach(function (li) {
+          var hit = !q || (li.textContent + ' ' + li.dataset.k).toLowerCase().indexOf(q) !== -1;
+          li.hidden = !hit; if (hit) shown++;
+        });
+        none.hidden = shown !== 0;
+      });
+    })();
+  </script>
+</body>
+</html>

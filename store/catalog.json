@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-29T23:58:04.503Z",
+  "currency": "USD",
+  "creators": {
+    "rexaffects": {
+      "name": "RexAffects",
+      "url": "https://rexaffects.com/"
+    }
+  },
+  "items": [
+    {
+      "slug": "cube-bloom",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Cube Bloom",
+      "blurb": "Glossy cubes breathing in a diagonal wave while the camera orbits. Free in Plugin Player; buy it to run it in Resolume.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": true,
+      "new": false,
+      "freeInPlayer": true,
+      "preview": "previews/cube-bloom.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "fluid-force",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Fluid Dynamics",
+      "blurb": "A real fluid driven by the motion in your picture: ink, water, fire, smoke or molten metal. Move and it moves.",
+      "priceUsd": 50,
+      "includesPlugin": true,
+      "featured": true,
+      "new": false,
+      "freeInPlayer": false,
+      "preview": "previews/fluid-force.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "frame-stack",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Frame Stack",
+      "blurb": "Your picture as a timeline in space: a rolling history hung on cards receding into the distance, with a liquid afterglow.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": false,
+      "new": true,
+      "freeInPlayer": false,
+      "preview": "previews/frame-stack.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "plane-drift-fluid",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Plane Drift",
+      "blurb": "Drifting planes with a liquid afterglow: colour is born on the edges and lives outside them while the planes stay crisp.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": false,
+      "new": true,
+      "freeInPlayer": false,
+      "preview": "previews/plane-drift-fluid.png",
+      "checkoutUrl": null
+    }
+  ]
+}

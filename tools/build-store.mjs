@@ -18,6 +18,8 @@
 //                             its still preview (previews/<slug>.png). Tiles + scene pages use
 //                             <video muted loop playsinline autoplay preload="none" poster>; store.js plays a clip only
 //                             while it is on screen and never under prefers-reduced-motion (poster only).
+//   <slug>-live.mp4/.jpg      optional: the scene played live (e.g. Cube Stack at Phantasma): a second, captioned clip on
+//                             the scene page only (LIVE_CAPTIONS; default caption "Live").
 //   hero.mp4 + hero.jpg       the /store/ hero background (muted loop, <= 2.5 MB, faststart) + its poster. SWAP IT IN
 //                             ONE STEP: replace those two files (same names) and rebuild, or just replace them (the
 //                             pages only reference the names). Today: Plugin Player on the trees (Rex's controller
@@ -71,9 +73,9 @@ if (MEDIA_OUT !== MEDIA_HOME) for (const f of ['hero.mp4', 'hero.jpg']) if (fs.e
 if (opt('media')) {
   const from = path.resolve(opt('media'));
   let n = 0;
-  for (const it of cat.items) for (const ext of ['mp4', 'jpg']) {
-    const f = path.join(from, `${it.slug}.${ext}`);
-    if (fs.existsSync(f) && fs.statSync(f).size > 0) { fs.copyFileSync(f, path.join(MEDIA_OUT, `${it.slug}.${ext}`)); n++; }
+  for (const it of cat.items) for (const name of [it.slug, `${it.slug}-live`]) for (const ext of ['mp4', 'jpg']) {
+    const f = path.join(from, `${name}.${ext}`);
+    if (fs.existsSync(f) && fs.statSync(f).size > 0) { fs.copyFileSync(f, path.join(MEDIA_OUT, `${name}.${ext}`)); n++; }
   }
   console.log(`media: ${n} file(s) copied from ${from}`);
 }
@@ -87,6 +89,15 @@ const media = (it, w, h, alt = '') => {
   return `<video class="clip" muted loop playsinline autoplay preload="none" poster="${esc(posterOf(it))}" width="${w}" height="${h}"${alt ? ` aria-label="${esc(alt)}"` : ' aria-hidden="true"'}><source src="${esc(clip)}" type="video/mp4"></video>`;
 };
 const HERO = has('hero.mp4');
+// <slug>-live.mp4 (+ .jpg poster): footage of the scene played live; shown as a second clip on the scene PAGE only
+// (tiles keep <slug>.mp4). Caption from LIVE_CAPTIONS, else "Live".
+const LIVE_CAPTIONS = { 'cube-stack': 'Live at Phantasma' };
+const liveClip = (it) => {
+  if (!has(`${it.slug}-live.mp4`)) return '';
+  const cap = LIVE_CAPTIONS[it.slug] || 'Live';
+  const poster = has(`${it.slug}-live.jpg`) ? ` poster="/store/media/${it.slug}-live.jpg"` : '';
+  return `<figure class="live"><video class="clip" muted loop playsinline autoplay preload="none"${poster} width="960" height="540" aria-label="${esc(`${it.title}: ${cap}`)}"><source src="/store/media/${it.slug}-live.mp4" type="video/mp4"></video><figcaption><span class="dot"></span>${esc(cap)}</figcaption></figure>`;
+};
 
 // "end of November" from "2026-11-30" (the wording the app and the purchase mail use)
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -219,7 +230,7 @@ const pages = cat.items.map((it) => {
     : it.freeInPlayer ? `<p class="fine">This buys the Resolume plugin: the scene is already free in Plugin Player. It's also a bonus in ${a7 ? `${esc(a7.title)} and ` : ''}${ev ? esc(ev.title) : 'the big packs'}. <a href="/store/#packs">See packs</a></p>`
       : ev && (ev.scenes || []).includes(it.slug) ? `<p class="fine">Not part of Pick 3 / Pick 5. It's in ${esc(ev.title)} (${price(ev.priceUsd)}), with every other scene. <a href="/store/#packs">See packs</a></p>` : '';
   p += `  <section class="scene"><div class="wrap two">
-    <div class="pic">${media(it, 960, 540, it.title)}</div>
+    <div class="pic">${media(it, 960, 540, it.title)}${liveClip(it)}</div>
     <div class="info">
       <div class="badges">${badges(it)}</div>
       <h1>${esc(it.title)}</h1>
@@ -288,5 +299,6 @@ fs.mkdirSync(path.join(OUT, 'thanks'), { recursive: true });
 fs.writeFileSync(path.join(OUT, 'thanks', 'index.html'), thanks);
 fs.writeFileSync(path.join(OUT, 'catalog.json'), `${JSON.stringify(cat, null, 2)}\n`);
 const clips = cat.items.filter((i) => clipOf(i.slug)).length;
-console.log(`media: ${clips}/${cat.items.length} scene clip(s)${clips < cat.items.length ? ` (stills for ${cat.items.filter((i) => !clipOf(i.slug)).map((i) => i.slug).join(', ')})` : ''}, hero ${HERO ? 'video' : 'none (gradient)'}`);
+const lives = cat.items.filter((i) => has(`${i.slug}-live.mp4`)).map((i) => i.slug);
+console.log(`media: ${clips}/${cat.items.length} scene clip(s)${clips < cat.items.length ? ` (stills for ${cat.items.filter((i) => !clipOf(i.slug)).map((i) => i.slug).join(', ')})` : ''}, hero ${HERO ? 'video' : 'none (gradient)'}, live clips: ${lives.join(', ') || 'none'}`);
 console.log(`store: ${cat.items.length} scene page(s) + ${packs.length} pack(s) on the index + thanks -> ${OUT} (BUY -> ${STORE_API}/api/checkout)${NOINDEX ? ' (noindex)' : ''}${PLAYER_DOWNLOAD_TODO ? '\n  TODO: the Plugin Player download link on /store/thanks/ is a placeholder (PLAYER_DOWNLOAD_URL)' : ''}`);

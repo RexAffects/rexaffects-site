@@ -16,7 +16,7 @@
 //   <slug>.mp4 + <slug>.jpg   a 6 s silent loop (480x270 H.264) + its poster per scene. --media <dir> copies the ones
 //                             found there in (only names matching a catalog slug). A slug without a clip falls back to
 //                             its still preview (previews/<slug>.png). Tiles + scene pages use
-//                             <video muted loop playsinline autoplay preload="none" poster>; store.js plays a clip only
+//                             <video muted loop playsinline preload="none" poster>; store.js plays a clip only
 //                             while it is on screen and never under prefers-reduced-motion (poster only).
 //   <slug>-live.mp4/.jpg      optional: the scene played live (e.g. Cube Stack at Phantasma): a second, captioned clip on
 //                             the scene page only (LIVE_CAPTIONS; default caption "Live").
@@ -86,7 +86,7 @@ const posterOf = (it) => (has(`${it.slug}.jpg`) ? `/store/media/${it.slug}.jpg` 
 const media = (it, w, h, alt = '') => {
   const clip = clipOf(it.slug);
   if (!clip) return `<img src="${esc(posterOf(it))}" alt="${esc(alt)}" loading="lazy" width="${w}" height="${h}">`;
-  return `<video class="clip" muted loop playsinline autoplay preload="none" poster="${esc(posterOf(it))}" width="${w}" height="${h}"${alt ? ` aria-label="${esc(alt)}"` : ' aria-hidden="true"'}><source src="${esc(clip)}" type="video/mp4"></video>`;
+  return `<video class="clip" muted loop playsinline preload="none" poster="${esc(posterOf(it))}" width="${w}" height="${h}"${alt ? ` aria-label="${esc(alt)}"` : ' aria-hidden="true"'}><source src="${esc(clip)}" type="video/mp4"></video>`;
 };
 const HERO = has('hero.mp4');
 // <slug>-live.mp4 (+ .jpg poster): footage of the scene played live; shown as a second clip on the scene PAGE only
@@ -96,7 +96,7 @@ const liveClip = (it) => {
   if (!has(`${it.slug}-live.mp4`)) return '';
   const cap = LIVE_CAPTIONS[it.slug] || 'Live';
   const poster = has(`${it.slug}-live.jpg`) ? ` poster="/store/media/${it.slug}-live.jpg"` : '';
-  return `<figure class="live"><video class="clip" muted loop playsinline autoplay preload="none"${poster} width="960" height="540" aria-label="${esc(`${it.title}: ${cap}`)}"><source src="/store/media/${it.slug}-live.mp4" type="video/mp4"></video><figcaption><span class="dot"></span>${esc(cap)}</figcaption></figure>`;
+  return `<figure class="live"><video class="clip" muted loop playsinline preload="none"${poster} width="960" height="540" aria-label="${esc(`${it.title}: ${cap}`)}"><source src="/store/media/${it.slug}-live.mp4" type="video/mp4"></video><figcaption><span class="dot"></span>${esc(cap)}</figcaption></figure>`;
 };
 
 // "end of November" from "2026-11-30" (the wording the app and the purchase mail use)
@@ -204,7 +204,7 @@ const fresh = cat.items.filter((i) => i.new && !i.featured);
 const all = [...cat.items].sort((a, b) => a.title.localeCompare(b.title));
 let index = head('Store — RexAffects', 'Scenes for Plugin Player, with the Resolume plugin included. Buy once, unlock in the app.', 0);
 index += `  <div class="hero${HERO ? ' has-video' : ''}">
-${HERO ? `    <video class="hero-bg" muted loop playsinline autoplay preload="auto"${has('hero.jpg') ? ' poster="/store/media/hero.jpg"' : ''} aria-hidden="true"><source src="/store/media/hero.mp4" type="video/mp4"></video>
+${HERO ? `    <video class="hero-bg" muted loop playsinline preload="none"${has('hero.jpg') ? ' poster="/store/media/hero.jpg"' : ''} aria-hidden="true"><source src="/store/media/hero.mp4" type="video/mp4"></video>
     <div class="hero-shade"></div>
 ` : ''}    <div class="wrap">
     <div class="tag">Plugin Player · Store</div>

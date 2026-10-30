@@ -134,7 +134,8 @@
   });
 
   // Live previews: a clip plays only while on screen (IntersectionObserver; not even fetched before that:
-  // preload="none"), and never under prefers-reduced-motion (the poster stays). The hero loop follows the same rules.
+  // preload="none"), and never under prefers-reduced-motion (the poster stays). The HTML has no autoplay: this alone
+  // starts clips, so a phone on data fetches nothing off screen. The hero is on screen at load, so it starts at once.
   var vids = [].slice.call(document.querySelectorAll('video.clip, video.hero-bg'));
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hold = function (v) { v.autoplay = false; v.removeAttribute('autoplay'); try { v.pause(); } catch (e) {} };

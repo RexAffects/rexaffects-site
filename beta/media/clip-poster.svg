@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <!-- Placeholder poster for the Plugin Player clip. Replace with a still from the real clip
+       (beta/media/plugin-player-clip-poster.jpg) and point the <video poster> at it. -->
+  <defs>
+    <radialGradient id="a" cx="30%" cy="22%" r="70%">
+      <stop offset="0" stop-color="#00e5ff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#00e5ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b" cx="75%" cy="80%" r="70%">
+      <stop offset="0" stop-color="#ff2d7b" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#ff2d7b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="#060609"/>
+  <rect width="1080" height="1920" fill="url(#a)"/>
+  <rect width="1080" height="1920" fill="url(#b)"/>
+  <g fill="none" stroke="#e8e8ee" stroke-opacity=".08" stroke-width="2">
+    <path d="M0 640h1080M0 1280h1080M360 0v1920M720 0v1920"/>
+  </g>
+  <circle cx="540" cy="900" r="120" fill="none" stroke="#00e5ff" stroke-width="6"/>
+  <path d="M500 830v140l120-70z" fill="#00e5ff"/>
+  <text x="540" y="1120" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="600" letter-spacing="10" fill="#e8e8ee">THE CLIP</text>
+  <text x="540" y="1180" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="500" letter-spacing="6" fill="#8888a0">COMING SOON</text>
+</svg>

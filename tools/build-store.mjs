@@ -12,6 +12,21 @@
 // picks against ITS catalog and sets the price: nothing on these pages decides what is bought or what it costs.
 // --store-api <url>: a test build against a local `node dev/server.ts` (never commit such a build).
 //
+// MEDIA (store/media/, committed):
+//   <slug>.mp4 + <slug>.jpg   a 6 s silent loop (480x270 H.264) + its poster per scene. --media <dir> copies the ones
+//                             found there in (only names matching a catalog slug). A slug without a clip falls back to
+//                             its still preview (previews/<slug>.png). Tiles + scene pages use
+//                             <video muted loop playsinline autoplay preload="none" poster>; store.js plays a clip only
+//                             while it is on screen and never under prefers-reduced-motion (poster only).
+//   hero.mp4 + hero.jpg       the /store/ hero background (muted loop, <= 2.5 MB, faststart) + its poster. SWAP IT IN
+//                             ONE STEP: replace those two files (same names) and rebuild, or just replace them (the
+//                             pages only reference the names). Today: Plugin Player on the trees (Rex's controller
+//                             video V3, 0:30-0:40, a 16:9 band cropped from the 720x1280 vertical), made with
+//                             ffmpeg -ss 30 -t 10 -i <src> -an -vf "crop=720:405:0:370,scale=1280:720:flags=lanczos,fps=30,format=yuv420p"
+//                                    -c:v libx264 -preset slow -crf 28 -movflags +faststart store/media/hero.mp4
+//                             ffmpeg -ss 7 -i store/media/hero.mp4 -frames:v 1 -q:v 4 store/media/hero.jpg
+//                             No hero.mp4 = the plain gradient hero.
+//
 // Every page is noindex until Rex says go (remove NOINDEX below, rebuild, and add /store/ to sitemap.xml).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -41,12 +56,37 @@ const SLUG_RE = /^[a-z0-9][a-z0-9-]{0,63}$/;
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const price = (n) => (Number.isInteger(n) ? `$${n}` : `$${Number(n).toFixed(2)}`);
 if (cat.version !== 1 || !Array.isArray(cat.items)) { console.error('not a v1 store export'); process.exit(1); }
-for (const it of cat.items) if (!SLUG_RE.test(it.slug) || it.slug === 'thanks' || it.slug === 'previews') { console.error(`bad slug ${it.slug}`); process.exit(1); }
+for (const it of cat.items) if (!SLUG_RE.test(it.slug) || ['thanks', 'previews', 'media'].includes(it.slug)) { console.error(`bad slug ${it.slug}`); process.exit(1); }
 const packs = Array.isArray(cat.packs) ? cat.packs : [];
 const pickable = Array.isArray(cat.pickable) ? cat.pickable : [];
 const bySlug = Object.fromEntries(cat.items.map((i) => [i.slug, i]));
 for (const s of pickable) if (!bySlug[s]) { console.error(`pickable ${s} is not an item`); process.exit(1); }
 const pack = (id) => packs.find((p) => p.id === id) || null;
+
+// ---- media: copy --media clips in, then see which slugs have a clip / a poster (decides <video> vs <img>) ----
+const MEDIA_OUT = path.join(OUT, 'media');
+fs.mkdirSync(MEDIA_OUT, { recursive: true });
+const MEDIA_HOME = path.join(ROOT, 'store', 'media');
+if (MEDIA_OUT !== MEDIA_HOME) for (const f of ['hero.mp4', 'hero.jpg']) if (fs.existsSync(path.join(MEDIA_HOME, f))) fs.copyFileSync(path.join(MEDIA_HOME, f), path.join(MEDIA_OUT, f));
+if (opt('media')) {
+  const from = path.resolve(opt('media'));
+  let n = 0;
+  for (const it of cat.items) for (const ext of ['mp4', 'jpg']) {
+    const f = path.join(from, `${it.slug}.${ext}`);
+    if (fs.existsSync(f) && fs.statSync(f).size > 0) { fs.copyFileSync(f, path.join(MEDIA_OUT, `${it.slug}.${ext}`)); n++; }
+  }
+  console.log(`media: ${n} file(s) copied from ${from}`);
+}
+const has = (f) => fs.existsSync(path.join(MEDIA_OUT, f));
+const clipOf = (slug) => (has(`${slug}.mp4`) ? `/store/media/${slug}.mp4` : null);
+const posterOf = (it) => (has(`${it.slug}.jpg`) ? `/store/media/${it.slug}.jpg` : `/store/${it.preview}`);
+// a scene's picture: the loop when there is one (store.js plays it while on screen), else the still
+const media = (it, w, h, alt = '') => {
+  const clip = clipOf(it.slug);
+  if (!clip) return `<img src="${esc(posterOf(it))}" alt="${esc(alt)}" loading="lazy" width="${w}" height="${h}">`;
+  return `<video class="clip" muted loop playsinline autoplay preload="none" poster="${esc(posterOf(it))}" width="${w}" height="${h}"${alt ? ` aria-label="${esc(alt)}"` : ' aria-hidden="true"'}><source src="${esc(clip)}" type="video/mp4"></video>`;
+};
+const HERO = has('hero.mp4');
 
 // "end of November" from "2026-11-30" (the wording the app and the purchase mail use)
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -63,7 +103,7 @@ const head = (title, desc, depth) => `<!DOCTYPE html>
   <meta name="description" content="${esc(desc)}">
 ${NOINDEX ? '  <!-- Store: not indexed until Rex says go (tools/build-store.mjs NOINDEX). -->\n  <meta name="robots" content="noindex">\n' : ''}  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${'../'.repeat(depth)}store.css">
 </head>
 <body data-store-api="${esc(STORE_API)}">
@@ -83,7 +123,7 @@ const badges = (it) => [
   it.includesPlugin && it.pluginAvailable === false ? `<span class="b soon">Plugin: ${esc(etaWords(it.pluginEta))}</span>` : '',
 ].join('');
 const card = (it) => `      <a class="item" href="/store/${it.slug}/">
-        <img src="/store/${esc(it.preview)}" alt="${esc(it.title)}" loading="lazy" width="480" height="270">
+        ${media(it, 480, 270, it.title)}
         <div class="meta"><div class="badges">${badges(it)}</div><b>${esc(it.title)}</b><span class="by">by ${esc(it.creatorName)}</span><span class="price">${price(it.priceUsd)}</span></div>
       </a>`;
 const grid = (title, list, id) => (list.length ? `  <section id="${id}"><div class="wrap"><h2>${title}</h2><div class="grid">
@@ -103,10 +143,24 @@ const setCard = (p, big) => {
         ${p.savesUsd ? `<p class="save">You save ${price(p.savesUsd)}</p>` : ''}
         <p class="pack-what">${titles.length} scenes + ${p.pluginCount} Resolume plugins${bonus.length ? ` (incl. the ${esc(bonus.join(', '))} plugin as a bonus)` : ''}</p>
         <p class="pack-list">${titles.map(esc).join(' · ')}</p>
-        ${buyButton(p.id, `Buy ${p.title} · ${price(p.priceUsd)}`)}
+        <div class="pack-actions">
+          ${buyButton(p.id, `Buy ${p.title} · ${price(p.priceUsd)}`)}
+          <button type="button" class="inside-toggle" aria-expanded="false" aria-controls="inside-${esc(p.id)}">See what's inside</button>
+        </div>
         ${errorLine}
+        <div class="inside" id="inside-${esc(p.id)}" hidden>
+${(p.scenes || []).filter((s) => bySlug[s]).map((s) => insideTile(bySlug[s], false)).join('\n')}
+${(p.bonusPlugins || []).filter((s) => bySlug[s]).map((s) => insideTile(bySlug[s], true)).join('\n')}
+        </div>
       </div>`;
 };
+// one tile in a set pack's "See what's inside": the loop + name + its plugin line; links to the scene's page
+function insideTile(it, bonus) {
+  const line = bonus ? 'Bonus: its Resolume plugin'
+    : it.includesPlugin && it.pluginAvailable === false ? `Resolume plugin: coming ${etaWords(it.pluginEta)}`
+      : 'Resolume plugin included';
+  return `          <a class="in${bonus ? ' bonus' : ''}" href="/store/${it.slug}/">${media(it, 240, 135)}<b>${esc(it.title)}</b><small${!bonus && it.pluginAvailable === false ? ' class="soon"' : ''}>${esc(line)}</small></a>`;
+}
 const pickPacks = ['pick-3', 'pick-5'].map(pack).filter(Boolean);
 const goop = bySlug['fluid-force'];
 const packsSection = packs.length ? `  <section id="packs"><div class="wrap">
@@ -122,7 +176,7 @@ ${pickPacks.map((p, i) => `        <label class="size"><input type="radio" name=
       </div>
       <p class="pick-help">Tick exactly <b class="pick-n">${pickPacks[0].size}</b> scenes. Each comes with its Resolume plugin.${goop ? ` ${esc(goop.title)} (${price(goop.priceUsd)}) isn't a pick slot: it's in ${esc(pack('everything')?.title || 'Everything')}, or buy it on its own.` : ''}</p>
       <div class="picks">
-${pickable.map((s) => { const it = bySlug[s]; return `        <label class="pick"><input type="checkbox" value="${esc(s)}"><img src="/store/${esc(it.preview)}" alt="" loading="lazy" width="160" height="90"><span>${esc(it.title)}${it.pluginAvailable === false ? `<small>plugin coming ${esc(etaWords(it.pluginEta))}</small>` : ''}</span></label>`; }).join('\n')}
+${pickable.map((s) => { const it = bySlug[s]; return `        <label class="pick"><input type="checkbox" value="${esc(s)}">${media(it, 160, 90)}<span>${esc(it.title)}${it.pluginAvailable === false ? `<small>plugin coming ${esc(etaWords(it.pluginEta))}</small>` : ''}</span></label>`; }).join('\n')}
       </div>
       <div class="pick-go">
         <span class="pick-count" aria-live="polite">0 of ${pickPacks[0].size} picked</span>
@@ -138,7 +192,10 @@ const featured = cat.items.filter((i) => i.featured);
 const fresh = cat.items.filter((i) => i.new && !i.featured);
 const all = [...cat.items].sort((a, b) => a.title.localeCompare(b.title));
 let index = head('Store — RexAffects', 'Scenes for Plugin Player, with the Resolume plugin included. Buy once, unlock in the app.', 0);
-index += `  <div class="hero"><div class="wrap">
+index += `  <div class="hero${HERO ? ' has-video' : ''}">
+${HERO ? `    <video class="hero-bg" muted loop playsinline autoplay preload="auto"${has('hero.jpg') ? ' poster="/store/media/hero.jpg"' : ''} aria-hidden="true"><source src="/store/media/hero.mp4" type="video/mp4"></video>
+    <div class="hero-shade"></div>
+` : ''}    <div class="wrap">
     <div class="tag">Plugin Player · Store</div>
     <h1>Scenes you <span>play live.</span></h1>
     <p class="lede">Every scene plays free in Plugin Player with a small mark. Buy one and it plays clean, and its Resolume plugin comes with it.</p>
@@ -162,7 +219,7 @@ const pages = cat.items.map((it) => {
     : it.freeInPlayer ? `<p class="fine">This buys the Resolume plugin: the scene is already free in Plugin Player. It's also a bonus in ${a7 ? `${esc(a7.title)} and ` : ''}${ev ? esc(ev.title) : 'the big packs'}. <a href="/store/#packs">See packs</a></p>`
       : ev && (ev.scenes || []).includes(it.slug) ? `<p class="fine">Not part of Pick 3 / Pick 5. It's in ${esc(ev.title)} (${price(ev.priceUsd)}), with every other scene. <a href="/store/#packs">See packs</a></p>` : '';
   p += `  <section class="scene"><div class="wrap two">
-    <div class="pic"><img src="/store/${esc(it.preview)}" alt="${esc(it.title)}" width="960" height="540"></div>
+    <div class="pic">${media(it, 960, 540, it.title)}</div>
     <div class="info">
       <div class="badges">${badges(it)}</div>
       <h1>${esc(it.title)}</h1>
@@ -220,7 +277,7 @@ for (const it of cat.items) {
   if (!/^previews\/[a-z0-9-]+\.(png|jpg|jpeg|gif|webp)$/.test(it.preview) || !fs.existsSync(from)) { console.error(`missing preview ${it.preview}`); process.exit(1); }
   fs.copyFileSync(from, path.join(OUT, it.preview));
 }
-const keep = new Set([...cat.items.map((i) => i.slug), 'previews', 'thanks']);
+const keep = new Set([...cat.items.map((i) => i.slug), 'previews', 'thanks', 'media']);
 for (const d of fs.readdirSync(OUT, { withFileTypes: true })) if (d.isDirectory() && !keep.has(d.name)) fs.rmSync(path.join(OUT, d.name), { recursive: true });
 const keepPreviews = new Set(cat.items.map((i) => path.basename(i.preview)));
 for (const f of fs.readdirSync(path.join(OUT, 'previews'))) if (!keepPreviews.has(f)) fs.rmSync(path.join(OUT, 'previews', f));
@@ -230,4 +287,6 @@ for (const [slug, html] of pages) { fs.mkdirSync(path.join(OUT, slug), { recursi
 fs.mkdirSync(path.join(OUT, 'thanks'), { recursive: true });
 fs.writeFileSync(path.join(OUT, 'thanks', 'index.html'), thanks);
 fs.writeFileSync(path.join(OUT, 'catalog.json'), `${JSON.stringify(cat, null, 2)}\n`);
+const clips = cat.items.filter((i) => clipOf(i.slug)).length;
+console.log(`media: ${clips}/${cat.items.length} scene clip(s)${clips < cat.items.length ? ` (stills for ${cat.items.filter((i) => !clipOf(i.slug)).map((i) => i.slug).join(', ')})` : ''}, hero ${HERO ? 'video' : 'none (gradient)'}`);
 console.log(`store: ${cat.items.length} scene page(s) + ${packs.length} pack(s) on the index + thanks -> ${OUT} (BUY -> ${STORE_API}/api/checkout)${NOINDEX ? ' (noindex)' : ''}${PLAYER_DOWNLOAD_TODO ? '\n  TODO: the Plugin Player download link on /store/thanks/ is a placeholder (PLAYER_DOWNLOAD_URL)' : ''}`);

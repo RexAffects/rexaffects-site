@@ -9,12 +9,15 @@
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="store.css">
 </head>
 <body data-store-api="https://rexaffects-store.vercel.app">
   <header><div class="wrap"><a class="logo" href="/">REXAFFECTS</a><a class="crumb" href="/store/">Store</a></div></header>
-  <div class="hero"><div class="wrap">
+  <div class="hero has-video">
+    <video class="hero-bg" muted loop playsinline autoplay preload="auto" poster="/store/media/hero.jpg" aria-hidden="true"><source src="/store/media/hero.mp4" type="video/mp4"></video>
+    <div class="hero-shade"></div>
+    <div class="wrap">
     <div class="tag">Plugin Player · Store</div>
     <h1>Scenes you <span>play live.</span></h1>
     <p class="lede">Every scene plays free in Plugin Player with a small mark. Buy one and it plays clean, and its Resolume plugin comes with it.</p>
@@ -29,16 +32,43 @@
         <p class="save">You save $60</p>
         <p class="pack-what">8 scenes + 9 Resolume plugins (incl. the Cube Bloom plugin as a bonus)</p>
         <p class="pack-list">Blob Tracking v3 · Corridor Panels · Cube Stack · Custom Particles · Goop · Frame Stack · Pixel Advection · Plane Drift</p>
-        <button type="button" class="cta buy" data-offer="everything">Buy Everything · $200</button>
+        <div class="pack-actions">
+          <button type="button" class="cta buy" data-offer="everything">Buy Everything · $200</button>
+          <button type="button" class="inside-toggle" aria-expanded="false" aria-controls="inside-everything">See what's inside</button>
+        </div>
         <p class="err" role="alert" hidden></p>
+        <div class="inside" id="inside-everything" hidden>
+          <a class="in" href="/store/blob-tracking-v3/"><img src="/store/previews/blob-tracking-v3.png" alt="" loading="lazy" width="240" height="135"><b>Blob Tracking v3</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/corridor-panels/"><img src="/store/previews/corridor-panels.png" alt="" loading="lazy" width="240" height="135"><b>Corridor Panels</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/cube-stack/"><img src="/store/previews/cube-stack.png" alt="" loading="lazy" width="240" height="135"><b>Cube Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/custom-particles/"><img src="/store/previews/custom-particles.png" alt="" loading="lazy" width="240" height="135"><b>Custom Particles</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/fluid-force/"><img src="/store/previews/fluid-force.png" alt="" loading="lazy" width="240" height="135"><b>Goop</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/frame-stack/"><img src="/store/previews/frame-stack.png" alt="" loading="lazy" width="240" height="135"><b>Frame Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/pixel-advection/"><img src="/store/previews/pixel-advection.png" alt="" loading="lazy" width="240" height="135"><b>Pixel Advection</b><small class="soon">Resolume plugin: coming end of November</small></a>
+          <a class="in" href="/store/plane-drift-fluid/"><img src="/store/previews/plane-drift-fluid.png" alt="" loading="lazy" width="240" height="135"><b>Plane Drift</b><small>Resolume plugin included</small></a>
+          <a class="in bonus" href="/store/cube-bloom/"><img src="/store/previews/cube-bloom.png" alt="" loading="lazy" width="240" height="135"><b>Cube Bloom</b><small>Bonus: its Resolume plugin</small></a>
+        </div>
       </div>
       <div class="pack big">
         <div class="pack-top"><h3>All 7 scenes</h3><span class="pack-price">$150</span></div>
         <p class="save">You save $60</p>
         <p class="pack-what">7 scenes + 8 Resolume plugins (incl. the Cube Bloom plugin as a bonus)</p>
         <p class="pack-list">Blob Tracking v3 · Corridor Panels · Cube Stack · Custom Particles · Frame Stack · Pixel Advection · Plane Drift</p>
-        <button type="button" class="cta buy" data-offer="all-7">Buy All 7 scenes · $150</button>
+        <div class="pack-actions">
+          <button type="button" class="cta buy" data-offer="all-7">Buy All 7 scenes · $150</button>
+          <button type="button" class="inside-toggle" aria-expanded="false" aria-controls="inside-all-7">See what's inside</button>
+        </div>
         <p class="err" role="alert" hidden></p>
+        <div class="inside" id="inside-all-7" hidden>
+          <a class="in" href="/store/blob-tracking-v3/"><img src="/store/previews/blob-tracking-v3.png" alt="" loading="lazy" width="240" height="135"><b>Blob Tracking v3</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/corridor-panels/"><img src="/store/previews/corridor-panels.png" alt="" loading="lazy" width="240" height="135"><b>Corridor Panels</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/cube-stack/"><img src="/store/previews/cube-stack.png" alt="" loading="lazy" width="240" height="135"><b>Cube Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/custom-particles/"><img src="/store/previews/custom-particles.png" alt="" loading="lazy" width="240" height="135"><b>Custom Particles</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/frame-stack/"><img src="/store/previews/frame-stack.png" alt="" loading="lazy" width="240" height="135"><b>Frame Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/pixel-advection/"><img src="/store/previews/pixel-advection.png" alt="" loading="lazy" width="240" height="135"><b>Pixel Advection</b><small class="soon">Resolume plugin: coming end of November</small></a>
+          <a class="in" href="/store/plane-drift-fluid/"><img src="/store/previews/plane-drift-fluid.png" alt="" loading="lazy" width="240" height="135"><b>Plane Drift</b><small>Resolume plugin included</small></a>
+          <a class="in bonus" href="/store/cube-bloom/"><img src="/store/previews/cube-bloom.png" alt="" loading="lazy" width="240" height="135"><b>Cube Bloom</b><small>Bonus: its Resolume plugin</small></a>
+        </div>
       </div>
     </div>
     <div class="picker" data-pickable="blob-tracking-v3,corridor-panels,cube-stack,custom-particles,frame-stack,pixel-advection,plane-drift-fluid">

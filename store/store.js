@@ -121,4 +121,36 @@
       order.hidden = false;
     }
   }
+
+  // Set packs: "See what's inside" opens the grid of included scenes (each links to its page; the BUY stays put)
+  document.querySelectorAll('.inside-toggle').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var box = document.getElementById(b.getAttribute('aria-controls'));
+      var open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', String(open));
+      b.textContent = open ? "Hide what's inside" : "See what's inside";
+      if (box) box.hidden = !open; // clips inside start playing once visible (the observer below)
+    });
+  });
+
+  // Live previews: a clip plays only while on screen (IntersectionObserver; not even fetched before that:
+  // preload="none"), and never under prefers-reduced-motion (the poster stays). The hero loop follows the same rules.
+  var vids = [].slice.call(document.querySelectorAll('video.clip, video.hero-bg'));
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hold = function (v) { v.autoplay = false; v.removeAttribute('autoplay'); try { v.pause(); } catch (e) {} };
+  if (vids.length && reduce) vids.forEach(hold);
+  else if (vids.length && 'IntersectionObserver' in window) {
+    vids.forEach(hold);
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) {
+          if (v.preload === 'none') v.preload = 'auto';
+          var p = v.play();
+          if (p && p.catch) p.catch(function () {}); // a browser that refuses autoplay keeps the poster
+        } else v.pause();
+      });
+    }, { rootMargin: '120px 0px', threshold: 0.1 });
+    vids.forEach(function (v) { io.observe(v); });
+  }
 })();

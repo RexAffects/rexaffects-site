@@ -1,29 +1,58 @@
 #!/usr/bin/env node
 // Builds rexaffects.com/store/ from the Plugin Player catalog export (static pages, no build step on GitHub Pages).
 //   1. in plugin-player:   node tools/store-export.mjs --out <dir>        (catalog.json + previews/)
-//   2. here:               node tools/build-store.mjs --catalog <dir>/catalog.json
-// Writes store/index.html (Featured, New, All), store/<slug>/index.html per scene, store/catalog.json,
-// store/previews/*. store/store.css + store/store.js are hand-written (not generated).
+//   2. here:               node tools/build-store.mjs --catalog <dir>/catalog.json [--out <dir>] [--store-api <url>]
+// Writes store/index.html (packs, Featured, New, All), store/<slug>/index.html per scene, store/thanks/index.html
+// (where Stripe sends a buyer after paying), store/catalog.json, store/previews/*. store/store.css + store/store.js
+// are hand-written (not generated).
+//
+// BUY: every button POSTs { offer, picks? } to the store server (rexaffects-store, `POST /api/checkout`, CORS allows
+// https://rexaffects.com) and goes to the Stripe Checkout url it answers. A web purchase is a guest purchase on the
+// email typed at Stripe; the buyer signs in to Plugin Player with that email. The server validates the offer and the
+// picks against ITS catalog and sets the price: nothing on these pages decides what is bought or what it costs.
+// --store-api <url>: a test build against a local `node dev/server.ts` (never commit such a build).
+//
 // Every page is noindex until Rex says go (remove NOINDEX below, rebuild, and add /store/ to sitemap.xml).
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const NOINDEX = true;
+const STORE_API_DEFAULT = 'https://rexaffects-store.vercel.app';
+// TODO(Rex): the public Plugin Player download. Nothing on rexaffects.com links one yet; this is where the app's own
+// updates come from (plugin-player app/shared/release.cjs: public releases-only repo RexAffects/plugin-player-releases),
+// which does NOT exist yet (404 on Oct 30). Change it here and rebuild once the beta download is public.
+const PLAYER_DOWNLOAD_URL = 'https://github.com/RexAffects/plugin-player-releases/releases/latest';
+const PLAYER_DOWNLOAD_TODO = true;
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
 const opt = (k) => { const i = argv.indexOf(`--${k}`); return i > -1 ? argv[i + 1] : null; };
 const catFile = opt('catalog');
-if (!catFile) { console.error('usage: node tools/build-store.mjs --catalog <plugin-player export>/catalog.json'); process.exit(2); }
+if (!catFile) { console.error('usage: node tools/build-store.mjs --catalog <plugin-player export>/catalog.json [--out <dir>] [--store-api <url>]'); process.exit(2); }
 const cat = JSON.parse(fs.readFileSync(catFile, 'utf8'));
 const SRC = path.dirname(path.resolve(catFile));
 const OUT = opt('out') ? path.resolve(opt('out')) : path.join(ROOT, 'store'); // --out <dir>: a preview build elsewhere (store.css / store.js are copied there)
+const STORE_API = (opt('store-api') || STORE_API_DEFAULT).replace(/\/+$/, '');
+if (!/^https:\/\/|^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(STORE_API)) { console.error(`--store-api must be https (or a local http dev server): ${STORE_API}`); process.exit(2); }
+if (STORE_API !== STORE_API_DEFAULT && OUT === path.join(ROOT, 'store')) { console.error('--store-api is for test builds: pass --out <dir> too (the committed pages call the real store)'); process.exit(2); }
 
 const SLUG_RE = /^[a-z0-9][a-z0-9-]{0,63}$/;
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const price = (n) => (Number.isInteger(n) ? `$${n}` : `$${Number(n).toFixed(2)}`);
 if (cat.version !== 1 || !Array.isArray(cat.items)) { console.error('not a v1 store export'); process.exit(1); }
-for (const it of cat.items) if (!SLUG_RE.test(it.slug)) { console.error(`bad slug ${it.slug}`); process.exit(1); }
+for (const it of cat.items) if (!SLUG_RE.test(it.slug) || it.slug === 'thanks' || it.slug === 'previews') { console.error(`bad slug ${it.slug}`); process.exit(1); }
+const packs = Array.isArray(cat.packs) ? cat.packs : [];
+const pickable = Array.isArray(cat.pickable) ? cat.pickable : [];
+const bySlug = Object.fromEntries(cat.items.map((i) => [i.slug, i]));
+for (const s of pickable) if (!bySlug[s]) { console.error(`pickable ${s} is not an item`); process.exit(1); }
+const pack = (id) => packs.find((p) => p.id === id) || null;
+
+// "end of November" from "2026-11-30" (the wording the app and the purchase mail use)
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const etaWords = (iso) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? `end of ${MONTHS[Number(m[2]) - 1]}` : 'soon'; };
+const soonPlugins = cat.items.filter((i) => i.includesPlugin && i.pluginAvailable === false);
+const soonLine = soonPlugins.map((i) => `${i.title}'s plugin is coming by the ${etaWords(i.pluginEta)}`).join('; ');
 
 const head = (title, desc, depth) => `<!DOCTYPE html>
 <html lang="en">
@@ -35,19 +64,24 @@ const head = (title, desc, depth) => `<!DOCTYPE html>
 ${NOINDEX ? '  <!-- Store: not indexed until Rex says go (tools/build-store.mjs NOINDEX). -->\n  <meta name="robots" content="noindex">\n' : ''}  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="${depth ? '../' : ''}store.css">
+  <link rel="stylesheet" href="${'../'.repeat(depth)}store.css">
 </head>
-<body>
+<body data-store-api="${esc(STORE_API)}">
   <header><div class="wrap"><a class="logo" href="/">REXAFFECTS</a><a class="crumb" href="/store/">Store</a></div></header>
 `;
 const foot = (depth) => `
-  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Checkout by Gumroad</footer>
-  <script src="${depth ? '../' : ''}store.js"></script>
+  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</footer>
+  <script src="${'../'.repeat(depth)}store.js"></script>
 </body>
 </html>
 `;
 
-const badges = (it) => [it.featured ? '<span class="b feat">Featured</span>' : '', it.new ? '<span class="b new">New</span>' : '', it.freeInPlayer ? '<span class="b free">Free in Plugin Player</span>' : ''].join('');
+const badges = (it) => [
+  it.featured ? '<span class="b feat">Featured</span>' : '',
+  it.new ? '<span class="b new">New</span>' : '',
+  it.freeInPlayer ? '<span class="b free">Free in Plugin Player</span>' : '',
+  it.includesPlugin && it.pluginAvailable === false ? `<span class="b soon">Plugin: ${esc(etaWords(it.pluginEta))}</span>` : '',
+].join('');
 const card = (it) => `      <a class="item" href="/store/${it.slug}/">
         <img src="/store/${esc(it.preview)}" alt="${esc(it.title)}" loading="lazy" width="480" height="270">
         <div class="meta"><div class="badges">${badges(it)}</div><b>${esc(it.title)}</b><span class="by">by ${esc(it.creatorName)}</span><span class="price">${price(it.priceUsd)}</span></div>
@@ -56,6 +90,48 @@ const grid = (title, list, id) => (list.length ? `  <section id="${id}"><div cla
 ${list.map(card).join('\n')}
     </div></div></section>
 ` : '');
+const buyButton = (offer, label, cls = '') => `<button type="button" class="cta buy${cls ? ` ${cls}` : ''}" data-offer="${esc(offer)}">${esc(label)}</button>`;
+const errorLine = '<p class="err" role="alert" hidden></p>';
+const pluginsLine = `<p class="plugins-note"><b>Every Resolume plugin included.</b> Each scene comes with its Resolume plugin, no extra cost.${soonLine ? ` ${esc(soonLine)}: we'll email it the moment it's ready.` : ''}</p>`;
+
+// ---- packs (index) ----
+const setCard = (p, big) => {
+  const titles = (p.scenes || []).map((s) => bySlug[s]?.title || s);
+  const bonus = (p.bonusPlugins || []).map((s) => bySlug[s]?.title || s);
+  return `      <div class="pack${big ? ' big' : ''}">
+        <div class="pack-top"><h3>${esc(p.title)}</h3><span class="pack-price">${price(p.priceUsd)}</span></div>
+        ${p.savesUsd ? `<p class="save">You save ${price(p.savesUsd)}</p>` : ''}
+        <p class="pack-what">${titles.length} scenes + ${p.pluginCount} Resolume plugins${bonus.length ? ` (incl. the ${esc(bonus.join(', '))} plugin as a bonus)` : ''}</p>
+        <p class="pack-list">${titles.map(esc).join(' · ')}</p>
+        ${buyButton(p.id, `Buy ${p.title} · ${price(p.priceUsd)}`)}
+        ${errorLine}
+      </div>`;
+};
+const pickPacks = ['pick-3', 'pick-5'].map(pack).filter(Boolean);
+const goop = bySlug['fluid-force'];
+const packsSection = packs.length ? `  <section id="packs"><div class="wrap">
+    <h2>Packs</h2>
+    ${pluginsLine}
+    <div class="packs">
+${[pack('everything'), pack('all-7')].filter(Boolean).map((p) => setCard(p, true)).join('\n')}
+    </div>
+${pickPacks.length && pickable.length ? `    <div class="picker" data-pickable="${esc(pickable.join(','))}">
+      <h3>Pick your own</h3>
+      <div class="pick-sizes" role="radiogroup" aria-label="Pack size">
+${pickPacks.map((p, i) => `        <label class="size"><input type="radio" name="pick-size" value="${esc(p.id)}" data-size="${p.size}" data-price="${p.priceUsd}"${i === 0 ? ' checked' : ''}><span><b>${esc(p.title)}</b> · ${price(p.priceUsd)}${p.savesUsd ? ` <i>save ${price(p.savesUsd)}</i>` : ''}</span></label>`).join('\n')}
+      </div>
+      <p class="pick-help">Tick exactly <b class="pick-n">${pickPacks[0].size}</b> scenes. Each comes with its Resolume plugin.${goop ? ` ${esc(goop.title)} (${price(goop.priceUsd)}) isn't a pick slot: it's in ${esc(pack('everything')?.title || 'Everything')}, or buy it on its own.` : ''}</p>
+      <div class="picks">
+${pickable.map((s) => { const it = bySlug[s]; return `        <label class="pick"><input type="checkbox" value="${esc(s)}"><img src="/store/${esc(it.preview)}" alt="" loading="lazy" width="160" height="90"><span>${esc(it.title)}${it.pluginAvailable === false ? `<small>plugin coming ${esc(etaWords(it.pluginEta))}</small>` : ''}</span></label>`; }).join('\n')}
+      </div>
+      <div class="pick-go">
+        <span class="pick-count" aria-live="polite">0 of ${pickPacks[0].size} picked</span>
+        <button type="button" class="cta buy" data-pick-checkout disabled>Pick ${pickPacks[0].size} scenes</button>
+      </div>
+      ${errorLine}
+    </div>
+` : ''}  </div></section>
+` : '';
 
 // ---- index ----
 const featured = cat.items.filter((i) => i.featured);
@@ -65,19 +141,26 @@ let index = head('Store — RexAffects', 'Scenes for Plugin Player, with the Res
 index += `  <div class="hero"><div class="wrap">
     <div class="tag">Plugin Player · Store</div>
     <h1>Scenes you <span>play live.</span></h1>
-    <p class="lede">Every scene plays free in Plugin Player with a small mark. Buy one and it plays clean: the Resolume plugin comes with it.</p>
-    <p class="player-note" hidden>You came from Plugin Player: pick the scene and check out. The app unlocks it by itself, no restart.</p>
+    <p class="lede">Every scene plays free in Plugin Player with a small mark. Buy one and it plays clean, and its Resolume plugin comes with it.</p>
+    <p class="lede small"><a href="#packs">Packs</a> · <a href="#featured">Featured</a> · <a href="#all">All scenes</a></p>
   </div></div>
 `;
-index += grid('Featured', featured, 'featured') + grid('New', fresh, 'new') + grid('All scenes', all, 'all');
+index += packsSection + grid('Featured', featured, 'featured') + grid('New', fresh, 'new') + grid('All scenes', all, 'all');
 index += foot(0);
 
 // ---- one page per scene ----
 const pages = cat.items.map((it) => {
   let p = head(`${it.title} — RexAffects Store`, it.blurb, 1);
-  const buy = it.checkoutUrl
-    ? `<a class="cta buy" data-checkout="${esc(it.checkoutUrl)}" href="${esc(it.checkoutUrl)}">Buy · ${price(it.priceUsd)}</a>`
-    : `<span class="cta soon">Coming soon</span><p class="fine">Checkout opens here soon. Already bought the plugin? Sign in with your purchase email in Plugin Player.</p>`;
+  const soon = it.includesPlugin && it.pluginAvailable === false;
+  const pluginLi = !it.includesPlugin ? ''
+    : soon ? `<li>The <b>Resolume plugin</b>: coming by the ${esc(etaWords(it.pluginEta))}. Buy now and we'll email it to you the moment it's ready</li>`
+      : `<li>The <b>Resolume plugin</b>, included: the download link comes by email</li>`;
+  const inPicks = pickable.includes(it.slug);
+  const p3 = pack('pick-3'), a7 = pack('all-7'), ev = pack('everything');
+  const packNote = inPicks && p3
+    ? `<p class="fine">Or save with a pack: ${esc(p3.title)} for ${price(p3.priceUsd)}${a7 ? `, ${esc(a7.title)} for ${price(a7.priceUsd)}` : ''}. <a href="/store/#packs">See packs</a></p>`
+    : it.freeInPlayer ? `<p class="fine">This buys the Resolume plugin: the scene is already free in Plugin Player. It's also a bonus in ${a7 ? `${esc(a7.title)} and ` : ''}${ev ? esc(ev.title) : 'the big packs'}. <a href="/store/#packs">See packs</a></p>`
+      : ev && (ev.scenes || []).includes(it.slug) ? `<p class="fine">Not part of Pick 3 / Pick 5. It's in ${esc(ev.title)} (${price(ev.priceUsd)}), with every other scene. <a href="/store/#packs">See packs</a></p>` : '';
   p += `  <section class="scene"><div class="wrap two">
     <div class="pic"><img src="/store/${esc(it.preview)}" alt="${esc(it.title)}" width="960" height="540"></div>
     <div class="info">
@@ -86,19 +169,49 @@ const pages = cat.items.map((it) => {
       <p class="by">by ${esc(it.creatorName)}</p>
       <p class="lede">${esc(it.blurb)}</p>
       <ul class="incl">
-        <li>Plays clean in <b>Plugin Player</b>${it.freeInPlayer ? ' (already free there)' : ''}: no mark on the screen, the projector or the feed</li>
-        ${it.includesPlugin ? '<li>The <b>Resolume plugin</b> download</li>' : ''}
-        <li>A licence key in your receipt, for any computer you use</li>
+        ${it.freeInPlayer ? '<li>The scene is <b>free in Plugin Player</b> already</li>' : '<li>Plays clean in <b>Plugin Player</b>: no mark on the screen, the projector or the feed</li>'}
+        ${pluginLi}
+        <li>Sign in to Plugin Player with your purchase email: works on up to 3 computers</li>
       </ul>
-      <div class="player-note" hidden><b>Plugin Player is waiting for this purchase.</b> Finish the checkout and keep the app open: ${esc(it.title)} unlocks by itself, no restart.</div>
-      ${buy}
-      <p class="fine">Secure checkout by Gumroad. Lost the app's window? Paste the licence key from your receipt in UNLOCK, or sign in with your purchase email.</p>
+      ${buyButton(it.slug, `Buy · ${price(it.priceUsd)}`)}
+      ${errorLine}
+      ${packNote}
+      <p class="fine">Secure checkout by Stripe. After paying: open Plugin Player → UNLOCK → SIGN IN with the email you used.</p>
     </div>
   </div></section>
 `;
   p += foot(1);
   return [it.slug, p];
 });
+
+// ---- /store/thanks/ (Stripe's success_url; static, calls nothing: works with or without ?session_id=) ----
+let thanks = head('Thanks! — RexAffects Store', 'Your purchase is confirmed. How to unlock your scenes and get your Resolume plugins.', 1);
+thanks += `  <section class="scene thanks"><div class="wrap narrow">
+    <div class="tag">Purchase confirmed</div>
+    <h1>Thanks! Your purchase is <span>confirmed.</span></h1>
+    <p class="lede">Two quick steps and you're playing.</p>
+    <ol class="steps">
+      <li>
+        <h2>Unlock your scenes in Plugin Player</h2>
+        <p><b>Bought from inside Plugin Player?</b> Your scenes unlock by themselves. Nothing to do.</p>
+        <p><b>Bought here on the website?</b> Open Plugin Player → <b>UNLOCK</b> → <b>SIGN IN</b> with the email you just used. We'll email you a 6-digit code; type it in and your scenes play clean (on up to 3 computers).</p>
+      </li>
+      <li>
+        <h2>Get your Resolume plugins</h2>
+        <p>They're in the email we just sent you, one download link per plugin. Not there? <b>Check your spam folder.</b></p>
+        ${soonLine ? `<p class="fine">${esc(soonLine)}: we'll email it the moment it's ready.</p>` : ''}
+        <p class="fine">Lost the email? Plugin Player → UNLOCK → "Get the Resolume plugin" next to the scene.</p>
+      </li>
+    </ol>
+    <div class="get-player">
+      <p>Don't have Plugin Player yet?</p>
+      ${PLAYER_DOWNLOAD_TODO ? '<!-- TODO(Rex): placeholder download link (tools/build-store.mjs PLAYER_DOWNLOAD_URL); the releases repo does not exist yet. -->\n      ' : ''}<a class="cta" href="${esc(PLAYER_DOWNLOAD_URL)}"${PLAYER_DOWNLOAD_TODO ? ' data-todo="download link placeholder"' : ''}>Download Plugin Player</a>
+    </div>
+    <p class="fine order" hidden>Order reference: <code></code></p>
+    <p class="fine"><a href="/store/">Back to the store</a></p>
+  </div></section>
+`;
+thanks += foot(1);
 
 // ---- write (only inside store/) ----
 fs.mkdirSync(path.join(OUT, 'previews'), { recursive: true });
@@ -107,10 +220,14 @@ for (const it of cat.items) {
   if (!/^previews\/[a-z0-9-]+\.(png|jpg|jpeg|gif|webp)$/.test(it.preview) || !fs.existsSync(from)) { console.error(`missing preview ${it.preview}`); process.exit(1); }
   fs.copyFileSync(from, path.join(OUT, it.preview));
 }
-const keep = new Set(cat.items.map((i) => i.slug));
-for (const d of fs.readdirSync(OUT, { withFileTypes: true })) if (d.isDirectory() && d.name !== 'previews' && !keep.has(d.name)) fs.rmSync(path.join(OUT, d.name), { recursive: true });
+const keep = new Set([...cat.items.map((i) => i.slug), 'previews', 'thanks']);
+for (const d of fs.readdirSync(OUT, { withFileTypes: true })) if (d.isDirectory() && !keep.has(d.name)) fs.rmSync(path.join(OUT, d.name), { recursive: true });
+const keepPreviews = new Set(cat.items.map((i) => path.basename(i.preview)));
+for (const f of fs.readdirSync(path.join(OUT, 'previews'))) if (!keepPreviews.has(f)) fs.rmSync(path.join(OUT, 'previews', f));
 if (OUT !== path.join(ROOT, 'store')) for (const f of ['store.css', 'store.js']) fs.copyFileSync(path.join(ROOT, 'store', f), path.join(OUT, f));
 fs.writeFileSync(path.join(OUT, 'index.html'), index);
 for (const [slug, html] of pages) { fs.mkdirSync(path.join(OUT, slug), { recursive: true }); fs.writeFileSync(path.join(OUT, slug, 'index.html'), html); }
+fs.mkdirSync(path.join(OUT, 'thanks'), { recursive: true });
+fs.writeFileSync(path.join(OUT, 'thanks', 'index.html'), thanks);
 fs.writeFileSync(path.join(OUT, 'catalog.json'), `${JSON.stringify(cat, null, 2)}\n`);
-console.log(`store: ${cat.items.length} scene page(s) + index -> ${OUT}${NOINDEX ? ' (noindex)' : ''}`);
+console.log(`store: ${cat.items.length} scene page(s) + ${packs.length} pack(s) on the index + thanks -> ${OUT} (BUY -> ${STORE_API}/api/checkout)${NOINDEX ? ' (noindex)' : ''}${PLAYER_DOWNLOAD_TODO ? '\n  TODO: the Plugin Player download link on /store/thanks/ is a placeholder (PLAYER_DOWNLOAD_URL)' : ''}`);

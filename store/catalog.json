@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-29T23:58:04.503Z",
+  "generatedAt": "2026-10-30T20:06:53.558Z",
   "currency": "USD",
   "creators": {
     "rexaffects": {
@@ -19,6 +19,8 @@
       "includesPlugin": true,
       "featured": true,
       "new": false,
+      "pluginAvailable": true,
+      "pluginEta": null,
       "freeInPlayer": true,
       "preview": "previews/cube-bloom.png",
       "checkoutUrl": null
@@ -27,14 +29,80 @@
       "slug": "fluid-force",
       "creator": "rexaffects",
       "creatorName": "RexAffects",
-      "title": "Fluid Dynamics",
-      "blurb": "A real fluid driven by the motion in your picture: ink, water, fire, smoke or molten metal. Move and it moves.",
+      "title": "Goop",
+      "blurb": "Fluid dynamics: a real fluid driven by the motion in your picture: ink, water, fire, smoke or molten metal. Move and it moves.",
       "priceUsd": 50,
       "includesPlugin": true,
       "featured": true,
       "new": false,
+      "pluginAvailable": true,
+      "pluginEta": null,
       "freeInPlayer": false,
       "preview": "previews/fluid-force.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "blob-tracking-v3",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Blob Tracking v3",
+      "blurb": "Finds the moving people in your camera feed, locks onto up to four of them, and draws the tracking live. Needs a camera or a moving source.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": false,
+      "new": true,
+      "pluginAvailable": true,
+      "pluginEta": null,
+      "freeInPlayer": false,
+      "preview": "previews/blob-tracking-v3.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "corridor-panels",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Corridor Panels",
+      "blurb": "A rectangular tunnel of tiled wall panels flying toward a lit core. Panels light up in travelling waves and churn to fresh tiles, and the walls can carry your live picture or the Samolevsky sprites.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": false,
+      "new": true,
+      "pluginAvailable": true,
+      "pluginEta": null,
+      "freeInPlayer": false,
+      "preview": "previews/corridor-panels.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "cube-stack",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Cube Stack",
+      "blurb": "A crooked stack of old monitors, climbing forever. The camera orbits and rises while every screen plays your live picture at its own delay and its own echo style.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": false,
+      "new": true,
+      "pluginAvailable": true,
+      "pluginEta": null,
+      "freeInPlayer": false,
+      "preview": "previews/cube-stack.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "custom-particles",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Custom Particles",
+      "blurb": "Particles made of your own symbols, driven by the motion in your picture. Movement becomes a flow field, particles are born on whatever is moving, ride the flow, age and die.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": false,
+      "new": true,
+      "pluginAvailable": true,
+      "pluginEta": null,
+      "freeInPlayer": false,
+      "preview": "previews/custom-particles.png",
       "checkoutUrl": null
     },
     {
@@ -47,8 +115,26 @@
       "includesPlugin": true,
       "featured": false,
       "new": true,
+      "pluginAvailable": true,
+      "pluginEta": null,
       "freeInPlayer": false,
       "preview": "previews/frame-stack.png",
+      "checkoutUrl": null
+    },
+    {
+      "slug": "pixel-advection",
+      "creator": "rexaffects",
+      "creatorName": "RexAffects",
+      "title": "Pixel Advection",
+      "blurb": "Your picture is the paint: where you move, its own pixels are dragged and smeared along with you, then flow back home.",
+      "priceUsd": 30,
+      "includesPlugin": true,
+      "featured": false,
+      "new": true,
+      "pluginAvailable": false,
+      "pluginEta": "2026-11-30",
+      "freeInPlayer": false,
+      "preview": "previews/pixel-advection.png",
       "checkoutUrl": null
     },
     {
@@ -61,9 +147,91 @@
       "includesPlugin": true,
       "featured": false,
       "new": true,
+      "pluginAvailable": true,
+      "pluginEta": null,
       "freeInPlayer": false,
       "preview": "previews/plane-drift-fluid.png",
       "checkoutUrl": null
     }
+  ],
+  "packs": [
+    {
+      "id": "pick-3",
+      "kind": "pick",
+      "title": "Pick any 3",
+      "priceUsd": 75,
+      "size": 3,
+      "bonusPlugins": [],
+      "pluginCount": 3,
+      "aloneUsd": 90,
+      "savesUsd": 15,
+      "checkoutUrl": null
+    },
+    {
+      "id": "pick-5",
+      "kind": "pick",
+      "title": "Pick any 5",
+      "priceUsd": 100,
+      "size": 5,
+      "bonusPlugins": [],
+      "pluginCount": 5,
+      "aloneUsd": 150,
+      "savesUsd": 50,
+      "checkoutUrl": null
+    },
+    {
+      "id": "all-7",
+      "kind": "set",
+      "title": "All 7 scenes",
+      "priceUsd": 150,
+      "scenes": [
+        "blob-tracking-v3",
+        "corridor-panels",
+        "cube-stack",
+        "custom-particles",
+        "frame-stack",
+        "pixel-advection",
+        "plane-drift-fluid"
+      ],
+      "bonusPlugins": [
+        "cube-bloom"
+      ],
+      "pluginCount": 8,
+      "aloneUsd": 210,
+      "savesUsd": 60,
+      "checkoutUrl": null
+    },
+    {
+      "id": "everything",
+      "kind": "set",
+      "title": "Everything",
+      "priceUsd": 200,
+      "scenes": [
+        "blob-tracking-v3",
+        "corridor-panels",
+        "cube-stack",
+        "custom-particles",
+        "fluid-force",
+        "frame-stack",
+        "pixel-advection",
+        "plane-drift-fluid"
+      ],
+      "bonusPlugins": [
+        "cube-bloom"
+      ],
+      "pluginCount": 9,
+      "aloneUsd": 260,
+      "savesUsd": 60,
+      "checkoutUrl": null
+    }
+  ],
+  "pickable": [
+    "blob-tracking-v3",
+    "corridor-panels",
+    "cube-stack",
+    "custom-particles",
+    "frame-stack",
+    "pixel-advection",
+    "plane-drift-fluid"
   ]
 }

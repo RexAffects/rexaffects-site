@@ -1,36 +1,124 @@
-// Store pages: carry Plugin Player's claim through to the Gumroad checkout.
-// The app opens /store/<slug>/?src=player&claim=<token>. The token is checked (22-64 base64url chars) and added, with
-// src, to the Gumroad link, so Gumroad's sale Ping returns it in url_params and rexaffects-store files the licence
-// key under it; the app is polling for that claim and unlocks the scene by itself.
-// Gumroad's overlay script (gumroad.js) may open the link as an in-page checkout; without it the link still works.
+// Store pages: BUY goes to our own checkout (rexaffects-store on Vercel -> Stripe Checkout).
+// Every button with data-offer POSTs { offer } (packs picker: { offer: "pick-3" | "pick-5", picks: [slugs] }) to
+// <body data-store-api>/api/checkout (CORS allows https://rexaffects.com) and goes to the Stripe url it answers. A web
+// purchase is a guest purchase on the email typed at Stripe; the buyer signs in to Plugin Player with that email.
+// Nothing here sets a price or decides what is bought: the server checks the offer + picks against its own catalog.
 (function () {
-  var q = new URLSearchParams(location.search);
-  var claim = q.get('claim');
-  var src = q.get('src');
-  var fromPlayer = src === 'player' && claim && /^[A-Za-z0-9_-]{22,64}$/.test(claim);
-  if (fromPlayer) document.querySelectorAll('.player-note').forEach(function (n) { n.hidden = false; });
-  // keep the claim when moving between store pages (index -> scene)
-  if (fromPlayer) document.querySelectorAll('a.item').forEach(function (a) {
-    var u = new URL(a.getAttribute('href'), location.href);
-    u.searchParams.set('src', 'player'); u.searchParams.set('claim', claim);
-    a.setAttribute('href', u.pathname + u.search);
+  var API = (document.body.getAttribute('data-store-api') || '').replace(/\/+$/, '');
+  var updatePicker = function () {};
+
+  // the only places a checkout url may send the buyer: Stripe, or a local dev server's own fake pay page
+  function okUrl(u) {
+    try {
+      var x = new URL(u);
+      if (x.protocol === 'https:' && x.hostname === 'checkout.stripe.com') return true;
+      return !!API && x.origin === new URL(API).origin && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(x.origin) && x.pathname.indexOf('/dev/pay/') === 0;
+    } catch (e) { return false; }
+  }
+
+  function words(status, j) {
+    var e = (j && j.error) || '';
+    if (status === 0) return "Couldn't reach the checkout. Check your connection and try again.";
+    if (status === 429) return 'Too many tries in a row. Wait a couple of minutes and try again.';
+    if (e === 'bad-picks') return 'Those picks did not work: pick exactly ' + ((j && j.size) || 'the right number of') + ' scenes and try again.';
+    if (e === 'unknown-offer') return "This item isn't for sale right now. Reload the page and try again.";
+    if (status === 503) return "Checkout isn't open yet. Please try again a little later.";
+    return 'Checkout could not start (error ' + status + '). Please try again in a minute.';
+  }
+
+  function errFor(btn) {
+    var box = btn.closest('.info, .pack, .picker') || btn.parentNode;
+    return box.querySelector('.err');
+  }
+
+  function setBusy(btn, busy) {
+    if (busy) {
+      btn.setAttribute('data-label', btn.textContent);
+      btn.setAttribute('data-busy', '1');
+      btn.textContent = 'Opening checkout…';
+      btn.disabled = true;
+    } else if (btn.getAttribute('data-busy')) {
+      btn.removeAttribute('data-busy');
+      btn.textContent = btn.getAttribute('data-label');
+      btn.disabled = false;
+    }
+  }
+
+  function checkout(btn, body) {
+    var err = errFor(btn);
+    if (err) { err.hidden = true; err.textContent = ''; }
+    setBusy(btn, true);
+    function fail(msg) {
+      setBusy(btn, false);
+      if (err) { err.textContent = msg; err.hidden = false; }
+      updatePicker();
+    }
+    if (!API) { fail(words(503, null)); return; }
+    fetch(API + '/api/checkout', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) {
+        return r.json().catch(function () { return null; }).then(function (j) { return { status: r.status, ok: r.ok, j: j }; });
+      })
+      .then(function (res) {
+        if (res.ok && res.j && typeof res.j.url === 'string' && okUrl(res.j.url)) { location.href = res.j.url; return; }
+        fail(words(res.ok ? 502 : res.status, res.j));
+      })
+      .catch(function () { fail(words(0, null)); });
+  }
+
+  // singles and set packs
+  document.querySelectorAll('button[data-offer]').forEach(function (btn) {
+    btn.addEventListener('click', function () { checkout(btn, { offer: btn.getAttribute('data-offer') }); });
   });
-  document.querySelectorAll('a[data-checkout]').forEach(function (a) {
-    var u;
-    try { u = new URL(a.getAttribute('data-checkout')); } catch (e) { return; }
-    if (u.protocol !== 'https:' || !/(^|\.)gumroad\.com$/.test(u.hostname)) return;
-    u.searchParams.set('wanted', 'true'); // straight to checkout in the overlay
-    if (fromPlayer) { u.searchParams.set('claim', claim); u.searchParams.set('src', 'player'); }
-    else if (src && /^[a-z0-9-]{1,32}$/.test(src)) u.searchParams.set('src', src);
-    a.href = u.href;
-    a.setAttribute('data-gumroad', '1');
+
+  // pick packs: exactly N checkboxes (Goop and Cube Bloom are not in the list; the server refuses them anyway)
+  var picker = document.querySelector('.picker');
+  if (picker) {
+    var go = picker.querySelector('[data-pick-checkout]');
+    var count = picker.querySelector('.pick-count');
+    var nLabel = picker.querySelector('.pick-n');
+    var boxes = [].slice.call(picker.querySelectorAll('.picks input[type=checkbox]'));
+    var sizes = [].slice.call(picker.querySelectorAll('input[name=pick-size]'));
+    var current = function () { return sizes.filter(function (s) { return s.checked; })[0] || sizes[0]; };
+    var picked = function () { return boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; }); };
+    updatePicker = function () {
+      var s = current(), n = Number(s.getAttribute('data-size')), p = picked();
+      nLabel.textContent = n;
+      count.textContent = p.length + ' of ' + n + ' picked' + (p.length > n ? ': untick ' + (p.length - n) : '');
+      boxes.forEach(function (b) { b.disabled = !b.checked && p.length >= n; b.closest('.pick').classList.toggle('on', b.checked); });
+      if (go.getAttribute('data-busy')) return;
+      var ready = p.length === n;
+      go.disabled = !ready;
+      go.textContent = ready ? 'Checkout · $' + s.getAttribute('data-price')
+        : p.length < n ? 'Pick ' + (n - p.length) + ' more' : 'Untick ' + (p.length - n);
+    };
+    boxes.concat(sizes).forEach(function (el) {
+      el.addEventListener('change', function () {
+        var err = picker.querySelector('.err'); if (err) err.hidden = true;
+        updatePicker();
+      });
+    });
+    go.addEventListener('click', function () {
+      var s = current(), p = picked();
+      if (p.length !== Number(s.getAttribute('data-size'))) return;
+      checkout(go, { offer: s.value, picks: p });
+    });
+    updatePicker();
+  }
+
+  // back from Stripe (the page comes from the back/forward cache): buttons usable again
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    document.querySelectorAll('button.buy').forEach(function (b) { setBusy(b, false); });
+    updatePicker();
   });
-  // gumroad.js opens product links in its overlay (assumption: plain /l/ links, no class needed; the class would
-  // also restyle the button in Gumroad's grey). Without the overlay the link simply opens the checkout page.
-  if (document.querySelector('a[data-gumroad]')) {
-    var s = document.createElement('script');
-    s.src = 'https://gumroad.com/js/gumroad.js';
-    s.async = true;
-    document.body.appendChild(s);
+
+  // /store/thanks/?session_id=cs_...: show a short order reference (for support), nothing else; works without it too
+  var order = document.querySelector('.order');
+  if (order) {
+    var sid = new URLSearchParams(location.search).get('session_id') || '';
+    if (/^cs_(test|live)_[A-Za-z0-9]{8,200}$/.test(sid)) {
+      order.querySelector('code').textContent = sid.slice(-10);
+      order.hidden = false;
+    }
   }
 })();

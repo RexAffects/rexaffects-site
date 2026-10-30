@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../store.css">
 </head>
-<body>
+<body data-store-api="https://rexaffects-store.vercel.app">
   <header><div class="wrap"><a class="logo" href="/">REXAFFECTS</a><a class="crumb" href="/store/">Store</a></div></header>
   <section class="scene"><div class="wrap two">
     <div class="pic"><img src="/store/previews/plane-drift-fluid.png" alt="Plane Drift" width="960" height="540"></div>
@@ -23,16 +23,17 @@
       <p class="lede">Drifting planes with a liquid afterglow: colour is born on the edges and lives outside them while the planes stay crisp.</p>
       <ul class="incl">
         <li>Plays clean in <b>Plugin Player</b>: no mark on the screen, the projector or the feed</li>
-        <li>The <b>Resolume plugin</b> download</li>
-        <li>A licence key in your receipt, for any computer you use</li>
+        <li>The <b>Resolume plugin</b>, included: the download link comes by email</li>
+        <li>Sign in to Plugin Player with your purchase email: works on up to 3 computers</li>
       </ul>
-      <div class="player-note" hidden><b>Plugin Player is waiting for this purchase.</b> Finish the checkout and keep the app open: Plane Drift unlocks by itself, no restart.</div>
-      <span class="cta soon">Coming soon</span><p class="fine">Checkout opens here soon. Already bought the plugin? Sign in with your purchase email in Plugin Player.</p>
-      <p class="fine">Secure checkout by Gumroad. Lost the app's window? Paste the licence key from your receipt in UNLOCK, or sign in with your purchase email.</p>
+      <button type="button" class="cta buy" data-offer="plane-drift-fluid">Buy · $30</button>
+      <p class="err" role="alert" hidden></p>
+      <p class="fine">Or save with a pack: Pick any 3 for $75, All 7 scenes for $150. <a href="/store/#packs">See packs</a></p>
+      <p class="fine">Secure checkout by Stripe. After paying: open Plugin Player → UNLOCK → SIGN IN with the email you used.</p>
     </div>
   </div></section>
 
-  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Checkout by Gumroad</footer>
+  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</footer>
   <script src="../store.js"></script>
 </body>
 </html>

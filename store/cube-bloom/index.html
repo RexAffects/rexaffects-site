@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../store.css">
 </head>
-<body>
+<body data-store-api="https://rexaffects-store.vercel.app">
   <header><div class="wrap"><a class="logo" href="/">REXAFFECTS</a><a class="crumb" href="/store/">Store</a></div></header>
   <section class="scene"><div class="wrap two">
     <div class="pic"><img src="/store/previews/cube-bloom.png" alt="Cube Bloom" width="960" height="540"></div>
@@ -22,17 +22,18 @@
       <p class="by">by RexAffects</p>
       <p class="lede">Glossy cubes breathing in a diagonal wave while the camera orbits. Free in Plugin Player; buy it to run it in Resolume.</p>
       <ul class="incl">
-        <li>Plays clean in <b>Plugin Player</b> (already free there): no mark on the screen, the projector or the feed</li>
-        <li>The <b>Resolume plugin</b> download</li>
-        <li>A licence key in your receipt, for any computer you use</li>
+        <li>The scene is <b>free in Plugin Player</b> already</li>
+        <li>The <b>Resolume plugin</b>, included: the download link comes by email</li>
+        <li>Sign in to Plugin Player with your purchase email: works on up to 3 computers</li>
       </ul>
-      <div class="player-note" hidden><b>Plugin Player is waiting for this purchase.</b> Finish the checkout and keep the app open: Cube Bloom unlocks by itself, no restart.</div>
-      <span class="cta soon">Coming soon</span><p class="fine">Checkout opens here soon. Already bought the plugin? Sign in with your purchase email in Plugin Player.</p>
-      <p class="fine">Secure checkout by Gumroad. Lost the app's window? Paste the licence key from your receipt in UNLOCK, or sign in with your purchase email.</p>
+      <button type="button" class="cta buy" data-offer="cube-bloom">Buy · $30</button>
+      <p class="err" role="alert" hidden></p>
+      <p class="fine">This buys the Resolume plugin: the scene is already free in Plugin Player. It's also a bonus in All 7 scenes and Everything. <a href="/store/#packs">See packs</a></p>
+      <p class="fine">Secure checkout by Stripe. After paying: open Plugin Player → UNLOCK → SIGN IN with the email you used.</p>
     </div>
   </div></section>
 
-  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Checkout by Gumroad</footer>
+  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</footer>
   <script src="../store.js"></script>
 </body>
 </html>

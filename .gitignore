@@ -12,3 +12,6 @@ Thumbs.db
 *.tmp
 *~
 *.JPG
+
+# the store's video posters must ship (the *.JPG rule above also matches .jpg on Windows: core.ignorecase)
+!store/media/*.jpg

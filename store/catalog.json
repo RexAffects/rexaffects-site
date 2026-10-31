@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-31T00:06:18.956Z",
+  "generatedAt": "2026-10-31T01:21:17.103Z",
   "currency": "USD",
   "creators": {
     "rexaffects": {
@@ -125,7 +125,7 @@
       "slug": "pixel-advection",
       "creator": "rexaffects",
       "creatorName": "RexAffects",
-      "title": "Pixel Advection",
+      "title": "Pixel Smear",
       "blurb": "Your picture is the paint: where you move, its own pixels are dragged and smeared along with you, then flow back home.",
       "priceUsd": 30,
       "includesPlugin": true,

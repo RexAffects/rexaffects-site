@@ -9,5 +9,5 @@
 // success / error states (nothing is sent).
 window.RA_LIST = {
   endpoint: 'https://rexaffects-store.vercel.app/api/list',
-  live: false
+  live: true
 };

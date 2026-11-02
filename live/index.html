@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Live Show — RexAffects</title>
+  <meta name="description" content="Book RexAffects for live visuals: camera-reactive generative visuals, projection mapping, LED walls and controller-driven VJ sets for festivals, tours and events.">
+  <meta property="og:title" content="Book RexAffects: live visuals for festivals, tours and events">
+  <meta property="og:description" content="Projection-mapped forests, camera-reactive fire, LED walls and live VJ sets. Phantasma, Suwannee, Tessellate and the road.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rexaffects.com/live/">
+  <meta property="og:image" content="https://rexaffects.com/live/media/hero-wide.jpg">
+  <link rel="canonical" href="https://rexaffects.com/live/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../shared/site-extra.css">
+  <link rel="stylesheet" href="live.css">
+</head>
+<body>
+
+  <nav class="nav sub-nav" id="liveNav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">REXAFFECTS</a>
+      <ul class="sub-links">
+        <li><a href="/beta/" class="sub-hide-sm">Plugin Player</a></li>
+        <li><a href="/links/">Links</a></li>
+        <li><a href="#book" class="sub-cta">Book a show</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO: Phantasma 2026, the laptop look projected 30 ft up onto the trees. Wide loop on desktop, tall loop on phones (live.js picks). -->
+  <header class="lv-hero">
+    <video class="lv-hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto"
+           poster="media/hero-wide.jpg"
+           data-wide="media/hero-wide.mp4" data-wide-poster="media/hero-wide.jpg"
+           data-tall="media/hero-tall.mp4" data-tall-poster="media/hero-tall.jpg"></video>
+    <div class="lv-hero-shade"></div>
+    <div class="container lv-hero-content">
+      <p class="section-label">Live visuals &middot; Festivals &middot; Tours &middot; Installations</p>
+      <h1 class="lv-title">Visuals that <span>play the room.</span></h1>
+      <p class="lv-lede">
+        Camera-reactive generative visuals, projection mapping and controller-driven VJ sets,
+        performed live, every night different. From a projection-mapped forest at Phantasma
+        to festival main stages and a touring band's rig.
+      </p>
+      <div class="lv-cta">
+        <a href="#book" class="btn btn-primary">Book a live show</a>
+        <a href="#reel" class="btn btn-outline">Watch it live</a>
+      </div>
+    </div>
+    <p class="lv-hero-cap">Phantasma 2026 &middot; the look on the laptop, 30 ft up on the trees</p>
+  </header>
+
+  <!-- CREDITS STRIP (text, not logos: swap for real logos once Rex has permission to use them) -->
+  <section class="lv-credits" aria-label="Where we've played">
+    <div class="container">
+      <ul>
+        <li>Phantasma</li>
+        <li>Suwannee &middot; Tipper</li>
+        <li>Tessellate</li>
+        <li>Rekinection</li>
+        <li>Wakaan</li>
+        <li>Backwoods</li>
+        <li>On tour</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- THE PHANTASMA REEL -->
+  <section class="section" id="reel">
+    <div class="container">
+      <div class="section-label fade-in">Phantasma 2026</div>
+      <h2 class="section-title fade-in">A forest, played like an instrument.</h2>
+      <p class="section-subtitle fade-in">
+        Faces, ghosts and portals mapped onto 30-foot trees, played live from a $35 game controller.
+        No pre-rendered show file: every look is generative and reacts in the moment.
+      </p>
+      <div class="lv-reels">
+        <figure class="lv-reel fade-in">
+          <video autoplay muted loop playsinline preload="metadata" poster="media/reel-blue.jpg">
+            <source src="media/reel-blue.mp4" type="video/mp4">
+          </video>
+          <figcaption>The face, mapped to the canopy</figcaption>
+        </figure>
+        <figure class="lv-reel fade-in">
+          <video autoplay muted loop playsinline preload="metadata" poster="media/reel-ghosts.jpg">
+            <source src="media/reel-ghosts.mp4" type="video/mp4">
+          </video>
+          <figcaption>Ghosts in the trees</figcaption>
+        </figure>
+        <figure class="lv-reel fade-in">
+          <video autoplay muted loop playsinline preload="metadata" poster="media/reel-crowd.jpg">
+            <source src="media/reel-crowd.mp4" type="video/mp4">
+          </video>
+          <figcaption>The crowd it's for</figcaption>
+        </figure>
+        <figure class="lv-reel lv-reel-talk fade-in">
+          <video controls playsinline preload="none" poster="../beta/media/plugin-player-clip-poster.jpg">
+            <source src="../beta/media/plugin-player-clip.mp4" type="video/mp4">
+          </video>
+          <figcaption>How it works: the controller walkthrough <em>(sound on)</em></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE WE'VE PLAYED (only shows with photos/footage in the repo; see the report for what Rex should confirm) -->
+  <section class="section section-dark" id="played">
+    <div class="container">
+      <div class="section-label fade-in">Track record</div>
+      <h2 class="section-title fade-in">Where we've played</h2>
+      <div class="lv-shows">
+        <article class="lv-show lv-show-lg fade-in">
+          <img src="media/hero-wide.jpg" alt="A face projection-mapped onto trees at Phantasma 2026" loading="lazy">
+          <div class="lv-show-body">
+            <p class="lv-show-meta">October 2026 &middot; Projection mapping</p>
+            <h3>Phantasma</h3>
+            <p>A night-walk through a projection-mapped forest. Generative faces, ghosts and spiral portals on the
+              tree line, played live from a game controller; the clip of it went viral.</p>
+          </div>
+        </article>
+        <article class="lv-show fade-in">
+          <img src="media/photos/suwannee-tipper.jpg" alt="Stage visuals at Suwannee for Tipper" loading="lazy">
+          <div class="lv-show-body">
+            <p class="lv-show-meta">Festival stage &middot; Visuals</p>
+            <h3>Suwannee &middot; Tipper</h3>
+            <p>Stage visuals at Suwannee for a Tipper set.</p>
+          </div>
+        </article>
+        <article class="lv-show fade-in">
+          <img src="media/photos/tessellate-night.jpg" alt="Tessellate, a lit hexagonal sculpture at night" loading="lazy">
+          <div class="lv-show-body">
+            <p class="lv-show-meta">2026 &middot; Installation</p>
+            <h3>Tessellate</h3>
+            <p>A CNC-cut, projection-mapped sculpture built with The Medium: designed, built and brought to life
+              with mapped light and audio reactivity.</p>
+          </div>
+        </article>
+        <article class="lv-show fade-in">
+          <img src="media/photos/booth-2024.jpg" alt="Running visuals from the booth" loading="lazy">
+          <div class="lv-show-body">
+            <p class="lv-show-meta">On the road &middot; Touring rig</p>
+            <h3>A national touring band</h3>
+            <p>The live visual system for a touring rock act: switcher feeds in, Resolume and generative
+              scenes out, cut to the show night after night.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="lv-also fade-in">
+        <h3>Also on the bill</h3>
+        <ul>
+          <li><strong>Rekinection</strong> Music, Wellness &amp; Arts Festival, Astral Valley Art Park, 2023</li>
+          <li><strong>Wakaan</strong> 2019 &amp; 2024</li>
+          <li><strong>Backwoods</strong> front-of-house visuals</li>
+          <!-- REX: add the rest (venue, city, year), and say which promoters we can name -->
+          <li><span class="todo">REX: more shows / promoters to name</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BRING -->
+  <section class="section" id="bring">
+    <div class="container">
+      <div class="section-label fade-in">What we bring</div>
+      <h2 class="section-title fade-in">A show, not a screensaver.</h2>
+      <div class="lv-bring">
+        <div class="lv-card fade-in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <h3>Camera-reactive generative visuals</h3>
+          <p>Live cameras feed the visuals: the crowd and the performers become part of the picture, in real time.</p>
+        </div>
+        <div class="lv-card fade-in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-10z"/></svg>
+          <h3>Fire that follows the performer</h3>
+          <p>Flames, embers and fluid trails that track whoever is on stage. No green screen, no costume, no setup for the artist.</p>
+        </div>
+        <div class="lv-card fade-in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><polyline points="22 8.5 12 15.5 2 8.5"/><line x1="12" y1="22" x2="12" y2="15.5"/></svg>
+          <h3>Projection mapping</h3>
+          <p>Stages, sculptures, buildings and tree lines. If it has a surface, we can map it.</p>
+        </div>
+        <div class="lv-card fade-in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="7" y1="3" x2="7" y2="17"/><line x1="12" y1="3" x2="12" y2="17"/><line x1="17" y1="3" x2="17" y2="17"/></svg>
+          <h3>LED walls</h3>
+          <p>Content and live output built for your wall's real resolution, from a single panel run to the main stage.</p>
+        </div>
+        <div class="lv-card fade-in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h4M8 9v4"/><circle cx="15" cy="12" r="1"/><circle cx="18" cy="10" r="1"/><path d="M17.3 5H6.7a4 4 0 00-4 3.6L2 15a3 3 0 005.4 1.8L9 15h6l1.6 1.8A3 3 0 0022 15l-.7-6.4A4 4 0 0017.3 5z"/></svg>
+          <h3>Controller-driven live VJ sets</h3>
+          <p>Played by hand, on a game controller or MIDI, locked to the music. Every set is different because it is performed.</p>
+        </div>
+        <div class="lv-card fade-in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+          <h3>Custom visuals for artists</h3>
+          <p>Show packages built around your music, your brand and your stage plot, ready for your own VJ or for us to run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GRID -->
+  <section class="section section-dark" id="photos">
+    <div class="container">
+      <div class="section-label fade-in">From the booth</div>
+      <h2 class="section-title fade-in">On the ground</h2>
+      <div class="lv-grid">
+        <img class="lv-g-wide" src="media/photos/wakaan-2024.jpg" alt="Festival stage with visuals on the screens" loading="lazy">
+        <img src="media/photos/backwoods-foh.jpg" alt="Front of house at a festival stage" loading="lazy">
+        <img src="media/photos/booth-rex-rob-2024.jpg" alt="Rex and Rob running visuals" loading="lazy">
+        <img src="media/photos/tessellate-mapping.jpg" alt="Mapping Tessellate in Resolume" loading="lazy">
+        <img class="lv-g-wide" src="media/photos/suwannee-tipper.jpg" alt="Stage visuals at Suwannee" loading="lazy">
+        <img src="media/photos/vj-booth-2019.jpg" alt="Rex VJing in front of a projected wall" loading="lazy">
+        <img src="media/photos/the-medium.jpg" alt="The Tessellate build with The Medium" loading="lazy">
+        <img src="media/photos/wakaan-2019.jpg" alt="At Wakaan festival" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTES: REX fills these with real promoter / artist quotes (with their OK), or delete the section -->
+  <section class="section" id="quotes">
+    <div class="container">
+      <div class="section-label fade-in">Word from the stage</div>
+      <h2 class="section-title fade-in">What promoters say</h2>
+      <div class="lv-quotes">
+        <blockquote class="fade-in">
+          <p><span class="todo">REX: quote from a promoter</span></p>
+          <cite><span class="todo">Name, event</span></cite>
+        </blockquote>
+        <blockquote class="fade-in">
+          <p><span class="todo">REX: quote from an artist</span></p>
+          <cite><span class="todo">Name, act</span></cite>
+        </blockquote>
+        <blockquote class="fade-in">
+          <p><span class="todo">REX: quote from a venue / festival</span></p>
+          <cite><span class="todo">Name, venue</span></cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section section-dark lv-book" id="book">
+    <div class="container lv-book-grid">
+      <div class="lv-book-copy">
+        <div class="section-label">Book a live show</div>
+        <h2 class="section-title">Tell us about your night.</h2>
+        <p class="section-subtitle">
+          Festivals, tours, clubs, installations and brand events. Send the basics and you'll hear back
+          within <span class="todo">REX: 48 hours?</span> with availability and a quote.
+        </p>
+        <ul class="lv-book-list">
+          <li><strong>Live VJ set</strong> starting at <span class="todo">REX: rate</span></li>
+          <li><strong>Projection mapping / installation</strong> <span class="todo">REX: rate or "quoted per project"</span></li>
+          <li><strong>Custom show visuals for artists</strong> <span class="todo">REX: rate</span></li>
+          <li>Based in Northwest Arkansas, available to travel.</li>
+        </ul>
+      </div>
+
+      <div class="lf-card" data-list-card>
+        <!-- Endpoint + on/off switch: shared/list-config.js. source "live-booking": the server mails Rex at once. -->
+        <form novalidate data-list-form data-endpoint="" data-source="live-booking" data-tags="booking"
+              data-closed-label="Booking form opens soon">
+          <div class="lf-row">
+            <div class="lf-field">
+              <label for="kName">Name</label>
+              <input id="kName" name="booking.name" type="text" autocomplete="name" data-required="your name">
+            </div>
+            <div class="lf-field">
+              <label for="kEmail">Email</label>
+              <input id="kEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="lf-row">
+            <div class="lf-field">
+              <label for="kPhone">Phone <em>optional</em></label>
+              <input id="kPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-0123">
+            </div>
+            <div class="lf-field">
+              <label for="kDate">Event date</label>
+              <input id="kDate" name="booking.date" type="date" data-required="the event date">
+            </div>
+          </div>
+          <label class="lf-consent">
+            <input type="checkbox" name="smsConsent" value="yes">
+            <span><span data-consent-text>Text me about new plugins, drops and live shows. By checking this, you agree to receive recurring automated texts from RexAffects at this number. Consent isn't a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span>
+              <a href="/privacy/#sms">SMS Terms</a> &middot; <a href="/privacy/">Privacy</a></span>
+          </label>
+          <div class="lf-row">
+            <div class="lf-field">
+              <label for="kVenue">Venue</label>
+              <input id="kVenue" name="booking.venue" type="text" placeholder="Venue or festival">
+            </div>
+            <div class="lf-field">
+              <label for="kCity">City</label>
+              <input id="kCity" name="booking.city" type="text" autocomplete="address-level2" data-required="the city">
+            </div>
+          </div>
+          <div class="lf-row">
+            <div class="lf-field">
+              <label for="kType">Event type</label>
+              <select id="kType" name="booking.type" data-required="the event type">
+                <option value="">Pick one</option>
+                <option>Festival</option>
+                <option>Tour / band</option>
+                <option>Club / venue night</option>
+                <option>Installation / projection mapping</option>
+                <option>Private / brand event</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="lf-field">
+              <label for="kAtt">Attendance</label>
+              <select id="kAtt" name="booking.attendance">
+                <option value="">Expected crowd</option>
+                <option>Under 200</option>
+                <option>200–1,000</option>
+                <option>1,000–5,000</option>
+                <option>5,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="lf-field">
+            <label for="kBudget">Budget range</label>
+            <!-- REX: adjust these ranges to your rates -->
+            <select id="kBudget" name="booking.budget">
+              <option value="">Pick a range</option>
+              <option>Under $1,000</option>
+              <option>$1,000–$2,500</option>
+              <option>$2,500–$5,000</option>
+              <option>$5,000–$10,000</option>
+              <option>$10,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="lf-field">
+            <label for="kMsg">Tell us about it</label>
+            <textarea id="kMsg" name="booking.message" placeholder="The lineup, the stage or surface, screens or projectors on site, set times, anything we should know."></textarea>
+          </div>
+
+          <div class="lf-hp" aria-hidden="true">
+            <label>Company<input name="hp" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <p class="lf-closed" data-list-closed hidden>The booking form opens in a few days. Until then, DM
+            <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a> on Instagram with your date and city.</p>
+          <p class="lf-error" data-list-error role="alert" hidden></p>
+
+          <button class="btn btn-primary lf-submit" type="submit">Send the inquiry</button>
+          <p class="lf-fine">Your details go straight to Rex. Never shared. <a href="/privacy/">Privacy</a></p>
+        </form>
+
+        <div class="lf-thanks" data-list-thanks hidden tabindex="-1">
+          <div class="lf-check" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h3>Thanks, we'll be in touch.</h3>
+          <p>Your inquiry went straight to Rex. Watch your inbox for a reply with availability and a quote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/live/">Book a live show</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/links/">Links</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
+      <p>&copy; 2026 Rex Roberts &middot; <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a></p>
+    </div>
+  </footer>
+
+  <script src="../shared/list-config.js"></script>
+  <script src="../shared/list-form.js"></script>
+  <script src="live.js"></script>
+</body>
+</html>

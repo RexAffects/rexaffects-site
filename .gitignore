@@ -12,3 +12,6 @@ Thumbs.db
 *.tmp
 *~
 *.JPG
+
+# Web-compressed media for /live is meant to ship (core.ignorecase makes *.JPG match .jpg)
+!live/media/**

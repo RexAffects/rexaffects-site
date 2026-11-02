@@ -13,14 +13,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../shared/site-extra.css">
   <link rel="stylesheet" href="beta.css">
 </head>
 <body>
 
-  <nav class="nav scrolled">
+  <nav class="nav scrolled sub-nav">
     <div class="nav-container">
       <a href="/" class="nav-logo">REXAFFECTS</a>
-      <a href="/" class="beta-back">&larr; rexaffects.com</a>
+      <ul class="sub-links">
+        <li><a href="/beta/" aria-current="page">Beta</a></li>
+        <li><a href="/links/" class="sub-hide-sm">Links</a></li>
+        <li><a href="/live/" class="sub-cta">Book live</a></li>
+      </ul>
     </div>
   </nav>
 
@@ -35,57 +40,59 @@
           game controller or a MIDI controller, straight into Resolume.
         </p>
 
-        <div class="beta-card" id="betaCard">
-          <!--
-            Capture endpoint: the Google Apps Script Web App URL (ends in /exec).
-            Paste it into data-endpoint below. Setup steps: docs/beta-signup.md
-          -->
-          <form class="beta-form" id="betaForm" novalidate
-                data-endpoint="">
-            <div class="beta-field">
+        <div class="beta-card lf-card" data-list-card>
+          <!-- Endpoint + on/off switch: shared/list-config.js (one file for every form on the site). -->
+          <form class="beta-form" novalidate data-list-form data-endpoint=""
+                data-source="beta" data-tags="plugin-player-beta"
+                data-closed-label="Signups open in a few days">
+            <div class="lf-field">
               <label for="bEmail">Email</label>
               <input id="bEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
             </div>
-            <div class="beta-row">
-              <div class="beta-field">
-                <label for="bName">First name <em>optional</em></label>
-                <input id="bName" name="firstName" type="text" autocomplete="given-name">
+            <div class="lf-row">
+              <div class="lf-field">
+                <label for="bPhone">Mobile <em>optional, for texts</em></label>
+                <input id="bPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-0123">
               </div>
-              <div class="beta-field">
+              <div class="lf-field">
                 <label for="bTool">What do you VJ with? <em>optional</em></label>
-                <select id="bTool" name="vjWith">
+                <select id="bTool" name="vjWith" data-tag-prefix="vj-">
                   <option value="">Pick one</option>
                   <option>Resolume</option>
                   <option>OBS</option>
                   <option>TouchDesigner</option>
                   <option>Other</option>
-                  <option>I don't VJ yet</option>
+                  <option value="new">I don't VJ yet</option>
                 </select>
               </div>
             </div>
 
-            <input type="hidden" name="source" value="plugin-player-beta">
-            <input type="hidden" name="submittedAt" value="">
-            <input type="hidden" name="ref" value="">
+            <label class="lf-consent">
+              <input type="checkbox" name="smsConsent" value="yes">
+              <span><span data-consent-text>Text me about new plugins, drops and live shows. By checking this, you agree to receive recurring automated texts from RexAffects at this number. Consent isn't a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span>
+                <a href="/privacy/#sms">SMS Terms</a> &middot; <a href="/privacy/">Privacy</a></span>
+            </label>
 
             <!-- Honeypot: hidden from people; bots fill it and get dropped -->
-            <div class="beta-hp" aria-hidden="true">
-              <label>Company<input name="company" tabindex="-1" autocomplete="off"></label>
+            <div class="lf-hp" aria-hidden="true">
+              <label>Company<input name="hp" tabindex="-1" autocomplete="off"></label>
             </div>
 
-            <p class="beta-error" id="betaError" role="alert" hidden></p>
+            <p class="lf-closed" data-list-closed hidden>The list opens in a few days. Until then, DM &ldquo;beta&rdquo; to
+              <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a> on Instagram.</p>
+            <p class="lf-error" data-list-error role="alert" hidden></p>
 
-            <button class="btn btn-primary beta-submit" type="submit" id="betaSubmit">Get on the beta list</button>
-            <p class="beta-fine">Beta invites and Plugin Player news. No spam.</p>
+            <button class="btn btn-primary lf-submit" type="submit">Get on the beta list</button>
+            <p class="lf-fine">Beta invites and Plugin Player news. No spam, unsubscribe anytime.</p>
           </form>
 
-          <div class="beta-thanks" id="betaThanks" hidden tabindex="-1">
-            <div class="beta-check" aria-hidden="true">
+          <div class="lf-thanks" data-list-thanks hidden tabindex="-1">
+            <div class="lf-check" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
-            <h2>You're on the list.</h2>
-            <p>Your beta invite lands in your inbox when it's ready. Until then, follow along on
-              <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a>.</p>
+            <h2>Check your inbox to confirm.</h2>
+            <p>Already on the list? You're all set. Nothing in your inbox? Check spam or promotions.
+              Until then, follow along on <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a>.</p>
           </div>
         </div>
 
@@ -115,10 +122,19 @@
 
   <footer class="footer">
     <div class="container">
+      <ul class="foot-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/live/">Book a live show</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/links/">Links</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
       <p>&copy; 2026 Rex Roberts &middot; <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a></p>
     </div>
   </footer>
 
+  <script src="../shared/list-config.js"></script>
+  <script src="../shared/list-form.js"></script>
   <script src="beta.js"></script>
 </body>
 </html>

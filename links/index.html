@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RexAffects Links</title>
+  <meta name="description" content="Plugin Player beta, book a live show, VJ Academy, YouTube, the newest plugin drop and the RexAffects list.">
+  <meta property="og:title" content="RexAffects: links">
+  <meta property="og:description" content="Plugin Player beta · Book a live show · VJ Academy · YouTube · The newest drop · Join the list">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rexaffects.com/links/">
+  <meta property="og:image" content="https://rexaffects.com/live/media/hero-wide.jpg">
+  <link rel="canonical" href="https://rexaffects.com/links/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../shared/site-extra.css">
+  <link rel="stylesheet" href="links.css">
+</head>
+<body class="lk-body">
+
+  <!--
+    Link-in-bio. Use one URL per platform so the list can tell them apart:
+      Instagram  https://rexaffects.com/links/?ref=ig
+      TikTok     https://rexaffects.com/links/?ref=tt
+      YouTube    https://rexaffects.com/links/?ref=yt
+      Facebook   https://rexaffects.com/links/?ref=fb
+    links.js carries ?ref (and any utm_*) onto every link below, and the signup form sends it.
+  -->
+  <main class="lk">
+    <header class="lk-head">
+      <img class="lk-avatar" src="../images/profile.png" alt="Rex Roberts" width="96" height="96">
+      <h1>RexAffects</h1>
+      <p>Live visuals, Resolume plugins and VJ Academy. Rex Roberts, Northwest Arkansas.</p>
+    </header>
+
+    <nav class="lk-list" aria-label="Links">
+      <a class="lk-link lk-feature" href="/beta/" data-carry>
+        <span class="lk-kicker">Free beta</span>
+        <span class="lk-title">Plugin Player: play your visuals like a game</span>
+        <span class="lk-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="lk-link" href="/live/" data-carry>
+        <span class="lk-kicker">Festivals &middot; Tours &middot; Events</span>
+        <span class="lk-title">Book a live show</span>
+        <span class="lk-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="lk-link" href="https://skool.com/vjacademy" target="_blank" rel="noopener" data-carry data-utm>
+        <span class="lk-kicker">600+ visual artists</span>
+        <span class="lk-title">VJ Academy: learn to VJ</span>
+        <span class="lk-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <!-- REX: swap this to each new drop (currently Style Slicer v1, launched 2026-10-20) -->
+      <a class="lk-link" href="https://rexaffects.gumroad.com/l/oaznkj" target="_blank" rel="noopener" data-carry data-utm>
+        <span class="lk-kicker">Newest drop</span>
+        <span class="lk-title">Style Slicer v1: Resolume plugin</span>
+        <span class="lk-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="lk-link" href="https://rexaffects.gumroad.com/" target="_blank" rel="noopener" data-carry data-utm>
+        <span class="lk-kicker">Store</span>
+        <span class="lk-title">All plugins and effect packs</span>
+        <span class="lk-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="lk-link" href="https://www.youtube.com/@VJ_Academy" target="_blank" rel="noopener">
+        <span class="lk-kicker">Tutorials &middot; Showcases</span>
+        <span class="lk-title">YouTube</span>
+        <span class="lk-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </nav>
+
+    <section class="lf-card lk-join" data-list-card id="join">
+      <h2>Join the list</h2>
+      <p class="lk-join-sub">New plugins, drops and live shows. Email, and texts if you want them.</p>
+      <form novalidate data-list-form data-endpoint="" data-source="links" data-tags="links"
+            data-closed-label="The list opens soon">
+        <div class="lf-field">
+          <label for="lEmail">Email</label>
+          <input id="lEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+        </div>
+        <div class="lf-field">
+          <label for="lPhone">Mobile <em>optional, for texts</em></label>
+          <input id="lPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-0123">
+        </div>
+        <label class="lf-consent">
+          <input type="checkbox" name="smsConsent" value="yes">
+          <span><span data-consent-text>Text me about new plugins, drops and live shows. By checking this, you agree to receive recurring automated texts from RexAffects at this number. Consent isn't a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span>
+            <a href="/privacy/#sms">SMS Terms</a> &middot; <a href="/privacy/">Privacy</a></span>
+        </label>
+        <div class="lf-hp" aria-hidden="true">
+          <label>Company<input name="hp" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <p class="lf-closed" data-list-closed hidden>The list opens in a few days. Until then, follow
+          <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a>.</p>
+        <p class="lf-error" data-list-error role="alert" hidden></p>
+        <button class="btn btn-primary lf-submit" type="submit">Join</button>
+        <p class="lf-fine">No spam. Unsubscribe anytime.</p>
+      </form>
+      <div class="lf-thanks" data-list-thanks hidden tabindex="-1">
+        <div class="lf-check" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3>Check your inbox to confirm.</h3>
+        <p>Already on the list? You're all set.</p>
+      </div>
+    </section>
+
+    <footer class="lk-foot">
+      <div class="lk-social">
+        <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@VJ_Academy" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+      <p><a href="/">rexaffects.com</a> &middot; <a href="/privacy/">Privacy &amp; SMS Terms</a></p>
+    </footer>
+  </main>
+
+  <script src="../shared/list-config.js"></script>
+  <script src="../shared/list-form.js"></script>
+  <script src="links.js"></script>
+</body>
+</html>

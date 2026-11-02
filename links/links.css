@@ -1,0 +1,68 @@
+/* /links: mobile-first link-in-bio. */
+.lk-body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(0, 229, 255, 0.16), transparent 55%),
+    radial-gradient(ellipse at 100% 60%, rgba(255, 45, 123, 0.10), transparent 50%),
+    var(--bg);
+}
+.lk {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 40px 18px 32px;
+}
+.lk-head { text-align: center; margin-bottom: 24px; }
+.lk-avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(0, 229, 255, 0.6);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
+}
+.lk-head h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.lk-head p { color: var(--text-secondary); font-size: 0.95rem; margin-top: 4px; }
+
+.lk-list { display: grid; gap: 12px; margin-bottom: 22px; }
+.lk-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 48px 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.lk-link:hover { color: var(--text); border-color: rgba(0, 229, 255, 0.5); background: var(--surface-hover); transform: translateY(-2px); }
+.lk-kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.lk-title { font-size: 1.05rem; font-weight: 600; line-height: 1.35; margin-top: 2px; }
+.lk-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.lk-feature {
+  background: linear-gradient(120deg, rgba(0, 229, 255, 0.16), rgba(255, 45, 123, 0.12)), var(--surface);
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.lk-join h2 { font-size: 1.25rem; font-weight: 700; }
+.lk-join-sub { color: var(--text-secondary); font-size: 0.92rem; margin: 2px 0 18px; }
+.lk-join.lf-card { padding: 22px; }
+
+.lk-foot { text-align: center; margin-top: 26px; color: var(--text-secondary); font-size: 0.85rem; }
+.lk-foot a { color: var(--text-secondary); }
+.lk-foot a:hover { color: var(--text); }
+.lk-social { display: flex; justify-content: center; gap: 22px; margin-bottom: 12px; }

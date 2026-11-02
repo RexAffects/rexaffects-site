@@ -163,7 +163,11 @@
         body: JSON.stringify(payload)
       }).then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (j) {
-          if (res.ok && j && j.ok !== false) return showThanks();
+          if (res.ok && j && j.ok !== false) {
+            // Meta pixel (shared/pixel.js): count the signup for the ads. No email or phone is sent.
+            try { if (window.fbq) window.fbq('track', 'Lead', { content_name: payload.source }); } catch (e) {}
+            return showThanks();
+          }
           reset();
           var code = (j && j.code) || '';
           var f = code.indexOf('bad-') === 0 ? code.slice(4) : '';

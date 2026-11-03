@@ -43,6 +43,9 @@
   background: linear-gradient(90deg, var(--cyan), var(--magenta));
   -webkit-background-clip: text;
   background-clip: text;
+  /* room for descenders (same fix as /beta, Nov 2) */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
   color: transparent;
 }
 .lv-lede {

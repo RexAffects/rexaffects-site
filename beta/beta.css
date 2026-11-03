@@ -27,6 +27,9 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* room for descenders (g, y, p): a gradient clipped to text cuts them at the box edge (Rex, Nov 2: the g in "game" was cut off) */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 
 .beta-lede {

@@ -51,6 +51,65 @@ img {
   display: block;
 }
 
+/* ===== Accessibility helpers =====
+   These classes are invisible by default and change nothing about the layout.
+   .visually-hidden  — text for screen readers only (never shown on screen)
+   .skip-link        — appears only when focused by keyboard
+   :focus-visible    — visible keyboard focus ring (never shown for mouse clicks) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 200;
+  padding: 12px 20px;
+  border-radius: 0 0 8px 8px;
+  background: var(--cyan);
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-link:focus,
+.skip-link:hover {
+  color: #000;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip-link target: it only receives focus programmatically, so it should not
+   draw a ring around the whole page. */
+#main-content:focus,
+#main-content:focus-visible {
+  outline: none;
+}
+
+/* Keep the ring readable where the page background is the cyan button itself */
+.btn-primary:focus-visible {
+  outline-color: var(--text);
+}
+
 /* ===== Container ===== */
 .container {
   max-width: var(--max-width);
@@ -820,12 +879,16 @@ a.connect-card:hover {
     opacity: 0;
     transition: all 0.3s;
     pointer-events: none;
+    /* visibility (not just opacity) keeps the closed menu out of the tab order,
+       so keyboard users can't land on invisible links */
+    visibility: hidden;
   }
 
   .nav-links.active {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
   }
 
   .hero-title {
@@ -898,6 +961,41 @@ a.connect-card:hover {
 
   .hero-sub {
     font-size: 0.75rem;
+  }
+}
+
+/* ===== Reduced Motion =====
+   Honors the OS-level "reduce motion" setting. Nothing moves or animates,
+   and the scroll-triggered fade-in content is shown immediately so it can
+   never get stuck invisible. Layout and colors are unchanged. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-line {
+    animation: none;
+  }
+
+  .service-card:hover,
+  a.connect-card:hover,
+  .connect-email:hover,
+  .video-card:hover,
+  .btn-primary:hover,
+  .btn-outline:hover {
+    transform: none;
   }
 }
 

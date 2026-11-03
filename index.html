@@ -125,12 +125,14 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navigation -->
-  <nav class="nav">
+  <nav class="nav" aria-label="Main">
     <div class="nav-container">
-      <a href="#" class="nav-logo">REXAFFECTS</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+      <a href="#" class="nav-logo">REXAFFECTS<span class="visually-hidden"> — back to top</span></a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#craft">The Craft</a></li>
@@ -144,15 +146,19 @@
     </div>
   </nav>
 
+  <main id="main-content" tabindex="-1">
+
   <!-- Hero — Full-bleed image carousel -->
   <header class="hero" id="hero">
     <div class="hero-carousel">
-      <!-- Add more hero images as they become available -->
-      <div class="hero-slide active" style="background-image: url('images/Yer dead Suwannee Tipper Speaker.png')"></div>
-      <div class="hero-slide" style="background-image: url('images/Eros.png')"></div>
-      <div class="hero-slide" style="background-image: url('images/Maria Cornelio and I_framedv1.png'); background-position: center top;"></div>
+      <!-- Add more hero images as they become available.
+           Background images carry content, so each slide is exposed to screen
+           readers with role="img" + aria-label. Keep the label in sync if the image changes. -->
+      <div class="hero-slide active" role="img" aria-label="Full-stage projection mapping by Rex Roberts at a night festival: a fanned, petal-shaped stage structure and center LED wall washed in psychedelic teal, magenta and gold patterns above a silhouetted crowd." style="background-image: url('images/Yer dead Suwannee Tipper Speaker.png')"></div>
+      <div class="hero-slide" role="img" aria-hidden="true" aria-label="Eros, a 3D artwork by Rex Roberts: two greyscale figures curled around one another inside a glowing white ring, set against a dark bed of ferns and red flowers." style="background-image: url('images/Eros.png')"></div>
+      <div class="hero-slide" role="img" aria-hidden="true" aria-label="Rex Roberts, Maria Ingui and fabricator Cornelio standing with Tessellate at night — the 7.6-foot white hexagonal plywood sculpture, its nested diamond recesses glowing pink and blue." style="background-image: url('images/Maria Cornelio and I_framedv1.png'); background-position: center top;"></div>
     </div>
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-label">Visual Artist & VJ Instructor</p>
       <h1 class="hero-title">REXAFFECTS</h1>
@@ -162,28 +168,28 @@
         <a href="/live/" class="btn btn-outline" style="background: rgba(10, 10, 15, 0.6); backdrop-filter: blur(6px);">Book a Live Show</a>
       </div>
     </div>
-    <div class="hero-dots">
-      <button class="hero-dot active" data-slide="0"><span>01</span></button>
-      <button class="hero-dot" data-slide="1"><span>02</span></button>
-      <button class="hero-dot" data-slide="2"><span>03</span></button>
+    <div class="hero-dots" role="group" aria-label="Choose hero image">
+      <button class="hero-dot active" type="button" data-slide="0" aria-label="Show hero image 1 of 3: festival projection mapping" aria-current="true"><span aria-hidden="true">01</span></button>
+      <button class="hero-dot" type="button" data-slide="1" aria-label="Show hero image 2 of 3: Eros 3D artwork" aria-current="false"><span aria-hidden="true">02</span></button>
+      <button class="hero-dot" type="button" data-slide="2" aria-label="Show hero image 3 of 3: the Tessellate sculpture" aria-current="false"><span aria-hidden="true">03</span></button>
     </div>
-    <div class="scroll-indicator">
+    <div class="scroll-indicator" aria-hidden="true">
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </header>
 
   <!-- The Craft — Two pillars -->
-  <section class="section" id="craft">
+  <section class="section" id="craft" aria-labelledby="craft-heading">
     <div class="container">
       <div class="services-header fade-in">
         <div class="section-label">The Craft</div>
-        <h2 class="section-title">I Build. I Teach.</h2>
+        <h2 class="section-title" id="craft-heading">I Build. I Teach.</h2>
       </div>
       <div class="services-grid services-grid-2">
         <a href="#featured" class="service-card service-card-wide fade-in">
           <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
               <line x1="12" y1="22" x2="12" y2="15.5"></line>
               <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
@@ -194,7 +200,7 @@
         </a>
         <a href="#learn" class="service-card service-card-wide fade-in">
           <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
               <circle cx="9" cy="7" r="4"></circle>
               <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
@@ -209,14 +215,14 @@
   </section>
 
   <!-- Featured Project: Tessellate -->
-  <section class="section section-dark" id="featured">
+  <section class="section section-dark" id="featured" aria-labelledby="featured-heading">
     <div class="container">
       <div class="section-label fade-in">Featured Project</div>
-      <h2 class="section-title fade-in">Tessellate</h2>
+      <h2 class="section-title fade-in" id="featured-heading">Tessellate</h2>
       <div class="featured-grid">
         <div class="featured-video fade-in">
           <div class="video-slot" id="tessellate-video">
-            <iframe src="https://www.youtube.com/embed/Th6K37DGrW4" title="Tessellate" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/Th6K37DGrW4?cc_load_policy=1" title="Video: Tessellate Art Installation (2026) — projection-mapped hexagonal sculpture, on YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <div class="featured-info fade-in">
@@ -253,37 +259,37 @@
   </section>
 
   <!-- Learn — Videos as entry points -->
-  <section class="section" id="learn">
+  <section class="section" id="learn" aria-labelledby="learn-heading">
     <div class="container">
       <div class="section-label fade-in">Learn</div>
-      <h2 class="section-title fade-in">Learn With Me</h2>
+      <h2 class="section-title fade-in" id="learn-heading">Learn With Me</h2>
       <p class="section-subtitle fade-in">Pro techniques, plugin breakdowns, and the workflows behind advanced projection mapping — from beginner to advanced.</p>
       <div class="video-grid">
 
         <div class="video-card fade-in">
           <div class="video-slot" id="video-1">
-            <iframe src="https://www.youtube.com/embed/qUst5rcKzFU" title="Resolume Plugins by Rex" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/qUst5rcKzFU?cc_load_policy=1" title="Video: Plugins Inside the Academy — showcase of Rex Roberts' Resolume plugins, on YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <h3 class="video-title">Plugin Showcase</h3>
         </div>
 
         <div class="video-card fade-in">
           <div class="video-slot" id="video-2">
-            <iframe src="https://www.youtube.com/embed/YQ-6btKF2Hk" title="Resolume Tutorial — Generative Art" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/YQ-6btKF2Hk?cc_load_policy=1" title="Video: Slice Transform in Resolume — tutorial on advancing your output, on YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <h3 class="video-title">Resolume Tutorials</h3>
         </div>
 
         <div class="video-card fade-in">
           <div class="video-slot" id="video-3">
-            <iframe src="https://www.youtube.com/embed/Lah4olDDs8g" title="Blob Tracking v2 — Resolume Plugin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/Lah4olDDs8g?cc_load_policy=1" title="Video: Motion Tracking in Resolume, No TouchDesigner Needed — tutorial, on YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <h3 class="video-title">Community Favorite</h3>
         </div>
 
         <div class="video-card fade-in">
           <div class="video-slot" id="video-4">
-            <iframe src="https://www.youtube.com/embed/EcZ6LzMQu00" title="How I Create Effects Stacks in Resolume" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/EcZ6LzMQu00?cc_load_policy=1" title="Video: How to Build Next-Level Effect Stacks in Resolume — tutorial, on YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <h3 class="video-title">Inside My VJ Workflow</h3>
         </div>
@@ -293,15 +299,15 @@
   </section>
 
   <!-- About -->
-  <section class="section section-dark" id="about">
+  <section class="section section-dark" id="about" aria-labelledby="about-heading">
     <div class="container">
       <div class="about-grid">
         <div class="about-image fade-in">
-          <img src="images/profile.png" alt="Rex Roberts" width="400" height="400">
+          <img src="images/profile.png" alt="Portrait of Rex Roberts: a blond man in a black T-shirt looking off to one side, with the open ocean and a bright, cloudy sky behind him." width="400" height="400">
         </div>
         <div class="about-text fade-in">
           <div class="section-label">About</div>
-          <h2 class="section-title">Rex Roberts</h2>
+          <h2 class="section-title" id="about-heading">Rex Roberts</h2>
           <p>
             I'm a visual artist and co-founder of
             <a href="https://skool.com/vjacademy" target="_blank" rel="noopener">VJ Academy</a>,
@@ -323,36 +329,45 @@
   </section>
 
   <!-- Behind the Scenes (placeholder — images coming) -->
-  <section class="section" id="bts">
+  <section class="section" id="bts" aria-labelledby="bts-heading">
     <div class="container">
       <div class="section-label fade-in">Behind the Scenes</div>
-      <h2 class="section-title fade-in">The Process</h2>
+      <h2 class="section-title fade-in" id="bts-heading">The Process</h2>
       <p class="section-subtitle fade-in">
         I believe we're all vessels with an impactful creative capacity. The only real choice is:
         do we consume or create? This is why I teach — so more people can figure out
         what they're called to create, find a medium that fits for them, and start building.
       </p>
     </div>
-    <div class="gallery-wrap fade-in" id="gallery-carousel"></div>
+    <!-- The carousel below is a WebGL canvas, which is invisible to assistive tech.
+         gallery.js fills #gallery-alt-text with a visually-hidden description of every
+         photo in the reel. Keep the alt strings in gallery.js in sync with SOURCES. -->
+    <div class="gallery-wrap fade-in" id="gallery-carousel" aria-hidden="true"></div>
+    <div class="container">
+      <div class="visually-hidden">
+        <h3>Photos in the behind-the-scenes reel</h3>
+        <ul id="gallery-alt-text"></ul>
+      </div>
+    </div>
   </section>
 
   <!-- Connect -->
-  <section class="section section-dark" id="connect">
+  <section class="section section-dark" id="connect" aria-labelledby="connect-heading">
     <div class="container">
       <div class="section-label fade-in">Connect</div>
-      <h2 class="section-title fade-in">Let's Link Up</h2>
+      <h2 class="section-title fade-in" id="connect-heading">Let's Link Up</h2>
       <div class="connect-grid">
 
         <a href="https://skool.com/vjacademy" target="_blank" rel="noopener" class="connect-card fade-in">
-          <img src="images/vj-academy-logo.png" alt="VJ Academy" class="connect-logo" width="60" height="60">
+          <img src="images/vj-academy-logo.png" alt="VJ Academy logo: a thin white line drawing of a desktop monitor wearing a graduation cap." class="connect-logo" width="60" height="60">
           <h3>Learn to VJ</h3>
           <p>600+ visual artists learning live performance. Courses, resources, and a community that actually helps.</p>
-          <span class="connect-cta">Join VJ Academy &rarr;</span>
+          <span class="connect-cta">Join VJ Academy <span aria-hidden="true">&rarr;</span></span>
         </a>
 
         <a href="https://rexaffects.gumroad.com/" target="_blank" rel="noopener" class="connect-card fade-in">
           <div class="connect-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
               <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
               <path d="M3 6h18"></path>
               <path d="M16 10a4 4 0 01-8 0"></path>
@@ -360,39 +375,39 @@
           </div>
           <h3>Plugin Shop</h3>
           <p>VJ plugins, effect packs, and tools for Resolume and live visual software.</p>
-          <span class="connect-cta">Browse Plugins &rarr;</span>
+          <span class="connect-cta">Browse Plugins <span aria-hidden="true">&rarr;</span></span>
         </a>
 
         <a href="https://pluginprofessor.com" target="_blank" rel="noopener" class="connect-card fade-in">
-          <img src="images/Plugin Professor Logo1 PNG.png" alt="Plugin Professor" class="connect-logo" width="60" height="60">
+          <img src="images/Plugin Professor Logo1 PNG.png" alt="Plugin Professor logo: a friendly orange-and-charcoal robot head with two round eyes, wearing an orange graduation cap." class="connect-logo" width="60" height="60">
           <h3>Plugin Professor</h3>
           <p>AI-powered tool I built to help Wire creators learn faster and build better plugins.</p>
-          <span class="connect-cta">Try It Free &rarr;</span>
+          <span class="connect-cta">Try It Free <span aria-hidden="true">&rarr;</span></span>
         </a>
 
-        <div class="connect-card connect-email fade-in" id="emailReveal">
+        <div class="connect-card connect-email fade-in" id="emailReveal" role="button" tabindex="0">
           <div class="connect-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
           </div>
           <h3>Inquiries</h3>
           <p>Booking, collabs, or just want to connect — drop me a line.</p>
-          <span class="connect-cta connect-cta-reveal">Click to reveal email &rarr;</span>
+          <span class="connect-cta connect-cta-reveal">Click to reveal email <span aria-hidden="true">&rarr;</span></span>
         </div>
 
         <div class="connect-card connect-socials fade-in">
           <h3>Follow Along</h3>
           <div class="social-links">
-            <a href="https://www.youtube.com/@VJ_Academy" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.youtube.com/@VJ_Academy" target="_blank" rel="noopener" class="social-link" aria-label="YouTube — the VJ Academy channel">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
               <span>YouTube</span>
             </a>
-            <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram — @rexaffects">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
               </svg>
               <span>Instagram</span>
@@ -403,6 +418,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">

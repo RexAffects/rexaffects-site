@@ -19,22 +19,65 @@
     cardAspect: 1.5
   };
 
-  const SOURCES = [
-    'images/Wakaan 2024.jpg',
-    'images/Rexaffects VJ shot 2018.jpg',
-    'images/Rex and Rob Saatvic Terp Float 2024.jpg',
-    'images/rexaffects rekinnection 23.jpg',
-    'images/Backwoods Flintwick Boone from FOH pic0.jpg',
-    'images/IMG_20240805_192326_888.jpg'
+  // Each photo carries its own description. These are rendered into a
+  // visually-hidden list (#gallery-alt-text) because a WebGL canvas exposes
+  // nothing to screen readers. Adding a photo? Add its description here too.
+  const PHOTOS = [
+    {
+      src: 'images/Wakaan 2024.jpg',
+      alt: 'Night set at Wakaan, 2024: silhouetted heads under a red-lit canopy facing a wide stage LED wall running symmetrical blue and white kaleidoscopic visuals.'
+    },
+    {
+      src: 'images/Rexaffects VJ shot 2018.jpg',
+      alt: 'Rex Roberts VJing in a dim club in 2018, one of his earliest gigs — hands on a lit pad controller and laptop at a small booth while a friend watches over his shoulder.'
+    },
+    {
+      src: 'images/Rex and Rob Saatvic Terp Float 2024.jpg',
+      alt: 'Rex Roberts and VJ Academy co-founder Rob Morris working side by side in a festival tent in 2024, faces lit magenta by their screens, hands on a glowing pad controller.'
+    },
+    {
+      src: 'images/rexaffects rekinnection 23.jpg',
+      alt: 'Festival booking flyer reading "Rekinection Music, Wellness & Arts Festival — REXAFFECTS — June 7 to 11, 2023 — Astral Valley Art Park, 45 minutes from St. Louis", over a portrait of Rex Roberts tipping a wide-brim hat against psychedelic purple artwork.'
+    },
+    {
+      src: 'images/Backwoods Flintwick Boone from FOH pic0.jpg',
+      alt: 'Rex Roberts at the front-of-house booth at Backwoods festival in daylight, looking past a bank of laptops and mixing consoles toward the main stage LED wall and the crowd on the field.'
+    },
+    {
+      src: 'images/IMG_20240805_192326_888.jpg',
+      alt: 'Two-photo collage of Rob Morris and Rex Roberts grinning at the VJ rig after a night set, a sticker-covered laptop and a camera tripod behind them.'
+    }
   ];
+
+  const SOURCES = PHOTOS.map(p => p.src);
 
   const wrap = document.getElementById('gallery-carousel');
   if (!wrap) return;
+
+  // Text alternative for the canvas. Sighted visitors never see this list.
+  const altList = document.getElementById('gallery-alt-text');
+  if (altList) {
+    altList.innerHTML = '';
+    PHOTOS.forEach(p => {
+      const li = document.createElement('li');
+      li.textContent = p.alt;
+      altList.appendChild(li);
+    });
+  }
+
+  // Motion setting: with "reduce motion" on, the reel sits still and can still
+  // be dragged by hand rather than scrolling on its own.
+  const autoplayWanted = CFG.autoplay;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (prefersReducedMotion.matches) CFG.autoplay = false;
+  prefersReducedMotion.addEventListener('change', e => { CFG.autoplay = autoplayWanted && !e.matches; });
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, CFG.dprMax));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NoToneMapping;
+  // The canvas itself is purely visual — its content is described by #gallery-alt-text.
+  renderer.domElement.setAttribute('aria-hidden', 'true');
   wrap.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();

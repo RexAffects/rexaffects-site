@@ -274,3 +274,6 @@
   .lv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; }
   .lv-reels { gap: 12px; }
 }
+
+/* "It comes straight to Rex." under the booking heading (Rex, Nov 2: the form, sent to his email) */
+.lv-book-direct { display: inline-block; margin-top: .25em; font-size: .55em; font-weight: 600; color: var(--cyan); letter-spacing: 0; }

@@ -113,8 +113,8 @@ const emailCard = document.getElementById('emailReveal');
 function revealEmail(card) {
   if (card.classList.contains('revealed')) return;
   card.classList.add('revealed');
-  const u = 'rexaffects';
-  const d = 'yahoo.com';
+  const u = 'support';
+  const d = 'rexaffects.com';
   const addr = u + '@' + d;
   const cta = card.querySelector('.connect-cta-reveal');
   cta.innerHTML = addr + ' <span aria-hidden="true">&rarr;</span>';

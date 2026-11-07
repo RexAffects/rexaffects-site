@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store — RexAffects</title>
+  <meta name="description" content="Scenes for Plugin Player, with the Resolume plugin included. Buy once, unlock in the app.">
+  <!-- Store: not indexed yet. -->
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="store.css">
+  <script src="/shared/pixel.js"></script>
+</head>
+<body data-store-api="https://rexaffects-store.vercel.app">
+  <header><div class="wrap"><a class="logo" href="/">REXAFFECTS</a><a class="crumb" href="/store/">Store</a></div></header>
+  <div class="hero has-video">
+    <video class="hero-bg" muted loop playsinline preload="none" poster="/store/media/hero.jpg" aria-hidden="true"><source src="/store/media/hero.mp4" type="video/mp4"></video>
+    <div class="hero-shade"></div>
+    <div class="wrap">
+    <div class="tag">Plugin Player · Store</div>
+    <h1>Scenes you <span>play live.</span></h1>
+    <p class="lede">Every scene plays free in Plugin Player, with a watermark on full-screen output. Buy one and it plays clean, and its Resolume plugin comes with it.</p>
+    <p class="lede small"><a href="#packs">Deals</a> · <a href="#featured">Featured</a> · <a href="#all">All scenes</a></p>
+  </div></div>
+  <section id="packs"><div class="wrap">
+    <h2>Deals</h2>
+    <p class="plugins-note"><b>+ RESOLUME PLUGIN</b> Includes the Resolume plugin: you also get the .cwired file by email, for Resolume Arena / Avenue. Pixel Smear&#39;s plugin is coming by the end of November: we'll email it the moment it's ready.</p>
+    <div class="packs">
+      <div class="pack">
+        <div class="pack-top"><h3>Single</h3><span class="pack-price">$30</span></div>
+        <p class="pack-perk"><span class="perk">+ RESOLUME PLUGIN</span></p>
+        <p class="pack-what">1 scene + its Resolume plugin (.cwired)</p>
+        <p class="pack-list">Any one scene (Goop and Flashpoint are $50)</p>
+        <div class="pack-actions"><a class="cta" href="#all">Choose a scene</a></div>
+      </div>
+      <div class="pack">
+        <div class="pack-top"><h3>Pick 3</h3><span class="pack-price">$75</span></div>
+        <p class="pack-perk"><span class="perk">+ RESOLUME PLUGIN</span></p>
+        <p class="save">You save $15</p>
+        <p class="pack-what">3 scenes + their 3 Resolume plugins (.cwired)</p>
+        <p class="pack-list">Any 3 of the 7 scenes, your choice</p>
+        <div class="pack-actions"><a class="cta" href="#pick" data-pick-size="pick-3">Pick your 3</a></div>
+      </div>
+      <div class="pack">
+        <div class="pack-top"><h3>Pick 5</h3><span class="pack-price">$100</span></div>
+        <p class="pack-perk"><span class="perk">+ RESOLUME PLUGIN</span></p>
+        <p class="save">You save $50</p>
+        <p class="pack-what">5 scenes + their 5 Resolume plugins (.cwired)</p>
+        <p class="pack-list">Any 5 of the 7 scenes, your choice</p>
+        <div class="pack-actions"><a class="cta" href="#pick" data-pick-size="pick-5">Pick your 5</a></div>
+      </div>
+      <div class="pack" data-deal="all-scenes" data-title="All Scenes" data-alone="210" data-line="Every scene available today, except Flashpoint and Goop. New drops are sold separately." hidden>
+        <div class="pack-top"><h3 data-deal-title>All Scenes</h3><span class="pack-price" data-deal-price>$200</span></div>
+        <p class="pack-perk"><span class="perk">+ RESOLUME PLUGIN</span></p>
+        <p class="pack-line" data-deal-line>Every scene available today, except Flashpoint and Goop. New drops are sold separately.</p>
+        <p class="save" data-deal-save>You save $10</p>
+        <p class="pack-what">7 scenes + all 8 Resolume plugins (.cwired), the Cube Bloom plugin as a bonus</p>
+        <p class="pack-list">Blob Tracking v3 · Corridor Panels · Cube Stack · Custom Particles · Frame Stack · Pixel Smear · Plane Drift</p>
+        <div class="pack-actions">
+          <button type="button" class="cta buy" data-offer="all-scenes" data-usd="200">Buy All Scenes · $200</button>
+          <button type="button" class="inside-toggle" aria-expanded="false" aria-controls="inside-all-scenes">See what's inside</button>
+        </div>
+        <p class="err" role="alert" hidden></p>
+        <div class="inside" id="inside-all-scenes" hidden>
+          <a class="in" href="/store/blob-tracking-v3/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/blob-tracking-v3.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/blob-tracking-v3.mp4" type="video/mp4"></video><b>Blob Tracking v3</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/corridor-panels/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/corridor-panels.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/corridor-panels.mp4" type="video/mp4"></video><b>Corridor Panels</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/cube-stack/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-stack.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/cube-stack.mp4" type="video/mp4"></video><b>Cube Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/custom-particles/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/custom-particles.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/custom-particles.mp4" type="video/mp4"></video><b>Custom Particles</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/frame-stack/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/frame-stack.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/frame-stack.mp4" type="video/mp4"></video><b>Frame Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/pixel-advection/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/pixel-advection.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/pixel-advection.mp4" type="video/mp4"></video><b>Pixel Smear</b><small class="soon">Resolume plugin: coming end of November</small></a>
+          <a class="in" href="/store/plane-drift-fluid/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/plane-drift-fluid.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/plane-drift-fluid.mp4" type="video/mp4"></video><b>Plane Drift</b><small>Resolume plugin included</small></a>
+          <a class="in bonus" href="/store/cube-bloom/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-bloom.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/cube-bloom.mp4" type="video/mp4"></video><b>Cube Bloom</b><small>Bonus: its Resolume plugin</small></a>
+        </div>
+      </div>
+      <div class="pack big" data-deal="everything" data-title="Everything" data-alone="310" data-line="Every scene available today, plus Flashpoint and Goop. New drops are sold separately.">
+        <p class="founders" data-founders>FOUNDERS DEAL</p>
+        <div class="pack-top"><h3 data-deal-title>Everything for</h3><span class="pack-price" data-deal-price>$200</span></div>
+        <p class="pack-perk"><span class="perk">+ RESOLUME PLUGIN</span></p>
+        <p class="pack-line" data-deal-line>Unlock every scene available today, plus Flashpoint and Goop.</p>
+        <p class="pack-help" data-founders>You&#39;re helping get this project off the ground</p>
+        <p class="pack-goes" data-founders>Goes to $250+ after beta</p>
+        <p class="save" data-deal-save>You save $110</p>
+        <p class="pack-what">9 scenes + all 10 Resolume plugins (.cwired), the Cube Bloom plugin as a bonus</p>
+        <p class="pack-list">Blob Tracking v3 · Corridor Panels · Cube Stack · Custom Particles · Flashpoint · Goop · Frame Stack · Pixel Smear · Plane Drift</p>
+        <div class="pack-actions">
+          <button type="button" class="cta buy" data-offer="everything" data-usd="200">Buy Everything · $200</button>
+          <button type="button" class="inside-toggle" aria-expanded="false" aria-controls="inside-everything">See what's inside</button>
+        </div>
+        <p class="err" role="alert" hidden></p>
+        <div class="inside" id="inside-everything" hidden>
+          <a class="in" href="/store/blob-tracking-v3/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/blob-tracking-v3.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/blob-tracking-v3.mp4" type="video/mp4"></video><b>Blob Tracking v3</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/corridor-panels/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/corridor-panels.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/corridor-panels.mp4" type="video/mp4"></video><b>Corridor Panels</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/cube-stack/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-stack.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/cube-stack.mp4" type="video/mp4"></video><b>Cube Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/custom-particles/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/custom-particles.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/custom-particles.mp4" type="video/mp4"></video><b>Custom Particles</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/flashpoint/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/flashpoint.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/flashpoint.mp4" type="video/mp4"></video><b>Flashpoint</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/fluid-force/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/fluid-force.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/fluid-force.mp4" type="video/mp4"></video><b>Goop</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/frame-stack/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/frame-stack.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/frame-stack.mp4" type="video/mp4"></video><b>Frame Stack</b><small>Resolume plugin included</small></a>
+          <a class="in" href="/store/pixel-advection/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/pixel-advection.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/pixel-advection.mp4" type="video/mp4"></video><b>Pixel Smear</b><small class="soon">Resolume plugin: coming end of November</small></a>
+          <a class="in" href="/store/plane-drift-fluid/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/plane-drift-fluid.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/plane-drift-fluid.mp4" type="video/mp4"></video><b>Plane Drift</b><small>Resolume plugin included</small></a>
+          <a class="in bonus" href="/store/cube-bloom/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-bloom.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/cube-bloom.mp4" type="video/mp4"></video><b>Cube Bloom</b><small>Bonus: its Resolume plugin</small></a>
+        </div>
+      </div>
+    </div>
+    <div class="picker" id="pick" data-pickable="blob-tracking-v3,corridor-panels,cube-stack,custom-particles,frame-stack,pixel-advection,plane-drift-fluid">
+      <h3>Pick your own</h3>
+      <div class="pick-sizes" role="radiogroup" aria-label="Pack size">
+        <label class="size"><input type="radio" name="pick-size" value="pick-3" data-size="3" data-price="75" checked><span><b>Pick any 3</b> · $75 <i>save $15</i></span></label>
+        <label class="size"><input type="radio" name="pick-size" value="pick-5" data-size="5" data-price="100"><span><b>Pick any 5</b> · $100 <i>save $50</i></span></label>
+      </div>
+      <p class="pick-help">Tick exactly <b class="pick-n">3</b> scenes. Each comes with its Resolume plugin. Goop and Flashpoint ($50) aren't pick slots: they're in Everything, or on their own.</p>
+      <div class="picks">
+        <label class="pick"><input type="checkbox" value="blob-tracking-v3"><video class="clip" muted loop playsinline preload="none" poster="/store/media/blob-tracking-v3.jpg" width="160" height="90" aria-hidden="true"><source src="/store/media/blob-tracking-v3.mp4" type="video/mp4"></video><span>Blob Tracking v3</span></label>
+        <label class="pick"><input type="checkbox" value="corridor-panels"><video class="clip" muted loop playsinline preload="none" poster="/store/media/corridor-panels.jpg" width="160" height="90" aria-hidden="true"><source src="/store/media/corridor-panels.mp4" type="video/mp4"></video><span>Corridor Panels</span></label>
+        <label class="pick"><input type="checkbox" value="cube-stack"><video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-stack.jpg" width="160" height="90" aria-hidden="true"><source src="/store/media/cube-stack.mp4" type="video/mp4"></video><span>Cube Stack</span></label>
+        <label class="pick"><input type="checkbox" value="custom-particles"><video class="clip" muted loop playsinline preload="none" poster="/store/media/custom-particles.jpg" width="160" height="90" aria-hidden="true"><source src="/store/media/custom-particles.mp4" type="video/mp4"></video><span>Custom Particles</span></label>
+        <label class="pick"><input type="checkbox" value="frame-stack"><video class="clip" muted loop playsinline preload="none" poster="/store/media/frame-stack.jpg" width="160" height="90" aria-hidden="true"><source src="/store/media/frame-stack.mp4" type="video/mp4"></video><span>Frame Stack</span></label>
+        <label class="pick"><input type="checkbox" value="pixel-advection"><video class="clip" muted loop playsinline preload="none" poster="/store/media/pixel-advection.jpg" width="160" height="90" aria-hidden="true"><source src="/store/media/pixel-advection.mp4" type="video/mp4"></video><span>Pixel Smear<small>plugin coming end of November</small></span></label>
+        <label class="pick"><input type="checkbox" value="plane-drift-fluid"><video class="clip" muted loop playsinline preload="none" poster="/store/media/plane-drift-fluid.jpg" width="160" height="90" aria-hidden="true"><source src="/store/media/plane-drift-fluid.mp4" type="video/mp4"></video><span>Plane Drift</span></label>
+      </div>
+      <div class="pick-go">
+        <span class="pick-count" aria-live="polite">0 of 3 picked</span>
+        <button type="button" class="cta buy" data-pick-checkout disabled>Pick 3 scenes</button>
+      </div>
+      <p class="err" role="alert" hidden></p>
+    </div>
+  </div></section>
+  <section id="featured"><div class="wrap"><h2>Featured</h2><div class="grid">
+      <a class="item" href="/store/cube-bloom/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-bloom.jpg" width="480" height="270" aria-label="Cube Bloom"><source src="/store/media/cube-bloom.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b feat">Featured</span><span class="b free">Free in Plugin Player</span></div><b>Cube Bloom</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/flashpoint/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/flashpoint.jpg" width="480" height="270" aria-label="Flashpoint"><source src="/store/media/flashpoint.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b feat">Featured</span></div><b>Flashpoint</b><span class="by">by RexAffects</span><span class="price">$50<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/fluid-force/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/fluid-force.jpg" width="480" height="270" aria-label="Goop"><source src="/store/media/fluid-force.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b feat">Featured</span></div><b>Goop</b><span class="by">by RexAffects</span><span class="price">$50<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+    </div></div></section>
+  <section id="new"><div class="wrap"><h2>New</h2><div class="grid">
+      <a class="item" href="/store/blob-tracking-v3/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/blob-tracking-v3.jpg" width="480" height="270" aria-label="Blob Tracking v3"><source src="/store/media/blob-tracking-v3.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Blob Tracking v3</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/corridor-panels/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/corridor-panels.jpg" width="480" height="270" aria-label="Corridor Panels"><source src="/store/media/corridor-panels.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Corridor Panels</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/cube-stack/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-stack.jpg" width="480" height="270" aria-label="Cube Stack"><source src="/store/media/cube-stack.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Cube Stack</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/custom-particles/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/custom-particles.jpg" width="480" height="270" aria-label="Custom Particles"><source src="/store/media/custom-particles.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Custom Particles</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/frame-stack/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/frame-stack.jpg" width="480" height="270" aria-label="Frame Stack"><source src="/store/media/frame-stack.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Frame Stack</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/pixel-advection/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/pixel-advection.jpg" width="480" height="270" aria-label="Pixel Smear"><source src="/store/media/pixel-advection.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span><span class="b soon">Plugin: end of November</span></div><b>Pixel Smear</b><span class="by">by RexAffects</span><span class="price">$30</span></div>
+      </a>
+      <a class="item" href="/store/plane-drift-fluid/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/plane-drift-fluid.jpg" width="480" height="270" aria-label="Plane Drift"><source src="/store/media/plane-drift-fluid.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Plane Drift</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+    </div></div></section>
+  <section id="all"><div class="wrap"><h2>All scenes</h2><div class="grid">
+      <a class="item" href="/store/blob-tracking-v3/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/blob-tracking-v3.jpg" width="480" height="270" aria-label="Blob Tracking v3"><source src="/store/media/blob-tracking-v3.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Blob Tracking v3</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/corridor-panels/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/corridor-panels.jpg" width="480" height="270" aria-label="Corridor Panels"><source src="/store/media/corridor-panels.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Corridor Panels</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/cube-bloom/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-bloom.jpg" width="480" height="270" aria-label="Cube Bloom"><source src="/store/media/cube-bloom.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b feat">Featured</span><span class="b free">Free in Plugin Player</span></div><b>Cube Bloom</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/cube-stack/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/cube-stack.jpg" width="480" height="270" aria-label="Cube Stack"><source src="/store/media/cube-stack.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Cube Stack</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/custom-particles/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/custom-particles.jpg" width="480" height="270" aria-label="Custom Particles"><source src="/store/media/custom-particles.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Custom Particles</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/flashpoint/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/flashpoint.jpg" width="480" height="270" aria-label="Flashpoint"><source src="/store/media/flashpoint.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b feat">Featured</span></div><b>Flashpoint</b><span class="by">by RexAffects</span><span class="price">$50<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/frame-stack/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/frame-stack.jpg" width="480" height="270" aria-label="Frame Stack"><source src="/store/media/frame-stack.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Frame Stack</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/fluid-force/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/fluid-force.jpg" width="480" height="270" aria-label="Goop"><source src="/store/media/fluid-force.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b feat">Featured</span></div><b>Goop</b><span class="by">by RexAffects</span><span class="price">$50<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+      <a class="item" href="/store/pixel-advection/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/pixel-advection.jpg" width="480" height="270" aria-label="Pixel Smear"><source src="/store/media/pixel-advection.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span><span class="b soon">Plugin: end of November</span></div><b>Pixel Smear</b><span class="by">by RexAffects</span><span class="price">$30</span></div>
+      </a>
+      <a class="item" href="/store/plane-drift-fluid/">
+        <video class="clip" muted loop playsinline preload="none" poster="/store/media/plane-drift-fluid.jpg" width="480" height="270" aria-label="Plane Drift"><source src="/store/media/plane-drift-fluid.mp4" type="video/mp4"></video>
+        <div class="meta"><div class="badges"><span class="b new">New</span></div><b>Plane Drift</b><span class="by">by RexAffects</span><span class="price">$30<span class="perk">+ RESOLUME PLUGIN</span></span></div>
+      </a>
+    </div></div></section>
+
+  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</footer>
+  <script src="store.js"></script>
+</body>
+</html>

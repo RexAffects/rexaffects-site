@@ -15,6 +15,7 @@ Thumbs.db
 
 # Web-compressed media for /live is meant to ship (core.ignorecase makes *.JPG match .jpg)
 !live/media/**
+!docs/img/*.jpg
 
 # Internal notes never live in this repo: GitHub Pages serves every tracked file (.nojekyll) and the repo is public.
 # Keep your own local copies here if you like.

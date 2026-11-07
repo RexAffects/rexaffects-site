@@ -71,7 +71,7 @@
     banner.setAttribute('role', 'region');
     banner.setAttribute('aria-label', 'Cookies');
     var p = document.createElement('p');
-    p.textContent = 'We use one cookie from Meta to see which of our ads work. Nothing else tracks you.';
+    p.textContent = 'We use cookies from Meta to see which of our ads work. Nothing else tracks you.';
     var yes = document.createElement('button');
     yes.className = 'yes'; yes.type = 'button'; yes.textContent = 'Allow';
     yes.onclick = function () { save('allow'); close(); loadPixel(); };

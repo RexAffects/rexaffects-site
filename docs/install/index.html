@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install Plugin Player (Windows beta) — Plugin Player docs</title>
+  <meta name="description" content="Install Plugin Player (Windows beta): Plugin Player help.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/site-extra.css">
+  <link rel="stylesheet" href="/docs/docs.css">
+  <script src="/shared/pixel.js"></script>
+</head>
+<body>
+  <main class="doc"><div class="container">
+    <p><a href="/docs/">‹ Plugin Player docs</a></p>
+<h1 id="install-plugin-player-windows-beta">Install Plugin Player (Windows beta)</h1>
+<p>One file, one double-click. About a minute.</p>
+<h2 id="what-you-need">What you need</h2>
+<ul><li>Windows 10 or 11, 64-bit.</li><li>A graphics chip that does WebGL2 with float render targets: any NVIDIA, AMD or Intel GPU from the last several years. A laptop with a dedicated GPU (NVIDIA / AMD) is best for the fluid scenes.</li><li><strong>8 GB of RAM</strong> or more.</li><li>On the first run Plugin Player checks this computer once: graphics (WebGL2, float targets, not a software driver), RAM, and about 30 fps on the first scene. If something is short you'll see one line: <em>"This computer's graphics may struggle with these scenes. Close other apps, try CONTROLS › OUTPUT QUALITY 720p, or use a laptop with a dedicated GPU."</em> Plugin Player still runs. Click <strong>×</strong> and it won't show again.</li><li>About <strong>400 MB</strong> of free disk space.</li><li>No admin password. Plugin Player installs for your Windows user only.</li></ul>
+<h2 id="1-download">1. Download</h2>
+<p>Download <strong><code>Plugin-Player-Setup-0.1.8-beta.exe</code></strong> (about 130 MB) <code>[download link at beta]</code>.</p>
+<p>Your browser may say the file "isn't commonly downloaded". Choose <strong>Keep</strong> (in Edge: the <strong>…</strong> menu next to the download, then <strong>Keep</strong>, then <strong>Keep anyway</strong>).</p>
+<h2 id="2-run-it-and-the-blue-windows-box">2. Run it, and the blue Windows box</h2>
+<p>Double-click the file. Windows will probably show a blue box:</p>
+<blockquote><strong>Windows protected your PC</strong> Microsoft Defender SmartScreen prevented an unrecognized app from starting.</blockquote>
+<p>That is normal for this beta. <strong>Here is why:</strong> apps carry a digital signature that tells Windows who made them. We haven't bought that signature yet, so Windows doesn't recognise Plugin Player and asks you to confirm. The file is the same one we tested.</p>
+<ol><li>Click <strong>More info</strong>.</li><li>Click <strong>Run anyway</strong>.</li></ol>
+<p>If there is no <strong>More info</strong> link: right-click the file, choose <strong>Properties</strong>, tick <strong>Unblock</strong> at the bottom, click <strong>OK</strong>, and double-click it again.</p>
+<h3 id="if-it-says-smart-app-control-blocked-an-app">If it says "Smart App Control blocked an app"</h3>
+<p>Some Windows 11 PCs have <strong>Smart App Control</strong> turned on. It has no "run anyway" button. In our tests it let the installer and the installed player through, but it decides per PC and per version. If it blocks the installer or Plugin Player, tell us <code>[beta contact]</code>. You don't have to turn Smart App Control off. We would rather fix it our end (the signed build fixes it).</p>
+<p>Antivirus, Bluetooth and camera privacy prompts, step by step: <a href="/docs/security-prompts/"><code>SECURITY_PROMPTS.md</code></a>.</p>
+<h2 id="3-what-happens-next">3. What happens next</h2>
+<p>There are no setup pages. The installer runs for a few seconds, then <strong>Plugin Player opens on its own, fullscreen</strong>. A first scene is already playing.</p>
+<ul><li><strong>F11</strong> = fullscreen on / off. <strong>Esc</strong> leaves fullscreen. Quit with the window's close button.</li><li>To open it again: <strong>Start menu → Plugin Player</strong>, or the <strong>Plugin Player</strong> icon on your desktop.</li><li>The first launch compiles the scenes, which takes up to ~20 s. Later launches are much faster.</li></ul>
+<p>Then go to <a href="/docs/first-run/"><code>FIRST_RUN.md</code></a> §3 for the tour.</p>
+<h2 id="whats-in-the-beta">What's in the beta</h2>
+<ul><li>Thirteen scenes: <strong>Cube Bloom, Frame Stack, Goop (fluid dynamics), Plane Drift, Corridor Panels, Cube Stack, Custom Particles, Blob Tracking v3, Pixel Smear, Blob Melt, Flashpoint, Machine Vision, Typewriter Terrain</strong>, with all their presets.</li><li>Webcam input. Plugin Player tries your camera at start. If another app is using it, the CAM chip says BLOCKED, a <strong>SOMETHING BLOCKED?</strong> card shows how to fix it, and the scenes play on the demo clip, a short loop of someone waving at a webcam (<a href="/docs/camera/"><code>CAMERA.md</code></a>, <a href="/docs/security-prompts/"><code>SECURITY_PROMPTS.md</code></a>).</li><li>The first launch compiles the scenes for your graphics card: the first scene plays after about 10 s, the heaviest (Custom Particles, Blob Tracking v3, Pixel Smear, Blob Melt, Flashpoint) finish in the background within the first minute. Every launch after that is under a second.</li><li>8BitDo Micro controller support, with automatic pairing (<a href="/docs/controller/"><code>CONTROLLER.md</code></a>).</li><li><strong>Spout, built in, both ways</strong> (nothing extra to install): <code>--spout</code> sends the picture to Resolume Arena as the Spout source <em>Plugin Player</em>; CAM ▾ › <strong>SPOUT</strong> takes Arena's composition in like a camera (<a href="/docs/output/"><code>OUTPUT.md</code></a> §4).</li></ul>
+<h2 id="updates">Updates</h2>
+<p>You never reinstall by hand. New versions (fixes and <strong>new scenes</strong>) arrive by themselves:</p>
+<ul><li>While the app is open it checks for a new version now and then and downloads it quietly in the background. Nothing pops up, nothing restarts, the show keeps playing.</li><li>When it's ready, an <strong>UPDATE</strong> chip appears at the top right (<strong>UPDATE READY · RESTART</strong> on a very wide window). Click it to see what's new.</li><li>It installs by itself <strong>the next time you quit</strong>. Or click <strong>RESTART NOW</strong> when you're not on stage: the screen goes dark for a few seconds and the new version opens.</li><li>Your shows, projector mapping, presets and unlocks stay exactly as they were.</li><li>No internet? Nothing happens; it tries again later.</li><li>If that panel says <strong>VERSION … IS OUT</strong> and offers <strong>OPEN REXAFFECTS.COM</strong>, Windows didn't let the automatic install run on your computer (this can happen with the beta because it isn't signed yet). Download the new installer from rexaffects.com and run it over the old one: everything you saved stays.</li></ul>
+<h2 id="where-it-lives">Where it lives</h2>
+<div class="doc-table"><table><thead><tr><th>What</th><th>Where</th></tr></thead><tbody><tr><td>The app</td><td><code>C:\Users\&lt;you&gt;\AppData\Local\Programs\rexaffects-player\</code></td></tr><tr><td>Your shows, your projector mapping, the scene cache</td><td><code>C:\Users\&lt;you&gt;\AppData\Roaming\rexaffects-player\</code></td></tr></tbody></table></div>
+<h2 id="uninstall">Uninstall</h2>
+<p><strong>Settings → Apps → Installed apps → Plugin Player 0.1.8-beta → … → Uninstall.</strong> (Or <strong>Control Panel → Programs and Features</strong>.) There are no questions and it takes a few seconds.</p>
+<p>The uninstaller removes the app and its shortcuts. It <strong>keeps your shows and mapping</strong> (<code>AppData\Roaming\rexaffects-player</code>), so a reinstall picks up where you left off. To remove those too, delete that folder by hand after uninstalling.</p>
+  </div></main>
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
+      <p>&copy; 2026 Rex Roberts. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pairing the 8BitDo Micro to Plugin Player (Windows) — Plugin Player docs</title>
+  <meta name="description" content="Pairing the 8BitDo Micro to Plugin Player (Windows): Plugin Player help.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/site-extra.css">
+  <link rel="stylesheet" href="/docs/docs.css">
+  <script src="/shared/pixel.js"></script>
+</head>
+<body>
+  <main class="doc"><div class="container">
+    <p><a href="/docs/">‹ Plugin Player docs</a></p>
+<h1 id="pairing-the-8bitdo-micro-to-plugin-player-windows">Pairing the 8BitDo Micro to Plugin Player (Windows)</h1>
+<h2 id="the-whole-procedure">The whole procedure</h2>
+<p><strong>Switch to D, hold PAIR for 3 seconds, wait.</strong></p>
+<p>Do it with Plugin Player open. That's it, for the first time and every time after. You never need Windows' Bluetooth settings.</p>
+<ul><li><strong>D</strong> is the mode switch on the Micro. Slide it to <strong>D</strong> (gamepad). K and S are other devices as far as Plugin Player is concerned.</li><li><strong>PAIR</strong> is the small button on the bottom edge. Hold it about 3 seconds, until the LED <strong>blinks fast</strong>.</li><li><strong>Wait</strong> a few seconds (up to about 30). The PAD chip in Plugin Player goes <strong>PAD LOST</strong> → <strong>PAIRING…</strong> → <strong>PAD READY</strong>. Press any button and the controller shows up.</li></ul>
+<h2 id="what-the-pad-chip-is-telling-you">What the PAD chip is telling you</h2>
+<div class="doc-table"><table><thead><tr><th>Chip</th><th>Meaning</th><th>What to do</th></tr></thead><tbody><tr><td><strong>CONNECTED · PRESS ANY BUTTON</strong></td><td>Windows has the controller connected; Plugin Player just hasn't seen a button yet.</td><td>Press any button.</td></tr><tr><td><strong>PAD: press any button</strong></td><td>The controller is (probably) connected, Plugin Player just hasn't seen a button yet. Windows only hands a controller to an app after its first button press.</td><td>Press any button.</td></tr><tr><td><strong>PAD LOST: hold PAIR 3 s to reconnect</strong></td><td>No controller. It's off, asleep, out of range, or it lost the connection.</td><td>Switch to D, hold PAIR for 3 seconds, wait.</td></tr><tr><td><strong>PAIRING…</strong></td><td>Plugin Player found your Micro in pairing mode and is connecting it.</td><td>Wait. Keep the Micro close.</td></tr><tr><td><strong>PAD READY</strong></td><td>Connected.</td><td>Press any button.</td></tr><tr><td>The controller's name</td><td>Working.</td><td>Play.</td></tr></tbody></table></div>
+<p>Waking the Micro: press <strong>Start</strong>. If it reconnects by itself, great. If the chip still says PAD LOST after a few seconds, or the LED just keeps slow-blinking, hold PAIR for 3 seconds. That always works, so it's the only thing you need to remember.</p>
+<h2 id="the-three-switch-positions-why-it-has-to-be-d">The three switch positions (why it has to be D)</h2>
+<div class="doc-table"><table><thead><tr><th>Switch</th><th>What the Micro becomes</th><th>In Plugin Player</th></tr></thead><tbody><tr><td><strong>D</strong></td><td>A Bluetooth <strong>gamepad</strong>.</td><td><strong>Works.</strong> The only position Plugin Player uses.</td></tr><tr><td><strong>S</strong></td><td>A Nintendo Switch controller.</td><td>Not supported.</td></tr><tr><td><strong>K</strong></td><td>A Bluetooth <strong>keyboard</strong> (every button types a key).</td><td><strong>PAD: press any button</strong>, forever. Windows says it's connected, Plugin Player sees no controller.</td></tr></tbody></table></div>
+<p>Each position is a separate Bluetooth device to Windows. If you've used the Micro in K or S, slide it to D and hold PAIR for 3 seconds; Plugin Player pairs the D-mode one.</p>
+<h2 id="what-each-button-does-d-mode">What each button does (D mode)</h2>
+<p>A B X Y, L R, L2 R2, −, +, the d-pad and the <strong>checkered (capture) button</strong> all reach Plugin Player. The <strong>star button does nothing in D mode</strong>: it never leaves the controller. That's the hardware, not a bug; the on-screen plate still shows it so the picture matches your pad.</p>
+<h2 id="battery">Battery</h2>
+<p>Windows doesn't show a battery level for the Micro. The LED blinks red when it's low. Charge over USB-C; it charges while you play. A low Micro can connect and then drop within a second or two, so if it keeps dropping, charge it first.</p>
+<h2 id="if-it-still-wont-connect">If it still won't connect</h2>
+<p><strong>Check the basics first:</strong> the switch is on <strong>D</strong>, Bluetooth is on (Windows Settings → Bluetooth &amp; devices), the Micro is charged, and Plugin Player is open while you hold PAIR. Another device the Micro was paired with in D mode (a phone, a Pi) can grab it first; turn that device's Bluetooth off.</p>
+<p><strong>Then do it by hand, once.</strong> This is the old way; it fixes anything the automatic way can't.</p>
+<ol><li>Windows Settings → <strong>Bluetooth &amp; devices</strong>. If <strong>8BitDo Micro gamepad</strong> is listed (one or more times), open each one → <strong>Remove device</strong>.</li><li>On the Micro: switch to <strong>D</strong>, press <strong>Start</strong>, then hold <strong>PAIR</strong> about 3 seconds until the LED blinks fast.</li><li>Settings → <strong>Add device</strong> → <strong>Bluetooth</strong> → choose <strong>8BitDo Micro gamepad</strong>. Give it up to a minute; the Micro keeps blinking while Windows searches. Wait for <em>Connected</em>.</li><li>In Plugin Player, press any button.</li></ol>
+<p>Still nothing? Send support the log (TROUBLESHOOTING.md says where it is): every pairing step prints a line starting <code>[pad-pairing]</code>.</p>
+  </div></main>
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
+      <p>&copy; 2026 Rex Roberts. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

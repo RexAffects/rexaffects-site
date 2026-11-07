@@ -2,7 +2,7 @@
 //
 // Contract (store server, POST JSON to RA_LIST.endpoint, see shared/list-config.js):
 //   { email, phone?, smsConsent, smsConsentText, smsConsentVersion?, source, tags[], ref?,
-//     utm_source?, utm_medium?, utm_campaign?, utm_content?, utm_term?, hp,
+//     utm_source?, utm_medium?, utm_campaign?, utm_content?, utm_term?, adConsent?, fbc?, fbp?, hp,
 //     booking?: { name, date, venue, city, type, attendance, budget, message } }
 //   source: beta | live-booking | links | app.  tags: max 10, [a-z0-9-].
 //   phone is kept by the server only with smsConsent, so it is sent only then (a booking's
@@ -123,6 +123,8 @@
       if (attrib.ref) payload.ref = attrib.ref;
       if (phone && consent) payload.phone = phone;
       UTM_KEYS.forEach(function (k) { if (attrib[k]) payload[k] = attrib[k]; });
+      // the ad click ids go to OUR server, and only after Allow (shared/pixel.js); a No thanks clears any kept before
+      if (window.RA_ADS) { var ads = window.RA_ADS(); Object.keys(ads).forEach(function (k) { payload[k] = ads[k]; }); }
 
       // Booking inquiry fields: name="booking.<key>"
       var booking = null;

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use your phone as the camera — Plugin Player docs</title>
+  <meta name="description" content="Use your phone as the camera: Plugin Player help.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/site-extra.css">
+  <link rel="stylesheet" href="/docs/docs.css">
+  <script src="/shared/pixel.js"></script>
+</head>
+<body>
+  <main class="doc"><div class="container">
+    <p><a href="/docs/">‹ Plugin Player docs</a></p>
+<h1 id="use-your-phone-as-the-camera">Use your phone as the camera</h1>
+<p>Plugin Player can use your phone as its live camera today. The phone reaches the app as an ordinary camera: you connect it with a cable or a free app, then pick it in <strong>CAM ▾</strong>. Every scene that uses a picture then runs on your phone's live view.</p>
+<p>Inside the app: <strong>CAM ▾ → USE YOUR PHONE AS THE CAMERA</strong> has the same steps. Nothing downloads by itself, and nothing here is required: the demo clip and any webcam keep working without it.</p>
+<h2 id="the-quickest-way">The quickest way</h2>
+<p><strong>iPhone on Windows:</strong> the free <strong>Camo</strong> app with its cable. Install <strong>Camo</strong> on the iPhone (App Store) and <strong>Camo Studio</strong> on the PC (camo.com). Plug in, tap <strong>Trust</strong>, open both. It is free at 720p with no watermark. If Camo Studio cannot see the iPhone, install <strong>Apple Devices</strong> from the Microsoft Store.</p>
+<p><strong>Android on Windows:</strong></p>
+<ol><li>Plug the phone in with a data cable, tap the USB notification on the phone, and look for <strong>Webcam</strong>. If it is there, pick it. You need no app at all, and it shows up as <strong>Android Webcam</strong>. Pixel phones have it. Android 14 or newer is required, and Samsung and Motorola are reported to leave it off.</li><li>No <strong>Webcam</strong> option? On Windows 11, use <strong>Link to Windows</strong>: nothing to install on the PC. Install Link to Windows on the phone, sign in with the same Microsoft account, then on the PC go to <strong>Settings › Bluetooth &amp; devices › Mobile devices</strong>, turn on <strong>Allow this PC to access your mobile devices</strong>, pick your phone, and turn on <strong>Use as connected camera</strong>. It needs Android 10 or newer and is wireless.</li></ol>
+<p><strong>No internet where you play?</strong> <strong>DroidCam</strong> works with no internet: same Wi-Fi, the phone's hotspot, or USB. It runs on iPhone and Android, and the free version is standard definition (about 480p), which is plenty for the effects.</p>
+<p><strong>On a Mac, with Resolume, or with NDI:</strong> see the full table in <a href="/docs/camera/#use-your-phone"><code>CAMERA.md</code></a>.</p>
+<h2 id="then-every-time">Then, every time</h2>
+<ol><li>Open <strong>CAM ▾</strong>. Plugin Player says <strong>PHONE CAMERA FOUND · USE IT?</strong> when it spots a phone. Press <strong>USE IT</strong>, or click it in the list. Not sure which row is the phone? It is the name you installed, or <strong>Windows Virtual Camera</strong> on Link to Windows.</li><li>Press <strong>MEASURE DELAY</strong>, with the phone pointed at the screen. <strong>This flashes the screen 8 times</strong>: skip it if flashing light affects you or anyone who can see the screen.</li><li>Under 200 ms feels live. 200–350 ms trails a little on fast moves. Over 350 ms, the effects trail behind dancers: use a cable, or get closer to the Wi-Fi.</li></ol>
+<h2 id="at-a-show">At a show</h2>
+<ul><li><strong>Use a cable if you can.</strong> It charges the phone, and a crowd full of phones can't jam it.</li><li>No cable? Use the filming phone's own hotspot, on 5 GHz if it offers it.</li><li>Turn auto-lock off and plug in a charger or power bank.</li><li>Airplane mode with Wi-Fi back on stops a call from taking the camera.</li><li>Measure the delay again at the venue. It changes with the light and the Wi-Fi.</li><li>Test what happens if the phone drops <strong>before</strong> the show: close the phone app and watch the picture. A short hiccup just holds the last picture. After 3 seconds with nothing new, the chip reads <strong>NO PICTURE</strong> and the demo clip plays; it comes back by itself when the phone does. A pulled USB webcam-mode cable reads <strong>LOST</strong> and also comes back by itself. Some phone apps send their own logo when they lose the phone: Plugin Player cannot tell that from a picture, so it stays on the scene. Pick another camera in <strong>CAM ▾</strong>, or press <strong>−</strong>.</li></ul>
+<p>Free versions run 480–720p. The scenes use 720p at most, so a paid upgrade will not sharpen them much.</p>
+<p><strong>Coming later:</strong> scan a QR code with your phone and send its camera with no app to install. It is not in the beta.</p>
+<h2 id="if-it-does-not-show-up">If it does not show up</h2>
+<div class="doc-table"><table><thead><tr><th>What you see</th><th>Do</th></tr></thead><tbody><tr><td>The phone is not in <strong>CAM ▾</strong></td><td>Press <strong>⟳</strong>. Check the phone app is open and the phone is unlocked</td></tr><tr><td>It is listed, the picture is black or a logo</td><td>The phone app is not sending: open it on the phone, check it is connected, keep the screen on</td></tr><tr><td><strong>CAM BLOCKED</strong></td><td>Another app has the camera, usually the phone app's own preview, Zoom or Teams: close it, then <strong>V</strong> twice</td></tr><tr><td>An iPhone is not found over USB</td><td>Tap <strong>Trust</strong>, use an Apple cable, plug straight into the laptop, not a hub</td></tr><tr><td>The picture is backwards</td><td><strong>CAM ▾ → PICTURE → MIRROR</strong></td></tr></tbody></table></div>
+<p>More: <a href="/docs/camera/"><code>CAMERA.md</code></a> · blocked cameras: <a href="/docs/security-prompts/"><code>SECURITY_PROMPTS.md</code></a></p>
+  </div></main>
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
+      <p>&copy; 2026 Rex Roberts. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

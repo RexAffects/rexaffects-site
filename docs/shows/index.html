@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shows — the library, tonight's show, show files, the crossfade dial, the scene panel — Plugin Player docs</title>
+  <meta name="description" content="Shows — the library, tonight's show, show files, the crossfade dial, the scene panel: Plugin Player help.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/site-extra.css">
+  <link rel="stylesheet" href="/docs/docs.css">
+  <script src="/shared/pixel.js"></script>
+</head>
+<body>
+  <main class="doc"><div class="container">
+    <p><a href="/docs/">‹ Plugin Player docs</a></p>
+<h1 id="shows-the-library-tonights-show-show-files-the-crossfade-dial-the-scene-panel">Shows — the library, tonight's show, show files, the crossfade dial, the scene panel</h1>
+<h2 id="1-library-vs-show">1. Library vs show</h2>
+<ul><li><strong>LIBRARY</strong> is every scene installed. The grid at the bottom, labelled <strong>LIBRARY · 8 CARTRIDGES · ALL FAMILIES</strong>. The header tabs <strong>ALL / FLUID / CUBES / STACKS</strong> filter it. <strong>★ MINE</strong> is drawn but does nothing yet <code>[coming]</code>.</li><li><strong>SHOW</strong> is tonight's ordered set. The strip above the library, labelled with a small <strong>SHOW</strong> tag, the show's name and its scene count (for example <strong>SHOW</strong> Tonight · 4 scenes); drag a card to reorder. The pad hints sit in the bar along the bottom of the window (hover the show's name to see them too). Tap <strong>L2</strong> on the pad (LT on Xbox) for the next scene, double-tap it to go back to where you were, or hold it and press ◀ ▶ to step back or on; <strong>N</strong> / <strong>P</strong> on the keyboard do the same. When the show is empty they walk the whole library instead.</li><li>On the very first launch two of the quick tips point here: <strong>YOUR SCENES</strong> (this strip) and <strong>YOUR LIBRARY</strong> (click a scene to fire it). <strong>CONTROLS › SHOW THE QUICK TIPS AGAIN</strong> brings them back (<a href="/docs/first-run/"><code>FIRST_RUN.md</code></a> §3).</li><li>To put the show on a TV, monitor, projector or LED wall: <strong>⧉ OUTPUT</strong> in the header (<a href="/docs/output/"><code>OUTPUT.md</code></a> §1).</li></ul>
+<p>Scene families (what they do, not how):</p>
+<div class="doc-table"><table><thead><tr><th>Family</th><th>Scenes</th><th>What they do</th></tr></thead><tbody><tr><td>FLUID</td><td>Plane Drift, Goop (fluid dynamics), Flashpoint</td><td>Liquid, ink, smoke, water and fire that move with the picture</td></tr><tr><td>CUBES</td><td>Cube Bloom, Cube Stack</td><td>Glossy cubes breathing in a wave (grouped or fly-through); a climbing stack of old monitors playing your picture</td></tr><tr><td>STACKS</td><td>Frame Stack, Blob Melt</td><td>The picture stacked in depth: rolling history cards with a liquid afterglow; boxes stamped onto the picture that melt into liquid colour</td></tr><tr><td>OTHER</td><td>Corridor Panels, Blob Tracking v3, Custom Particles, Pixel Smear, Machine Vision, Typewriter Terrain</td><td>A tunnel of panels; people tracked live; particles made of symbols riding your motion; your own picture smeared along with you; a tracking HUD locked onto your picture (shown under ALL)</td></tr></tbody></table></div>
+<p>Some scenes take longer to prepare on the very first launch; they are ready by the next one.</p>
+<ul><li><strong>New scenes after an update.</strong> The show made for you on the first launch (<strong>My first show</strong>) picks up scenes that arrive in the library later: they are added at the end, once, with a note <em>3 NEW SCENES ADDED TO MY FIRST SHOW</em>. Take one out and it stays out. A show <strong>you</strong> made is never changed; you get a one-time note <em>N NEW SCENES IN THE LIBRARY · + ADD TO SHOW</em> instead.</li></ul>
+<h2 id="2-building-tonights-show">2. Building tonight's show</h2>
+<ol><li>Hover a library card. The button <strong>+ ADD TO SHOW</strong> appears on it. Click it. The card now reads <strong>IN SHOW ✓</strong> and a copy appears in the show strip.</li><li>Keyboard: focus the card and press <strong>Shift+Enter</strong>. Same button again (or <strong>Shift+Enter</strong> again) removes it.</li><li>In the <strong>SCENE</strong> panel on the right, the focused scene has the same <strong>+ ADD TO SHOW</strong> button.</li><li>Reorder: drag cards left and right inside the show strip.</li><li>Remove: the <strong>×</strong> in a show card's corner, or <strong>Delete</strong> with the card focused.</li></ol>
+<p>The show's name sits under <strong>Plugin Player</strong> at the top left of the header. A <strong>•</strong> after the name means unsaved changes.</p>
+<h2 id="3-saving-and-loading-show-files">3. Saving and loading show files</h2>
+<p>Click <strong>Plugin Player ▾</strong> at the far left of the header. A menu titled <strong>SHOW FILE</strong> opens under it:</p>
+<div class="doc-table"><table><thead><tr><th>Item</th><th>What it does</th></tr></thead><tbody><tr><td><strong>NEW SHOW</strong></td><td>Empties the strip. Name goes back to UNTITLED</td></tr><tr><td><strong>SAVE · NAME</strong> / <strong>SAVE…</strong></td><td>Saves under the current name. With no name yet it asks for one. Keyboard: <strong>Ctrl+S</strong> (Mac: <strong>Cmd+S</strong>), from any tab</td></tr><tr><td><strong>SAVE AS…</strong></td><td>A text box <strong>show name</strong> (the current name, selected: typing replaces it) and a <strong>SAVE</strong> button. Enter saves, Esc cancels. Up to 48 characters. Keyboard: <strong>Ctrl+Shift+S</strong>. When it saves, the panel closes, the chip reads <strong>SAVED</strong> in orange for a moment and a note over the monitor says <em>SHOW SAVED · MARIA1 · 8 SCENES</em>; if it cannot save, the reason appears in red under the name and the panel stays open</td></tr><tr><td><strong>LOAD</strong> list</td><td>Every saved show, newest first, with its scene count. Click one to load it. Reads <strong>NO SAVED SHOWS YET</strong> on a fresh install</td></tr></tbody></table></div>
+<p>A show file stores: the scene order, the fade seconds and the fade curve. Loading it restores all three, so the dial moves too.</p>
+<p><strong>Ctrl+S saves the show, Ctrl+P saves a preset.</strong> Ctrl+S is the show (the whole set, like saving a project); Ctrl+P keeps the picture on screen right now as one of your presets (<strong>PRESET SAVED · MINE 1 ★</strong>). In MAP, Ctrl+S also keeps the mapping you are adjusting and saves it in the show, and you stay in MAP.</p>
+<p>On the next launch Plugin Player reopens the last show you had loaded. Start it with <code>--show &lt;name&gt;</code> to open a specific one instead.</p>
+<h3 id="where-the-files-live">Where the files live</h3>
+<p><code>%APPDATA%\rexaffects-player\shows\&lt;name&gt;.json</code> <code>[to confirm at beta: the folder name follows the release name]</code></p>
+<p>The file name is the show name lower-cased with punctuation turned into dashes: "Friday Main Room" becomes <code>friday-main-room.json</code>. Paste the path into File Explorer's address bar to find them. Copy the folder to back them up or to move them to another machine.</p>
+<p>A show file is plain JSON:</p>
+<pre><code>{
+  "name": "Friday Main Room",
+  "scenes": ["plane-drift-fluid", "cube-bloom", "frame-stack", "fluid-force"],
+  "fadeSecs": 1.5,
+  "fadeCurve": 0,
+  "updatedAt": "2026-10-27T21:14:03.000Z"
+}</code></pre>
+<p><code>scenes</code> are scene slugs in play order. <code>fadeCurve</code> is 0 = MIX, 1 = ADD, 2 = DIP TO BLACK. A scene named in the file that is not installed on this machine is skipped when the show loads; the rest of the show still loads. A show that has not been unlocked on this login <code>[coming]</code>.</p>
+<h2 id="4-the-crossfade-dial-transition-card">4. The crossfade dial (TRANSITION card)</h2>
+<p>The TRANSITION card is hidden to start with, to leave the room for the presets and the library. <strong>VIEW</strong> at the right edge → <strong>TRANSITION</strong> shows it (or click <strong>FADE</strong> in the line under the monitor's scene name). Without it: <strong>[</strong> <strong>]</strong> step the fade time, <strong>C</strong> or a click on the curve name under the monitor cycles the curve.</p>
+<ul><li><strong>FADE</strong> dial: 0 to 10 s. <strong>[</strong> and <strong>]</strong> step it by 0.25 s. The screen shows <code>1.50 s FADE</code>.</li><li>Curve buttons: <strong>MIX</strong> (one picture dissolves into the next), <strong>ADD</strong> (both glow together through the fade), <strong>DIP TO BLACK</strong>. <strong>C</strong> cycles them.</li><li><strong>CROSSFADE ON PLAY</strong>: every play and every L/R step uses the dial. The line under the monitor animates while a fade runs.</li><li><strong>NEXT / LAST FADE</strong> shows which scene is coming and the last fade time used.</li><li>Each scene carries its own default fade time. The dial overrides it once you touch it.</li></ul>
+<h2 id="5-the-scene-panel-right-side-labelled-scene">5. The scene panel (right side, labelled SCENE)</h2>
+<p>Hidden to start with: <strong>VIEW</strong> at the right edge → <strong>SCENE</strong> shows it. Without it, hover a library card for its family and preset count, and <strong>PARAMS</strong> at the right edge holds every slider.</p>
+<p>It describes the scene under the focus, or the playing scene when nothing else is focused.</p>
+<ul><li>Title, family chip, and a meta line like <strong>28 PRESETS · 0 PASSES · COMPILED 183 MS</strong>. <strong>COMPILED —</strong> means it has not played on this launch yet.</li><li>The scene's description in plain words.</li><li><strong>● LIVE</strong> in the corner when this scene is the one playing, <strong>FOCUSED</strong> otherwise, plus <strong>IN SHOW ✓</strong>.</li><li>Not playing: the first six presets as small posters, and the note <strong>A PLAY TO ADJUST PARAMETERS</strong>.</li><li>Playing: <strong>FEATURED</strong> sliders (the two or three dials that matter most for that scene), then <strong>▸ ALL PARAMETERS · N</strong> which unfolds the rest. Drag a slider and the output changes at once. Pressing a preset button or <strong>Y</strong> moves the sliders to match.</li><li>Buttons: <strong>A PLAY</strong> and <strong>+ ADD TO SHOW</strong> / <strong>IN SHOW ✓</strong>.</li></ul>
+<p>Slider positions are not saved into show files today. Presets are the way to recall a setting.</p>
+<p><strong>Set the order your presets cycle in before the show.</strong> Drag the favourite tiles in the PRESETS strip into the order you want R2 to walk them (or Alt+← / Alt+→ on the playing one; on the pad hold R2 + L1 + ◀ ▶). It is kept per scene on this computer with your stars, not in the show file; <strong>RESET ORDER</strong> puts the scene's own order back.</p>
+  </div></main>
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
+      <p>&copy; 2026 Rex Roberts. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect a controller — Plugin Player docs</title>
+  <meta name="description" content="Connect a controller: Plugin Player help.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/site-extra.css">
+  <link rel="stylesheet" href="/docs/docs.css">
+  <script src="/shared/pixel.js"></script>
+</head>
+<body>
+  <main class="doc"><div class="container">
+    <p><a href="/docs/">‹ Plugin Player docs</a></p>
+<h1 id="connect-a-controller">Connect a controller</h1>
+<p><em>The full walkthrough (USB, PlayStation, Xbox, 8BitDo Micro, "paired before and won't connect", then your first minute of play): <a href="/docs/connect-controller/"><code>CONNECT_CONTROLLER.md</code></a>. This page is the quick reference.</em></p>
+<p>Short steps for each controller, what to look for at each step, and how to get it back next time. The same steps are inside Plugin Player: <strong>CONTROLS</strong> tab → <strong>CONNECT A CONTROLLER</strong> (next to the CONTROLLER list). It opens on the controller you picked in that list, or on the one that is connected; with neither, it asks <strong>Which controller do you have?</strong> first.</p>
+<p><strong>Before anything:</strong> open Plugin Player and leave it open. For an <strong>8BitDo Micro</strong> or a <strong>PlayStation</strong> controller, it pairs it for you. You never open Windows' Bluetooth settings.</p>
+<h2 id="the-quick-answer">The quick answer</h2>
+<div class="doc-table"><table><thead><tr><th>Controller</th><th>Put it in pairing mode</th><th>What you should see</th><th>Next time</th></tr></thead><tbody><tr><td>8BitDo Micro</td><td>Switch to <strong>D</strong>, hold <strong>PAIR</strong> (small button, bottom edge) 3 s</td><td>Light blinks <strong>fast</strong></td><td>Press <strong>Start</strong></td></tr><tr><td>PlayStation 4 (DualShock 4)</td><td>Hold <strong>SHARE + PS</strong> together 3–5 s</td><td>Light bar flashes fast, <strong>two blinks at a time</strong></td><td>Press <strong>PS</strong></td></tr><tr><td>PlayStation 5 (DualSense)</td><td>Hold <strong>CREATE + PS</strong> together 3–5 s</td><td>Light around the touchpad flashes fast, two at a time</td><td>Press <strong>PS</strong></td></tr><tr><td>Xbox</td><td>Plug in a USB cable, or pair in Windows (below)</td><td>Xbox button flashes fast</td><td>Press the <strong>Xbox</strong> button</td></tr><tr><td>Anything else</td><td>USB cable, or pair in Windows (below)</td><td>Its light blinks fast</td><td>Its power / home button</td></tr></tbody></table></div>
+<h2 id="playstation-4-controller-dualshock-4">PlayStation 4 controller (DualShock 4)</h2>
+<ol><li><strong>Hold SHARE and PS together for 3–5 seconds.</strong> <em>Look for:</em> the light bar flashes fast, two blinks at a time. <em>Watch out:</em> pressing <strong>PS alone</strong> also makes it blink, but that is "go back to the PS4", not pairing. Nothing will find it. Hold SHARE too.</li><li><strong>Put it down and wait 10–30 seconds.</strong> Plugin Player finds it and pairs it. <em>Look for:</em> the PAD chip at the top says <strong>PAIRING…</strong>, then the light bar stays on.</li><li><strong>Press any button.</strong> <em>Look for:</em> <strong>CONNECTED: PLAYSTATION 4</strong>. Plugin Player draws a PlayStation controller and names every button ✕ ○ □ △.</li></ol>
+<p>In Plugin Player, the scene button is a <strong>touchpad click</strong>, or <strong>press the right stick in (R3)</strong>. The full button list is in <a href="/docs/controller/"><code>CONTROLLER.md</code></a> §0.</p>
+<p><strong>Next time:</strong> press <strong>PS</strong>. Windows remembers it and it reconnects in a second or two. Press any button so Plugin Player sees it.</p>
+<h2 id="playstation-5-controller-dualsense">PlayStation 5 controller (DualSense)</h2>
+<p>Same as the PS4 controller, with <strong>CREATE</strong> (the small button left of the touchpad) instead of SHARE:</p>
+<ol><li><strong>Hold CREATE and PS together for 3–5 seconds.</strong> <em>Look for:</em> the light around the touchpad flashes fast, two at a time. PS alone = "go back to the PS5", not pairing.</li><li><strong>Wait 10–30 seconds.</strong> <em>Look for:</em> <strong>PAIRING…</strong>, then the light stays on.</li><li><strong>Press any button.</strong> <em>Look for:</em> <strong>CONNECTED: PLAYSTATION 5</strong>.</li></ol>
+<p>The DualSense Edge works the same way. R3 (right stick in) or a touchpad click is the scene button. <strong>Next time:</strong> press <strong>PS</strong>.</p>
+<h2 id="8bitdo-micro">8BitDo Micro</h2>
+<ol><li><strong>Slide the mode switch to D.</strong> <em>Watch out:</em> in K or S Plugin Player sees nothing, even when Windows says <em>Connected</em>.</li><li><strong>Hold PAIR</strong> (the small button on the bottom edge) <strong>for 3 seconds.</strong> <em>Look for:</em> the light blinks <strong>fast</strong>. A slow blink means "looking for its last device", not pairing.</li><li><strong>Put it down and wait.</strong> <em>Look for:</em> <strong>PAIRING…</strong> then <strong>PAD READY</strong>.</li><li><strong>Press any button.</strong> <em>Look for:</em> <strong>CONNECTED: 8BITDO MICRO</strong>.</li></ol>
+<p><strong>Next time:</strong> press <strong>Start</strong>. More detail, and every way it can go wrong: <a href="/docs/pairing-8bitdo/"><code>PAIRING_8BITDO.md</code></a>.</p>
+<h2 id="xbox-controller">Xbox controller</h2>
+<p>Plugin Player does not pair Xbox controllers itself; Windows does it in a few clicks.</p>
+<ol><li><strong>Easiest: plug it in with a USB cable.</strong> It works at once. Done.</li><li><strong>Bluetooth:</strong> in Plugin Player, <strong>CONTROLS → CONNECT A CONTROLLER → Xbox → OPEN BLUETOOTH SETTINGS</strong>. Then <strong>Add device → Bluetooth</strong>.</li><li><strong>Press the Xbox button</strong> to turn it on, then <strong>hold the small pair button on top</strong> (next to the USB port) for 3 seconds. <em>Look for:</em> the Xbox button flashes fast.</li><li>Pick <strong>Xbox Wireless Controller</strong>, then press any button. <em>Look for:</em> <strong>CONNECTED: XBOX</strong>.</li></ol>
+<p><strong>Next time:</strong> press the Xbox button.</p>
+<h2 id="any-other-controller">Any other controller</h2>
+<ol><li><strong>Easiest: a USB cable.</strong> Press any button.</li><li><strong>Bluetooth:</strong> put it in pairing mode (its manual says how; usually hold a pair or home button until the light blinks fast), then <strong>OPEN BLUETOOTH SETTINGS → Add device → Bluetooth</strong> and pick its name.</li><li>If the picture on screen is the wrong controller, pick <strong>Other (standard)</strong> in the <strong>CONTROLLER</strong> list.</li></ol>
+<h2 id="pairing-in-windows-by-hand-when-you-need-it">Pairing in Windows by hand (when you need it)</h2>
+<p>If Plugin Player cannot pair it (an Xbox pad, another brand, or the guide says <em>WINDOWS DID NOT LET PLUGIN PLAYER PAIR IT</em>):</p>
+<ol><li><strong>CONTROLS → CONNECT A CONTROLLER → OPEN BLUETOOTH SETTINGS</strong> (or Windows <strong>Start → Settings → Bluetooth &amp; devices</strong>).</li><li><strong>Add device → Bluetooth.</strong> Put the controller in pairing mode (table above).</li><li><strong>Pick the controller, nothing else.</strong> Windows lists every Bluetooth thing nearby: smart lights (for example a <em>Govee</em> lamp), speakers, TVs, phones. A PlayStation 4 controller is called <strong>Wireless Controller</strong>, a PS5 one <strong>DualSense Wireless Controller</strong>, the Micro <strong>8BitDo Micro gamepad</strong>, an Xbox one <strong>Xbox Wireless Controller</strong>.</li><li>Wait for <em>Connected</em>, then press any button.</li></ol>
+<h2 id="look-out-for">Look out for</h2>
+<ul><li><strong>Hold two buttons, not one (PlayStation).</strong> PS alone never pairs with a new computer.</li><li><strong>Pick the right name in Windows.</strong> Not the lamp, the speaker or the TV.</li><li><strong>USB cables that only charge.</strong> Some cables carry power but no data. The controller then connects for a few seconds and drops, or shows nothing at all. Try another cable (the one that came with a phone usually carries data), and push it all the way in.</li><li><strong>One home at a time.</strong> A PlayStation controller remembers <strong>one</strong> machine. Use it on your PS4 / PS5 and it forgets this computer: hold SHARE (or CREATE) + PS again. Plugin Player clears the old Windows entry and pairs it again by itself.</li><li><strong>Press a button.</strong> Windows hands a controller to an app only after its first button press. If the chip says <strong>CONNECTED · PRESS ANY BUTTON</strong>, press one.</li><li><strong>Keep Plugin Player open while pairing.</strong> The automatic pairing only runs while it is running.</li></ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<div class="doc-table"><table><thead><tr><th>What you see</th><th>Why</th><th>Fix</th></tr></thead><tbody><tr><td>PlayStation light bar pulses slowly, nothing happens</td><td>Only PS was held: it is looking for its console</td><td>Hold <strong>SHARE + PS</strong> (PS5: <strong>CREATE + PS</strong>) until it double-blinks fast</td></tr><tr><td>Connects for a few seconds over USB, then <strong>PAD LOST</strong></td><td>Charge-only or loose cable</td><td>Another cable, pushed all the way in. Or use Bluetooth</td></tr><tr><td>Worked yesterday, now nothing after pressing PS</td><td>It was used on a PlayStation since, and forgot this computer</td><td>Hold SHARE + PS again with Plugin Player open. If that fails: remove it in Windows (below) and pair again</td></tr><tr><td>Windows lists several devices and you are not sure which</td><td>Every Bluetooth device nearby shows up</td><td>Pick <strong>Wireless Controller</strong> (PS4), <strong>DualSense Wireless Controller</strong> (PS5)</td></tr><tr><td>The guide says <strong>WINDOWS DID NOT LET PLUGIN PLAYER PAIR IT</strong></td><td>Windows refused the automatic pairing</td><td>Hold the pairing buttons again. Still no: <strong>OPEN BLUETOOTH SETTINGS</strong> and pair it by hand</td></tr><tr><td>Windows says <em>Connected</em> but Plugin Player shows nothing</td><td>No button pressed yet, or (Micro) the switch is not on D</td><td>Press any button. Micro: switch to D</td></tr><tr><td>The picture shows the wrong controller</td><td>Some controllers look like another to Windows (Steam or DS4Windows can make a PlayStation pad look like an Xbox pad)</td><td><strong>CONTROLS → CONTROLLER</strong> list → pick yours</td></tr></tbody></table></div>
+<p><strong>Removing a controller from Windows and pairing again</strong> (the fix for an old entry that will not reconnect):</p>
+<ol><li>Windows <strong>Start → Settings → Bluetooth &amp; devices</strong> (or <strong>OPEN BLUETOOTH SETTINGS</strong> in Plugin Player).</li><li>Find the controller (<strong>Wireless Controller</strong>, <strong>DualSense Wireless Controller</strong>, <strong>8BitDo Micro gamepad</strong>) → <strong>⋯</strong> → <strong>Remove device</strong> → <strong>Yes</strong>.</li><li>Put the controller in pairing mode with Plugin Player open (table at the top). It pairs it again.</li></ol>
+<p>More symptoms: <a href="/docs/troubleshooting/"><code>TROUBLESHOOTING.md</code></a>. What every button does: <a href="/docs/controller/"><code>CONTROLLER.md</code></a>.</p>
+  </div></main>
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
+      <p>&copy; 2026 Rex Roberts. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

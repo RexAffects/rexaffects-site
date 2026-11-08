@@ -13,7 +13,7 @@
   var ADDRESS = '2139 W Martin Luther King Jr Blvd, Unit #639, Fayetteville, AR 72701'; // not confirmed until Form 1583 is done
 
   var L = window.RA_LEGAL = {
-    trade: 'Rex Affects',
+    trade: 'RexAffects',
     owner: 'Rex Riley Roberts',
     address: ADDRESS,
     country: 'USA',

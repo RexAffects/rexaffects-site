@@ -1,0 +1,67 @@
+/* /download/: builds on ../style.css (same tokens: --bg, --cyan, --magenta, Inter) and the beta page's look. */
+[hidden] { display: none !important; }
+
+.dl {
+  padding: 112px 0 72px;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(0, 229, 255, 0.12), transparent 55%),
+    radial-gradient(ellipse at 90% 30%, rgba(255, 45, 123, 0.10), transparent 55%);
+}
+.dl-wrap { max-width: 760px; }
+
+.dl-title {
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+.dl-title span {
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.14em;
+}
+.dl-lede { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 28px; }
+
+.dl-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 40px;
+}
+.dl-card h2 { font-size: 1.3rem; margin-bottom: 8px; }
+.dl-card p { color: var(--text-secondary); margin-bottom: 18px; }
+.dl-btn { font-size: 1.05rem; padding: 16px 30px; }
+.dl-meta { margin: 16px 0 0; font-size: 0.92rem; }
+.dl-notes { margin: 8px 0 0; color: var(--text); }
+.dl-mac { margin: 8px 0 0; font-size: 0.92rem; }
+
+.dl-steps { margin-bottom: 36px; }
+.dl-steps h2 { font-size: 1.25rem; margin: 0 0 12px; }
+.dl-steps ol, .dl-steps ul { padding-left: 1.3em; color: var(--text-secondary); }
+.dl-steps li { margin-bottom: 8px; }
+.dl-steps p { color: var(--text-secondary); margin-bottom: 12px; }
+.dl-steps a { color: var(--cyan); }
+.dl-steps code { color: var(--text); }
+
+.dl-code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.88rem;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  color: var(--text);
+  overflow-x: auto;
+}
+.dl-hash { white-space: pre-wrap; word-break: break-all; }
+
+@media (max-width: 600px) {
+  .dl { padding-top: 92px; }
+  .dl-card { padding: 20px; }
+  .dl-btn { display: block; text-align: center; }
+}

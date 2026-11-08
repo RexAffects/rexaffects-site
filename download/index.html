@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- noindex until the public download is live (plugin-player docs/PUBLIC_DOWNLOAD.md: drop this line on go-live day) -->
+  <meta name="robots" content="noindex">
+  <title>Download Plugin Player — RexAffects</title>
+  <meta name="description" content="Download Plugin Player for Windows: camera and music reactive scenes you play with a game controller. Every scene plays free to try.">
+  <meta property="og:title" content="Download Plugin Player">
+  <meta property="og:description" content="Camera and music reactive scenes you play with a game controller. Windows beta, free to try.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rexaffects.com/download/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../shared/site-extra.css">
+  <link rel="stylesheet" href="download.css">
+  <script src="../shared/legal.js"></script>
+  <script src="../shared/pixel.js"></script>
+  <script src="../shared/download.js"></script>
+</head>
+<body>
+
+  <nav class="nav scrolled sub-nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">REXAFFECTS</a>
+      <ul class="sub-links">
+        <li><a href="/beta/">Beta</a></li>
+        <li><a href="/docs/" class="sub-hide-sm">Docs</a></li>
+        <li><a href="/live/" class="sub-cta">Book live</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="dl">
+    <div class="container dl-wrap">
+      <div class="section-label">Plugin Player &middot; Windows beta</div>
+      <h1 class="dl-title">Download <span>Plugin Player.</span></h1>
+      <p class="dl-lede">
+        Camera and music reactive scenes you play with an Xbox or PlayStation controller. Every scene plays free to try,
+        with a watermark on the output; unlock the ones you love in the STORE tab.
+      </p>
+
+      <!-- shown until the release is published and buying works (shared/download.js live) -->
+      <div class="dl-card" data-dl-when="soon">
+        <h2>The public download opens soon.</h2>
+        <p>Join the list and you'll get the link the day it opens.</p>
+        <a class="btn btn-primary" href="/beta/">Join the beta list</a>
+      </div>
+
+      <!-- shown once shared/download.js is filled and live -->
+      <div class="dl-card" data-dl-when="live" hidden>
+        <a class="btn btn-primary dl-btn" data-dl-href="windows" href="/beta/">Download for Windows</a>
+        <p class="dl-meta">Version <span data-dl="version"></span> &middot; <span data-dl="size"></span> &middot; Windows 10 or 11, 64-bit &middot; <span data-dl="date"></span></p>
+        <p class="dl-notes" data-dl-if="notes" hidden>What's new: <span data-dl="notes"></span></p>
+        <p class="dl-mac">Mac: coming soon.</p>
+      </div>
+
+      <section class="dl-steps" data-dl-when="live" hidden>
+        <h2>Install in a minute</h2>
+        <ol>
+          <li>Run <code data-dl="file"></code>. If your browser says the file "isn't commonly downloaded", choose <strong>Keep</strong> (in Edge: the <strong>…</strong> menu, <strong>Keep</strong>, then <strong>Keep anyway</strong>).</li>
+          <li>Windows may show a blue box, <em>"Windows protected your PC"</em>. That is normal for this beta: it isn't signed yet. Click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+          <li>Plugin Player opens by itself, fullscreen, with a first scene playing. Plug in a controller and press a button.</li>
+        </ol>
+        <p>Step by step, with what to do if Smart App Control blocks it: <a href="/docs/install/">Install guide</a>. Updates arrive by themselves after this.</p>
+
+        <h2>Check the file (optional)</h2>
+        <p>This is the SHA-256 fingerprint of the exact file we published. In PowerShell, in your Downloads folder:</p>
+        <pre class="dl-code">Get-FileHash .\<span data-dl="file"></span></pre>
+        <p>The <strong>Hash</strong> it prints should match this, letter for letter:</p>
+        <pre class="dl-code dl-hash" data-dl="sha256"></pre>
+      </section>
+
+      <section class="dl-steps">
+        <h2>What you need</h2>
+        <ul>
+          <li>Windows 10 or 11, 64-bit, and about 400 MB of free disk space. No admin password.</li>
+          <li>A graphics chip from the last several years (NVIDIA, AMD or Intel). A laptop with a dedicated GPU is best for the fluid scenes.</li>
+          <li>8 GB of RAM or more. An Xbox or PlayStation controller to play it; a webcam is optional (without one the scenes play on a demo clip).</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/live/">Book a live show</a></li>
+        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/links/">Links</a></li>
+      </ul>
+      <!-- LEGAL-FOOT (the identity comes from shared/legal.js) -->
+      <div class="legal-foot">
+        <p>RexAffects · Rex Riley Roberts · <span data-legal="address-line">USA</span> · <a href="mailto:support@rexaffects.com">support@rexaffects.com</a></p>
+        <p><a href="/terms/">Terms</a> · <a href="/refunds/">Refunds</a> · <a href="/eula/">EULA</a> · <a href="/privacy/">Privacy</a> · <a href="/cookies/" data-cookies>Cookies</a></p>
+      </div>
+      <p>&copy; 2026 Rex Roberts &middot; <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -6,6 +6,10 @@
 // Sales tracking: the ad's labels go with the checkout (kept for the tab, same key as shared/list-form.js); the ad click ids
 // only after Allow on the cookie notice (shared/pixel.js window.RA_ADS). The thanks page sends one Purchase with the order's
 // id, the same id the store's server sends, so Meta counts one.
+// Legal (plugin-player planning/legal/WORDING.md 2.3 + 3): BUY never goes straight to Stripe. It opens the BUY sheet: what you
+// get, boxes A/B/C (required) and the marketing box (optional), all unticked, the "By continuing" sentence, then PAY, which stays
+// off until A, B and C are ticked. The ticks go with the checkout as `consent`, the same object the app sends
+// (app/renderer/ui/legal-model.js consentFor; rexaffects-store lib/v2.ts consentOf records it in the Stripe session metadata).
 (function () {
   var API = (document.body.getAttribute('data-store-api') || '').replace(/\/+$/, '');
   var updatePicker = function () {};
@@ -78,6 +82,7 @@
       if (line && !isFounders) line.textContent = card.getAttribute('data-line') || '';
       var p = card.querySelector('[data-deal-price]');
       if (p) p.textContent = price;
+      card.querySelectorAll('[data-tile-price]').forEach(function (x) { x.textContent = price; }); // the tile footer's "US $… + tax"
       var saves = Number(card.getAttribute('data-alone')) - usd;
       var save = card.querySelector('[data-deal-save]');
       if (save) { save.hidden = !(saves > 0); save.textContent = 'You save $' + saves; }
@@ -114,9 +119,95 @@
       .catch(function () { fail(words(0, null)); });
   }
 
-  // singles and set packs
+  // ---- the BUY sheet (WORDING.md 2.3; the words are the app's, ui/legal-model.js BUY + BOX_A) ----
+  var BUY = {
+    heading: function (title, price) { return title + ' · US ' + price + ' + tax'; },
+    what: function (list) { return 'What you get: ' + list + ' unlocked clean at full output resolution on up to 2 of your computers, and the matching Resolume plugin download for each. This is a licence to use them, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
+    plugin: function (title) { return 'What you get: the ' + title + ' Resolume plugin download. This is a licence to use it, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
+    boxA: ['I agree to the ', ['/terms/', 'Terms of Sale'], ', ', ['/refunds/', 'Refund Policy'], ' and ', ['/eula/', 'EULA'], ', and I understand there are no refunds for change of mind because I could try every scene free first.'],
+    boxB: 'I want my scenes unlocked immediately. I acknowledge that, where I have a legal right to cancel within 14 days, I lose that right once the unlock starts.',
+    boxC: "Beta: I've read the list of known shortfalls (unsigned installer / SmartScreen warning · slow first launch · update feed may lag · camera capped at 1280×720 · no MIDI/OSC out · Windows only · some plugins ship after their scene) and I accept them.",
+    boxCMac: "Beta: I've read the list of known shortfalls (not notarized by Apple, right-click Open the first time · slow first launch · update feed may lag · camera capped at 1280×720 · no MIDI/OSC out · some plugins ship after their scene) and I accept them.",
+    marketing: 'Email me the free scene each month (unsubscribe any time)',
+    sentence: 'By continuing you agree to the Terms of Sale, Refund Policy and EULA.',
+    pay: function (price) { return 'PAY US ' + price + ' + TAX ON STRIPE →'; },
+    back: '‹ BACK',
+  };
+  var isMac = /Mac/.test(navigator.platform || '') && !/iPhone|iPad|iPod/.test(navigator.userAgent || '');
+  // PAY stays off until A, B and C are ticked; the consent object is exactly the app's consentFor()
+  var canPay = function (b) { return !!(b && b.terms && b.immediate && b.beta); };
+  function consentFor(b) {
+    var L = window.RA_LEGAL || {};
+    return canPay(b) ? { terms: true, immediate: true, beta: true, eula: L.eulaVersion || '', termsVersion: L.termsVersion || '', marketing: !!b.marketing } : null;
+  }
+
+  var sheet = null, lastBtn = null;
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
+    (kids || []).forEach(function (k) { e.appendChild(typeof k === 'string' ? document.createTextNode(k) : k); });
+    return e;
+  }
+  function closeSheet() {
+    if (!sheet) return;
+    sheet.remove(); sheet = null;
+    document.body.classList.remove('sheet-open');
+    if (lastBtn) { try { lastBtn.focus(); } catch (e) {} }
+  }
+  // c = { title, price: '$75', list | plugin, btn, go(consent) }
+  function askFirst(c) {
+    closeSheet();
+    lastBtn = c.btn;
+    var boxes = { terms: false, immediate: false, beta: false, marketing: false };
+    var pay = el('button', { type: 'button', class: 'cta buy', disabled: '' }, [BUY.pay(c.price)]);
+    function box(key, parts, optional) {
+      var input = el('input', { type: 'checkbox', 'data-box': key });
+      input.addEventListener('change', function () { boxes[key] = input.checked; pay.disabled = !canPay(boxes); });
+      var span = el('span', {}, parts.map(function (p) { return typeof p === 'string' ? p : el('a', { href: p[0], target: '_blank', rel: 'noopener' }, [p[1]]); }));
+      return el('label', { class: 'buy-box' + (optional ? ' optional' : '') }, [input, span]);
+    }
+    var back = el('button', { type: 'button', class: 'buy-back' }, [BUY.back]);
+    var card = el('div', { class: 'buy-card' }, [
+      el('h2', { id: 'buy-sheet-title' }, [BUY.heading(c.title, c.price)]),
+      el('p', { class: 'buy-what' }, [c.plugin ? BUY.plugin(c.plugin) : BUY.what(c.list)]),
+      box('terms', BUY.boxA),
+      box('immediate', [BUY.boxB]),
+      box('beta', [isMac ? BUY.boxCMac : BUY.boxC]),
+      box('marketing', [BUY.marketing], true),
+      el('p', { class: 'buy-sentence' }, [BUY.sentence]),
+      el('div', { class: 'buy-row' }, [back, pay]),
+    ]);
+    sheet = el('div', { class: 'buy-sheet', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'buy-sheet-title' }, [card]);
+    back.addEventListener('click', closeSheet);
+    sheet.addEventListener('click', function (e) { if (e.target === sheet) closeSheet(); });
+    pay.addEventListener('click', function () {
+      var k = consentFor(boxes);
+      if (!k) return;
+      var go = c.go;
+      closeSheet();
+      go(k);
+    });
+    document.body.appendChild(sheet);
+    document.body.classList.add('sheet-open');
+    var first = sheet.querySelector('input');
+    if (first) first.focus();
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet) closeSheet(); });
+
+  var priceOf = function (btn) { var u = Number(btn.getAttribute('data-usd')); if (u) return '$' + u; var m = (btn.textContent || '').match(/\$\d+/); return m ? m[0] : ''; };
+  var listOf = function (s) { return String(s || '').split(' · ').map(function (x) { return x.trim(); }).filter(Boolean).join(', '); };
+
+  // singles and set packs: the sheet first, then the checkout with its consent
   document.querySelectorAll('button[data-offer]').forEach(function (btn) {
-    btn.addEventListener('click', function () { checkout(btn, { offer: btn.getAttribute('data-offer') }); });
+    btn.addEventListener('click', function () {
+      var pack = btn.closest('[data-deal]');
+      var info = btn.closest('.info');
+      var title = pack ? pack.getAttribute('data-title') : info ? info.querySelector('h1').textContent.trim() : btn.getAttribute('data-offer');
+      var c = { title: title, price: priceOf(btn), btn: btn, go: function (consent) { checkout(btn, { offer: btn.getAttribute('data-offer'), consent: consent }); } };
+      if (btn.hasAttribute('data-plugin-only')) c.plugin = title;
+      else c.list = pack ? listOf((pack.querySelector('.pack-list') || {}).textContent) : title;
+      askFirst(c);
+    });
   });
 
   // pick packs: exactly N checkboxes (Goop and Cube Bloom are not in the list; the server refuses them anyway)
@@ -138,6 +229,8 @@
     updatePicker = function () {
       var s = current(), n = Number(s.getAttribute('data-size')), p = picked();
       nLabel.textContent = n;
+      var tp = picker.querySelector('[data-tile-price]');
+      if (tp) tp.textContent = '$' + s.getAttribute('data-price');
       count.textContent = p.length + ' of ' + n + ' picked' + (p.length > n ? ': untick ' + (p.length - n) : '');
       boxes.forEach(function (b) { b.disabled = !b.checked && p.length >= n; b.closest('.pick').classList.toggle('on', b.checked); });
       if (go.getAttribute('data-busy')) return;
@@ -155,7 +248,12 @@
     go.addEventListener('click', function () {
       var s = current(), p = picked();
       if (p.length !== Number(s.getAttribute('data-size'))) return;
-      checkout(go, { offer: s.value, picks: p });
+      var names = boxes.filter(function (b) { return b.checked; }).map(function (b) {
+        var span = b.closest('.pick').querySelector('span');
+        return span ? span.firstChild.textContent.trim() : b.value;
+      });
+      askFirst({ title: 'Pick ' + s.getAttribute('data-size'), price: '$' + s.getAttribute('data-price'), list: names.join(', '), btn: go,
+        go: function (consent) { checkout(go, { offer: s.value, picks: p, consent: consent }); } });
     });
     updatePicker();
   }

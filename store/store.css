@@ -165,3 +165,26 @@ footer { padding: 40px 0; color: var(--dim); font-size: .9rem; border-top: 1px s
 .perk { display: inline-block; margin-left: .5em; padding: .1em .45em; border: 1px solid var(--accent); border-radius: 5px; font-size: .62rem; font-weight: 800; letter-spacing: .08em; color: var(--accent); vertical-align: middle; white-space: nowrap; }
 .perk-line { margin: .6em 0 0; font-size: .9rem; opacity: .9; }
 .perk-line .perk { margin: 0 .4em 0 0; }
+
+/* legal (plugin-player planning/legal/WORDING.md): footer line on every store page, the store paragraph above the fold (3),
+   the tile footer under every price (2.1), and the BUY sheet between BUY and Stripe (2.3). Links: accent AND underlined. */
+footer .legal-foot { max-width: 760px; margin: 0 auto 8px; padding: 0 20px; line-height: 1.6; }
+footer .legal-foot p { margin: 0 0 4px; overflow-wrap: anywhere; }
+footer .legal-foot a { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 2px; }
+footer .legal-foot a:hover { color: var(--text); }
+.store-terms { max-width: 720px; margin: 0 auto 18px; color: var(--text); font-size: 1rem; background: rgba(10,10,10,.6); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; }
+.tile-legal { margin-top: 12px; color: var(--text-secondary); font-size: .88rem; line-height: 1.55; }
+.tile-legal a, .buy-card a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.buy-sheet { position: fixed; inset: 0; z-index: 900; display: flex; align-items: flex-start; justify-content: center; padding: 24px 16px; background: rgba(0,0,0,.72); overflow-y: auto; }
+.buy-card { width: 100%; max-width: 600px; margin: auto 0; background: var(--surface); border: 1px solid var(--border-hover); border-radius: 14px; padding: 22px; text-align: left; }
+.buy-card h2 { font-size: 1.2rem; margin-bottom: 10px; }
+.buy-card .buy-what { color: var(--text-secondary); margin-bottom: 16px; }
+.buy-box { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--border); cursor: pointer; color: var(--text); }
+.buy-box input { flex: none; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent); }
+.buy-box.optional { color: var(--text-secondary); }
+.buy-sentence { margin: 16px 0 12px; color: var(--text); font-size: 1rem; }
+.buy-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.buy-back { background: transparent; border: 1px solid var(--border-hover); color: var(--text); font: inherit; font-weight: 600; padding: 13px 18px; border-radius: 10px; cursor: pointer; }
+.buy-back:hover { border-color: var(--accent); color: var(--accent); }
+body.sheet-open { overflow: hidden; }
+@media (max-width: 480px) { .buy-row .cta { width: 100%; text-align: center; } .buy-back { width: 100%; } }

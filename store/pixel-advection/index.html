@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../store.css">
+  <script src="/shared/legal.js"></script>
   <script src="/shared/pixel.js"></script>
 </head>
 <body data-store-api="https://rexaffects-store.vercel.app">
@@ -25,17 +26,27 @@
       <ul class="incl">
         <li>Plays clean in <b>Plugin Player</b>: no mark on the screen, the projector or the feed</li>
         <li>The <b>Resolume plugin</b>: coming by the end of November. Buy now and we'll email it to you the moment it's ready</li>
-        <li>Sign in to Plugin Player with your purchase email: works on up to 3 computers</li>
+        <li>Sign in to Plugin Player with your purchase email: works on up to 2 computers</li>
       </ul>
       <button type="button" class="cta buy" data-offer="pixel-advection">Buy · $30</button>
       
+      <p class="tile-legal">US <span data-tile-price>$30</span> + tax · Licence for 2 computers<br>
+        Try it free first: this scene plays free in Plugin Player, with a watermark on the output.<br>
+        No refunds for change of mind. Faulty? We make it right. <a href="/refunds/" target="_blank" rel="noopener">Refund Policy ↗</a></p>
       <p class="err" role="alert" hidden></p>
       <p class="fine">Or save with a pack: Pick any 3 for $75, Pick any 5 for $100. <a href="/store/#packs">See the deals</a></p>
       <p class="fine">Secure checkout by Stripe. After paying: open Plugin Player → ACCOUNT and sign in with the email you used.</p>
     </div>
   </div></section>
 
-  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</footer>
+  <footer>
+    <!-- LEGAL-FOOT (the identity comes from shared/legal.js) -->
+    <div class="legal-foot">
+      <p>Rex Affects · Rex Riley Roberts · <span data-legal="address-line">USA</span> · <a href="mailto:support@rexaffects.com">support@rexaffects.com</a></p>
+      <p><a href="/terms/">Terms</a> · <a href="/refunds/">Refunds</a> · <a href="/eula/">EULA</a> · <a href="/privacy/">Privacy</a> · <a href="/cookies/" data-cookies>Cookies</a></p>
+    </div>
+    <p>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</p>
+  </footer>
   <script src="../store.js"></script>
 </body>
 </html>

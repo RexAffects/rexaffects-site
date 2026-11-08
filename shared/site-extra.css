@@ -44,6 +44,12 @@
 .foot-links a { color: var(--text-secondary); font-weight: 500; }
 .foot-links a:hover { color: var(--text); }
 
+/* ---------- Legal footer line (every page; the address comes from shared/legal.js) ---------- */
+.legal-foot { max-width: 760px; margin: 0 auto 14px; line-height: 1.6; }
+.legal-foot p { margin: 0 0 4px; overflow-wrap: anywhere; }
+.legal-foot a { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 2px; }
+.legal-foot a:hover { color: var(--text); }
+
 /* ---------- List / booking forms ---------- */
 .lf-card {
   background: var(--surface);

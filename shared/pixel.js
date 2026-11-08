@@ -21,7 +21,10 @@
     } catch (e) {}
     return null;
   }
-  function save(choice) { try { localStorage.setItem(KEY, JSON.stringify({ choice: choice, at: Date.now() })); } catch (e) {} }
+  function save(choice) {
+    try { localStorage.setItem(KEY, JSON.stringify({ choice: choice, at: Date.now() })); } catch (e) {}
+    try { document.dispatchEvent(new Event('ra-cookies')); } catch (e) {} // /cookies/ shows the answer
+  }
   function gpc() { return navigator.globalPrivacyControl === true; }
 
   function loadPixel() {
@@ -83,15 +86,21 @@
   }
 
   // the Cookies link in the footer of every page. A loaded pixel can't be unloaded: No thanks after an Allow takes
-  // effect from the next page.
+  // effect from the next page. A page's own [data-cookies] links (the legal footer, /cookies/) open the notice; a footer
+  // without one gets a link added.
   function footerLink() {
+    var own = document.querySelectorAll('[data-cookies]');
+    if (own.length) { [].forEach.call(own, function (a) { a.addEventListener('click', function (e) { e.preventDefault(); ask(); }); }); return; }
     var list = document.querySelector('footer .foot-links') || document.querySelector('footer');
-    if (!list || (list.querySelector && list.querySelector('[data-cookies]'))) return;
+    if (!list) return;
     var a = document.createElement('a');
     a.href = '#cookies'; a.textContent = 'Cookies'; a.setAttribute('data-cookies', '');
     a.onclick = function (e) { e.preventDefault(); ask(); };
     if (list.tagName === 'UL') { var li = document.createElement('li'); li.appendChild(a); list.appendChild(li); } else list.appendChild(a);
   }
+
+  // /cookies/ reads the current answer: 'allow' | 'decline' | 'gpc' | null (not asked yet)
+  window.RA_COOKIES = { ask: function () { ask(); }, choice: function () { return gpc() ? 'gpc' : read(); } };
 
   function ready() {
     footerLink();

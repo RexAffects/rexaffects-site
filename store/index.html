@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="store.css">
+  <script src="/shared/legal.js"></script>
   <script src="/shared/pixel.js"></script>
 </head>
 <body data-store-api="https://rexaffects-store.vercel.app">
@@ -22,6 +23,8 @@
     <div class="tag">Plugin Player · Store</div>
     <h1>Scenes you <span>play live.</span></h1>
     <p class="lede">Every scene plays free in Plugin Player, with a watermark on full-screen output. Buy one and it plays clean, and its Resolume plugin comes with it.</p>
+    <!-- WORDING.md 3: above the fold, body size, not a footnote -->
+    <p class="store-terms">Try every scene free in Plugin Player before you buy. Prices in USD before tax. What you buy is a licence for 2 computers plus the Resolume plugin download. No refunds for change of mind; faulty scenes are fixed, replaced or refunded. Sold through Link (Stripe).</p>
     <p class="lede small"><a href="#packs">Deals</a> · <a href="#featured">Featured</a> · <a href="#all">All scenes</a></p>
   </div></div>
   <section id="packs"><div class="wrap">
@@ -62,6 +65,9 @@
           <button type="button" class="cta buy" data-offer="all-scenes" data-usd="200">Buy All Scenes · $200</button>
           <button type="button" class="inside-toggle" aria-expanded="false" aria-controls="inside-all-scenes">See what's inside</button>
         </div>
+        <p class="tile-legal">US <span data-tile-price>$200</span> + tax · Licence for 2 computers · Resolume plugin included<br>
+        Try it free first: every scene in it plays free in Plugin Player, with a watermark on the output.<br>
+        No refunds for change of mind. Faulty? We make it right. <a href="/refunds/" target="_blank" rel="noopener">Refund Policy ↗</a></p>
         <p class="err" role="alert" hidden></p>
         <div class="inside" id="inside-all-scenes" hidden>
           <a class="in" href="/store/blob-tracking-v3/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/blob-tracking-v3.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/blob-tracking-v3.mp4" type="video/mp4"></video><b>Blob Tracking v3</b><small>Resolume plugin included</small></a>
@@ -88,6 +94,9 @@
           <button type="button" class="cta buy" data-offer="everything" data-usd="200">Buy Everything · $200</button>
           <button type="button" class="inside-toggle" aria-expanded="false" aria-controls="inside-everything">See what's inside</button>
         </div>
+        <p class="tile-legal">US <span data-tile-price>$200</span> + tax · Licence for 2 computers · Resolume plugin included<br>
+        Try it free first: every scene in it plays free in Plugin Player, with a watermark on the output.<br>
+        No refunds for change of mind. Faulty? We make it right. <a href="/refunds/" target="_blank" rel="noopener">Refund Policy ↗</a></p>
         <p class="err" role="alert" hidden></p>
         <div class="inside" id="inside-everything" hidden>
           <a class="in" href="/store/blob-tracking-v3/"><video class="clip" muted loop playsinline preload="none" poster="/store/media/blob-tracking-v3.jpg" width="240" height="135" aria-hidden="true"><source src="/store/media/blob-tracking-v3.mp4" type="video/mp4"></video><b>Blob Tracking v3</b><small>Resolume plugin included</small></a>
@@ -123,6 +132,9 @@
         <span class="pick-count" aria-live="polite">0 of 3 picked</span>
         <button type="button" class="cta buy" data-pick-checkout disabled>Pick 3 scenes</button>
       </div>
+      <p class="tile-legal">US <span data-tile-price>$75</span> + tax · Licence for 2 computers · Resolume plugin included<br>
+        Try it free first: every scene in it plays free in Plugin Player, with a watermark on the output.<br>
+        No refunds for change of mind. Faulty? We make it right. <a href="/refunds/" target="_blank" rel="noopener">Refund Policy ↗</a></p>
       <p class="err" role="alert" hidden></p>
     </div>
   </div></section>
@@ -213,7 +225,14 @@
       </a>
     </div></div></section>
 
-  <footer>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</footer>
+  <footer>
+    <!-- LEGAL-FOOT (the identity comes from shared/legal.js) -->
+    <div class="legal-foot">
+      <p>Rex Affects · Rex Riley Roberts · <span data-legal="address-line">USA</span> · <a href="mailto:support@rexaffects.com">support@rexaffects.com</a></p>
+      <p><a href="/terms/">Terms</a> · <a href="/refunds/">Refunds</a> · <a href="/eula/">EULA</a> · <a href="/privacy/">Privacy</a> · <a href="/cookies/" data-cookies>Cookies</a></p>
+    </div>
+    <p>RexAffects · <a href="https://www.instagram.com/rexaffects/">@rexaffects</a> · Secure checkout by Stripe</p>
+  </footer>
   <script src="store.js"></script>
 </body>
 </html>

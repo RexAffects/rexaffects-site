@@ -14,7 +14,7 @@
 
   var L = window.RA_LEGAL = {
     trade: 'RexAffects',
-    owner: 'Rex Riley Roberts',
+    owner: 'Rex Roberts',
     address: ADDRESS,
     country: 'USA',
     support: 'support@rexaffects.com',

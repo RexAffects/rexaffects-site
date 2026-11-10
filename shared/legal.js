@@ -10,7 +10,7 @@
 // them here AND the same versions in plugin-player app/shared/legal.cjs (EULA_VERSION, TERMS_VERSION), so the app and
 // the website record the same version in an order's consent (rexaffects-store lib/v2.ts consentOf: 1-20 of A-Z a-z 0-9 . _ -).
 (function () {
-  var ADDRESS = '2139 W Martin Luther King Jr Blvd, Unit #639, Fayetteville, AR 72701'; // not confirmed until Form 1583 is done
+  var ADDRESS = '1590 E Joyce Blvd #8543, Fayetteville, AR 72703'; // USPS PO Box 8543 with Street Addressing (confirmed Tue Nov 10)
 
   var L = window.RA_LEGAL = {
     trade: 'RexAffects',

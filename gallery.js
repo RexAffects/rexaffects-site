@@ -36,8 +36,8 @@
       alt: 'Rex Roberts and VJ Academy co-founder Rob Morris working side by side in a festival tent in 2024, faces lit magenta by their screens, hands on a glowing pad controller.'
     },
     {
-      src: 'images/rexaffects rekinnection 23.jpg',
-      alt: 'Festival booking flyer reading "Rekinection Music, Wellness & Arts Festival — REXAFFECTS — June 7 to 11, 2023 — Astral Valley Art Park, 45 minutes from St. Louis", over a portrait of Rex Roberts tipping a wide-brim hat against psychedelic purple artwork.'
+      src: 'images/rekinnection-2023-no-name.jpg',
+      alt: 'Rekinection Music, Wellness & Arts Festival artwork: Rex Roberts tipping a wide-brim hat against a psychedelic purple background.'
     },
     {
       src: 'images/Backwoods Flintwick Boone from FOH pic0.jpg',

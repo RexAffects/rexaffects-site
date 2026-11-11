@@ -6,15 +6,21 @@
 // (Rex's rule: the public download opens only once buying works; until then /download/ points to the waiting list).
 (function () {
   var D = window.RA_DOWNLOAD = {
-    live: false,
-    version: '',            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
-    date: '',               // e.g. 'November 9, 2026'
-    notes: '',              // the release's first line ("What's new")
+    live: true,
+    version: "0.2.0",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
+    date: "November 11, 2026",               // e.g. 'November 9, 2026'
+    notes: "The public beta: Windows and Mac, a store built in, and ready to plug and play with any controller.",              // the release's first line ("What's new")
     windows: {
-      file: '',             // Plugin-Player-Setup-<version>.exe
-      url: '',              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
-      sha256: '',           // of that exact file (lower-case hex, 64 characters)
-      bytes: 0,
+      file: "Plugin-Player-Setup-0.2.0.exe",             // Plugin-Player-Setup-<version>.exe
+      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.0/Plugin-Player-Setup-0.2.0.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
+      sha256: "e1b9c5744eb8068c4ddf1b1ccec5c868bd45c4bb67b78daf939c92f7fcb4ed0e",           // of that exact file (lower-case hex, 64 characters)
+      bytes: 147828153,
+    },
+    mac: {                  // the signed + notarized universal DMG (Apple silicon + Intel), same release
+      dmg: 'Plugin-Player-0.2.0-universal.dmg',              // Plugin-Player-<version>-universal.dmg
+      link: 'https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.0/Plugin-Player-0.2.0-universal.dmg',
+      hash: '987176fb041f713312e37bf3a476e014f5b547086936940a8778477c2ea33604',
+      size: 252044398,
     },
   };
 
@@ -23,6 +29,8 @@
     return D.live && /^\d+\.\d+\.\d+/.test(D.version) && /^https:\/\/github\.com\/RexAffects\/plugin-player-releases\/releases\/download\//.test(w.url) && /^[0-9a-f]{64}$/.test(w.sha256) && w.bytes > 50e6;
   };
   D.ready = ok;
+  var macOk = function () { var m = D.mac; return ok() && /^https:\/\/github\.com\/RexAffects\/plugin-player-releases\/releases\/download\//.test(m.link) && /^[0-9a-f]{64}$/.test(m.hash) && m.size > 50e6; };
+  D.macReady = macOk;
 
   function mb(n) { return Math.round(n / 1e6) + ' MB'; }
   function fill() {
@@ -41,6 +49,12 @@
     set('sha256', w.sha256);
     [].forEach.call(document.querySelectorAll('[data-dl-href="windows"]'), function (a) { a.href = w.url; });
     [].forEach.call(document.querySelectorAll('[data-dl-if="notes"]'), function (el) { el.hidden = !D.notes; });
+    var mOn = macOk(), m = D.mac;
+    [].forEach.call(document.querySelectorAll('[data-dl-mac]'), function (el) { el.hidden = (el.getAttribute('data-dl-mac') === 'live') !== mOn; });
+    if (mOn) {
+      set('mac-file', m.dmg); set('mac-size', mb(m.size)); set('mac-sha256', m.hash);
+      [].forEach.call(document.querySelectorAll('[data-dl-href="mac"]'), function (a) { a.href = m.link; });
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fill); else fill();
 })();

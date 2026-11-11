@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- noindex until the public download is live (plugin-player docs/PUBLIC_DOWNLOAD.md: drop this line on go-live day) -->
-  <meta name="robots" content="noindex">
   <title>Download Plugin Player — RexAffects</title>
   <meta name="description" content="Download Plugin Player for Windows: camera and music reactive scenes you play with a game controller. Every scene plays free to try.">
   <meta property="og:title" content="Download Plugin Player">
@@ -36,7 +34,7 @@
 
   <main class="dl">
     <div class="container dl-wrap">
-      <div class="section-label">Plugin Player &middot; Windows beta</div>
+      <div class="section-label">Plugin Player &middot; public beta &middot; Windows + Mac</div>
       <h1 class="dl-title">Download <span>Plugin Player.</span></h1>
       <p class="dl-lede">
         Camera and music reactive scenes you play with an Xbox or PlayStation controller. Every scene plays free to try,
@@ -55,7 +53,9 @@
         <a class="btn btn-primary dl-btn" data-dl-href="windows" href="/beta/">Download for Windows</a>
         <p class="dl-meta">Version <span data-dl="version"></span> &middot; <span data-dl="size"></span> &middot; Windows 10 or 11, 64-bit &middot; <span data-dl="date"></span></p>
         <p class="dl-notes" data-dl-if="notes" hidden>What's new: <span data-dl="notes"></span></p>
-        <p class="dl-mac">Mac: coming soon.</p>
+        <p class="dl-mac" data-dl-mac="soon">Mac: coming soon.</p>
+        <a class="btn btn-primary dl-btn" data-dl-mac="live" data-dl-href="mac" href="/beta/" hidden>Download for Mac</a>
+        <p class="dl-meta" data-dl-mac="live" hidden><span data-dl="mac-size"></span> &middot; macOS 13 or newer, Apple silicon or Intel &middot; signed and notarized by Apple</p>
       </div>
 
       <section class="dl-steps" data-dl-when="live" hidden>
@@ -65,6 +65,14 @@
           <li>Windows may show a blue box, <em>"Windows protected your PC"</em>. That is normal for this beta: it isn't signed yet. Click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
           <li>Plugin Player opens by itself, fullscreen, with a first scene playing. Plug in a controller and press a button.</li>
         </ol>
+        <h2 data-dl-mac="live" hidden>On a Mac</h2>
+        <ol data-dl-mac="live" hidden>
+          <li>Open <code data-dl="mac-file"></code> and drag <strong>Plugin Player</strong> into <strong>Applications</strong>.</li>
+          <li>Open it from Applications. The first time, macOS asks if you want to open an app downloaded from the internet: click <strong>Open</strong>.</li>
+          <li>Allow the camera if you want to use it. Plug in a controller and press a button.</li>
+        </ol>
+        <p data-dl-mac="live" hidden>Mac file fingerprint (SHA-256): <code class="dl-hash" data-dl="mac-sha256"></code></p>
+
         <p>Step by step, with what to do if Smart App Control blocks it: <a href="/docs/install/">Install guide</a>. Updates arrive by themselves after this.</p>
 
         <h2>Check the file (optional)</h2>

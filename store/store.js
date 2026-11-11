@@ -122,8 +122,8 @@
   // ---- the BUY sheet (WORDING.md 2.3; the words are the app's, ui/legal-model.js BUY + BOX_A) ----
   var BUY = {
     heading: function (title, price) { return title + ' · US ' + price + ' + tax'; },
-    what: function (list) { return 'What you get: ' + list + ' unlocked clean at full output resolution on up to 2 of your computers, and the matching Resolume plugin download for each. This is a licence to use them, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
-    plugin: function (title) { return 'What you get: the ' + title + ' Resolume plugin download. This is a licence to use it, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
+    what: function (list) { return 'What you get: ' + list + ' unlocked clean at full output resolution on up to 2 of your computers, and the matching Resolume plugin download for each. This is a license to use them, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
+    plugin: function (title) { return 'What you get: the ' + title + ' Resolume plugin download. This is a license to use it, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
     boxA: ['I agree to the ', ['/terms/', 'Terms of Sale'], ', ', ['/refunds/', 'Refund Policy'], ' and ', ['/eula/', 'EULA'], ', and I understand there are no refunds for change of mind because I could try every scene free first.'],
     boxB: 'I want my scenes unlocked immediately. I acknowledge that, where I have a legal right to cancel within 14 days, I lose that right once the unlock starts.',
     boxC: "Beta: I've read the list of known shortfalls (unsigned installer / SmartScreen warning · slow first launch · update feed may lag · camera capped at 1280×720 · no MIDI/OSC out · Windows only · some plugins ship after their scene) and I accept them.",

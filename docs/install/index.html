@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/shared/site-extra.css">
   <link rel="stylesheet" href="/docs/docs.css">
-  <script src="/shared/legal.js"></script>
   <script src="/shared/pixel.js"></script>
 </head>
 <body>
@@ -20,7 +19,7 @@
 <h1 id="install-plugin-player-windows-beta">Install Plugin Player (Windows beta)</h1>
 <p>One file, one double-click. About a minute.</p>
 <h2 id="what-you-need">What you need</h2>
-<ul><li>Windows 10 or 11, 64-bit.</li><li>A graphics chip that does WebGL2 with float render targets: any NVIDIA, AMD or Intel GPU from the last several years. A laptop with a dedicated GPU (NVIDIA / AMD) is best for the fluid scenes.</li><li><strong>8 GB of RAM</strong> or more.</li><li>On the first run Plugin Player checks this computer once: graphics (WebGL2, float targets, not a software driver), RAM, and about 30 fps on the first scene. If something is short you'll see one line: <em>"This computer's graphics may struggle with these scenes. Close other apps, try CONTROLS › OUTPUT QUALITY 720p, or use a laptop with a dedicated GPU."</em> Plugin Player still runs. Click <strong>×</strong> and it won't show again.</li><li>About <strong>400 MB</strong> of free disk space.</li><li>No admin password. Plugin Player installs for your Windows user only.</li></ul>
+<ul><li>Windows 10 or 11, 64-bit.</li><li>A graphics chip that does WebGL2 with float render targets: any NVIDIA, AMD or Intel GPU from the last several years. A laptop with a dedicated GPU (NVIDIA / AMD) is best for the fluid scenes.</li><li><strong>8 GB of RAM</strong> or more.</li><li>On the first run Plugin Player checks this computer once: graphics (WebGL2, float targets, not a software driver), RAM, and about 30 fps on the first scene. If something is short you'll see one line: <em>"This computer's graphics may struggle with these scenes. Close other apps, try ⧉ OUTPUT › OUTPUT QUALITY 720p, or use a laptop with a dedicated GPU."</em> Plugin Player still runs. Click <strong>×</strong> and it won't show again.</li><li>About <strong>400 MB</strong> of free disk space.</li><li>No admin password. Plugin Player installs for your Windows user only.</li></ul>
 <h2 id="1-download">1. Download</h2>
 <p>Download <strong><code>Plugin-Player-Setup-0.1.8-beta.exe</code></strong> (about 130 MB) <code>[download link at beta]</code>.</p>
 <p>Your browser may say the file "isn't commonly downloaded". Choose <strong>Keep</strong> (in Edge: the <strong>…</strong> menu next to the download, then <strong>Keep</strong>, then <strong>Keep anyway</strong>).</p>
@@ -38,7 +37,7 @@
 <ul><li><strong>F11</strong> = fullscreen on / off. <strong>Esc</strong> leaves fullscreen. Quit with the window's close button.</li><li>To open it again: <strong>Start menu → Plugin Player</strong>, or the <strong>Plugin Player</strong> icon on your desktop.</li><li>The first launch compiles the scenes, which takes up to ~20 s. Later launches are much faster.</li></ul>
 <p>Then go to <a href="/docs/first-run/"><code>FIRST_RUN.md</code></a> §3 for the tour.</p>
 <h2 id="whats-in-the-beta">What's in the beta</h2>
-<ul><li>Thirteen scenes: <strong>Cube Bloom, Frame Stack, Goop (fluid dynamics), Plane Drift, Corridor Panels, Cube Stack, Custom Particles, Blob Tracking v3, Pixel Smear, Blob Melt, Flashpoint, Machine Vision, Typewriter Terrain</strong>, with all their presets.</li><li>Webcam input. Plugin Player tries your camera at start. If another app is using it, the CAM chip says BLOCKED, a <strong>SOMETHING BLOCKED?</strong> card shows how to fix it, and the scenes play on the demo clip, a short loop of someone waving at a webcam (<a href="/docs/camera/"><code>CAMERA.md</code></a>, <a href="/docs/security-prompts/"><code>SECURITY_PROMPTS.md</code></a>).</li><li>The first launch compiles the scenes for your graphics card: the first scene plays after about 10 s, the heaviest (Custom Particles, Blob Tracking v3, Pixel Smear, Blob Melt, Flashpoint) finish in the background within the first minute. Every launch after that is under a second.</li><li>8BitDo Micro controller support, with automatic pairing (<a href="/docs/controller/"><code>CONTROLLER.md</code></a>).</li><li><strong>Spout, built in, both ways</strong> (nothing extra to install): <code>--spout</code> sends the picture to Resolume Arena as the Spout source <em>Plugin Player</em>; CAM ▾ › <strong>SPOUT</strong> takes Arena's composition in like a camera (<a href="/docs/output/"><code>OUTPUT.md</code></a> §4).</li></ul>
+<ul><li>Twelve scenes: <strong>Cube Bloom, Frame Stack, Goop (fluid dynamics), Plane Drift, Corridor Panels, Cube Stack, Custom Particles, Blob Tracking v3, Pixel Smear, Flashpoint, Machine Vision, Typewriter Terrain</strong>, with all their presets.</li><li>Webcam input. Plugin Player tries your camera at start. If another app is using it, ⧉ INPUT says BLOCKED, a <strong>SOMETHING BLOCKED?</strong> card shows how to fix it, and the scenes play on the demo clip, a short loop of someone waving at a webcam (<a href="/docs/camera/"><code>CAMERA.md</code></a>, <a href="/docs/security-prompts/"><code>SECURITY_PROMPTS.md</code></a>).</li><li>The first launch compiles the scenes for your graphics card: the first scene plays after about 10 s, the heaviest (Custom Particles, Blob Tracking v3, Pixel Smear, Flashpoint) finish in the background within the first minute. Every launch after that is under a second.</li><li>8BitDo Micro controller support, with automatic pairing (<a href="/docs/controller/"><code>CONTROLLER.md</code></a>).</li><li><strong>Spout, built in, both ways</strong> (nothing extra to install): the SPOUT switch in the <strong>⧉ OUTPUT</strong> box or <code>--spout</code> sends the picture to Resolume Arena as the Spout source <em>Plugin Player</em>; ⧉ INPUT › <strong>SPOUT</strong> takes Arena's composition in like a camera (<a href="/docs/output/"><code>OUTPUT.md</code></a> §4).</li></ul>
 <h2 id="updates">Updates</h2>
 <p>You never reinstall by hand. New versions (fixes and <strong>new scenes</strong>) arrive by themselves:</p>
 <ul><li>While the app is open it checks for a new version now and then and downloads it quietly in the background. Nothing pops up, nothing restarts, the show keeps playing.</li><li>When it's ready, an <strong>UPDATE</strong> chip appears at the top right (<strong>UPDATE READY · RESTART</strong> on a very wide window). Click it to see what's new.</li><li>It installs by itself <strong>the next time you quit</strong>. Or click <strong>RESTART NOW</strong> when you're not on stage: the screen goes dark for a few seconds and the new version opens.</li><li>Your shows, projector mapping, presets and unlocks stay exactly as they were.</li><li>No internet? Nothing happens; it tries again later.</li><li>If that panel says <strong>VERSION … IS OUT</strong> and offers <strong>OPEN REXAFFECTS.COM</strong>, Windows didn't let the automatic install run on your computer (this can happen with the beta because it isn't signed yet). Download the new installer from rexaffects.com and run it over the old one: everything you saved stays.</li></ul>
@@ -53,12 +52,8 @@
       <ul class="foot-links">
         <li><a href="/docs/">Docs</a></li>
         <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
       </ul>
-      <!-- LEGAL-FOOT (the identity comes from shared/legal.js) -->
-      <div class="legal-foot">
-        <p>RexAffects · Rex Roberts · <span data-legal="address-line">USA</span> · <a href="mailto:support@rexaffects.com">support@rexaffects.com</a></p>
-        <p><a href="/terms/">Terms</a> · <a href="/refunds/">Refunds</a> · <a href="/eula/">EULA</a> · <a href="/privacy/">Privacy</a> · <a href="/cookies/" data-cookies>Cookies</a></p>
-      </div>
       <p>&copy; 2026 Rex Roberts. All rights reserved.</p>
     </div>
   </footer>

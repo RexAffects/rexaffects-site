@@ -1,67 +1,96 @@
-/* /download/: builds on ../style.css (same tokens: --bg, --cyan, --magenta, Inter) and the beta page's look. */
+/* /download/ in Plugin Player's own look (Rex, Nov 11: "make it more plug-and-player themed"): the app's palette
+   (near-black slabs, ONE orange #f97316, its glow), its fonts (Unbounded display, JetBrains Mono labels) and the
+   top-left cartridge mark. Builds on ../style.css for the nav + footer only. */
 [hidden] { display: none !important; }
+
+.pp {
+  --pp-ink: #0a0a0a; --pp-slab: #111111; --pp-slab2: #1a1a1a; --pp-line: #2a2a2a;
+  --pp-txt: #f5f5f5; --pp-body: #c4c4c4; --pp-dim: #9a9a9a;
+  --pp-or: #f97316; --pp-or-hi: #fb923c; --pp-or-rgb: 249, 115, 22;
+  --pp-disp: "Unbounded", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --pp-mono: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
+  background: var(--pp-ink);
+}
 
 .dl {
   padding: 112px 0 72px;
   background:
-    radial-gradient(ellipse at 15% 0%, rgba(0, 229, 255, 0.12), transparent 55%),
-    radial-gradient(ellipse at 90% 30%, rgba(255, 45, 123, 0.10), transparent 55%);
+    radial-gradient(ellipse at 50% -10%, rgba(var(--pp-or-rgb), 0.16), transparent 60%),
+    radial-gradient(ellipse at 100% 60%, rgba(var(--pp-or-rgb), 0.06), transparent 55%),
+    var(--pp-ink);
+  color: var(--pp-txt);
 }
-.dl-wrap { max-width: 760px; }
+.dl-wrap { max-width: 780px; }
+
+/* the cartridge, exactly the app's .wm .cart, bigger */
+.pp-cart {
+  display: inline-block; position: relative; vertical-align: middle;
+  width: 60px; height: 46px; border-radius: 10px 10px 6px 6px;
+  background: var(--pp-or); box-shadow: 0 0 36px rgba(var(--pp-or-rgb), 0.55);
+  margin-bottom: 22px;
+}
+.pp-cart::after { content: ""; position: absolute; left: 10px; right: 10px; top: 10px; height: 16px; background: var(--pp-ink); border-radius: 4px; }
+
+.dl .section-label {
+  font-family: var(--pp-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--pp-or); margin-bottom: 14px;
+}
 
 .dl-title {
-  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-  margin-bottom: 18px;
+  font-family: var(--pp-disp); font-weight: 900;
+  font-size: clamp(2.1rem, 6vw, 3.6rem); line-height: 1.04; letter-spacing: -0.02em;
+  margin-bottom: 18px; color: var(--pp-txt);
 }
-.dl-title span {
-  background: linear-gradient(90deg, var(--cyan), var(--magenta));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  padding-bottom: 0.14em;
-}
-.dl-lede { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 28px; }
+.dl-title span { color: var(--pp-or); text-shadow: 0 0 28px rgba(var(--pp-or-rgb), 0.45); }
+.dl-lede { color: var(--pp-body); font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; max-width: 640px; }
 
 .dl-card {
-  border: 1px solid var(--border);
-  background: var(--surface);
-  border-radius: 14px;
-  padding: 28px;
-  margin-bottom: 40px;
+  border: 1px solid var(--pp-line);
+  background: linear-gradient(180deg, var(--pp-slab2), var(--pp-slab));
+  border-radius: 16px; padding: 30px; margin-bottom: 40px;
+  box-shadow: 0 0 0 1px rgba(var(--pp-or-rgb), 0.06), 0 20px 60px rgba(0, 0, 0, 0.5);
 }
-.dl-card h2 { font-size: 1.3rem; margin-bottom: 8px; }
-.dl-card p { color: var(--text-secondary); margin-bottom: 18px; }
-.dl-btn { font-size: 1.05rem; padding: 16px 30px; }
-.dl-meta { margin: 16px 0 0; font-size: 0.92rem; }
-.dl-notes { margin: 8px 0 0; color: var(--text); }
-.dl-mac { margin: 8px 0 0; font-size: 0.92rem; }
+.dl-card h2 { font-family: var(--pp-disp); font-size: 1.25rem; margin-bottom: 8px; color: var(--pp-txt); }
+.dl-card p { color: var(--pp-body); margin-bottom: 18px; }
 
-.dl-steps { margin-bottom: 36px; }
-.dl-steps h2 { font-size: 1.25rem; margin: 0 0 12px; }
-.dl-steps ol, .dl-steps ul { padding-left: 1.3em; color: var(--text-secondary); }
+.dl-btn, .dl .btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--pp-disp); font-weight: 800; font-size: 1rem; letter-spacing: 0.01em;
+  padding: 16px 28px; margin: 0 12px 12px 0; border: 0; border-radius: 12px;
+  background: var(--pp-or); color: #111;
+  box-shadow: 0 0 26px rgba(var(--pp-or-rgb), 0.45);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+.dl-btn:hover, .dl .btn-primary:hover { background: var(--pp-or-hi); transform: translateY(-1px); box-shadow: 0 0 36px rgba(var(--pp-or-rgb), 0.6); color: #111; }
+
+.dl-meta { margin: 6px 0 0; font-family: var(--pp-mono); font-size: 0.8rem; color: var(--pp-dim); letter-spacing: 0.02em; }
+.dl-notes { margin: 14px 0 0; color: var(--pp-body); }
+.dl-mac { margin: 8px 0 0; font-size: 0.92rem; color: var(--pp-dim); }
+
+.dl-steps { margin-bottom: 36px; color: var(--pp-body); }
+.dl-steps h2 { font-family: var(--pp-disp); font-size: 1.15rem; margin: 26px 0 12px; color: var(--pp-txt); }
+.dl-steps ol, .dl-steps ul { padding-left: 1.3em; }
 .dl-steps li { margin-bottom: 8px; }
-.dl-steps p { color: var(--text-secondary); margin-bottom: 12px; }
-.dl-steps a { color: var(--cyan); }
-.dl-steps code { color: var(--text); }
+.dl-steps li::marker { color: var(--pp-or); font-weight: 700; }
+.dl-steps p { margin-bottom: 12px; }
+.dl-steps a { color: var(--pp-or); }
+.dl-steps strong { color: var(--pp-txt); }
+.dl-steps code { color: var(--pp-txt); font-family: var(--pp-mono); }
 
 .dl-code {
-  font-family: ui-monospace, Consolas, monospace;
-  font-size: 0.88rem;
-  background: var(--bg-dark);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 14px;
-  margin-bottom: 14px;
-  color: var(--text);
-  overflow-x: auto;
+  font-family: var(--pp-mono); font-size: 0.85rem;
+  background: #000; border: 1px solid var(--pp-line); border-radius: 10px;
+  padding: 12px 14px; margin-bottom: 14px; color: var(--pp-txt); overflow-x: auto;
 }
-.dl-hash { white-space: pre-wrap; word-break: break-all; }
+.dl-hash { color: var(--pp-or-hi); word-break: break-all; white-space: pre-wrap; }
 
-@media (max-width: 600px) {
-  .dl { padding-top: 92px; }
-  .dl-card { padding: 20px; }
-  .dl-btn { display: block; text-align: center; }
+@media (max-width: 560px) {
+  .dl { padding-top: 96px; }
+  .dl-card { padding: 22px; }
+  .dl-btn, .dl .btn-primary { width: 100%; justify-content: center; margin-right: 0; }
 }
+
+/* the site's cyan bits, in the app's orange on this page */
+.pp .sub-cta { background: var(--pp-or); color: #111; box-shadow: 0 0 18px rgba(var(--pp-or-rgb), 0.4); }
+.pp .sub-cta:hover { background: var(--pp-or-hi); color: #111; }
+.pp .cookie-note .yes { background: var(--pp-or); color: #111; border-color: var(--pp-or); outline-color: var(--pp-or); }

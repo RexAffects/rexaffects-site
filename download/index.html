@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Download Plugin Player — RexAffects</title>
-  <meta name="description" content="Download Plugin Player for Windows: camera and music reactive scenes you play with a game controller. Every scene plays free to try.">
+  <meta name="description" content="Download Plugin Player free for Windows and Mac: live visuals you play with a game controller. Plug in and play.">
   <meta property="og:title" content="Download Plugin Player">
-  <meta property="og:description" content="Camera and music reactive scenes you play with a game controller. Windows beta, free to try.">
+  <meta property="og:description" content="Live visuals you play with a game controller. Free beta for Windows and Mac.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rexaffects.com/download/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../shared/site-extra.css">
   <link rel="stylesheet" href="download.css">
@@ -19,7 +19,7 @@
   <script src="../shared/pixel.js"></script>
   <script src="../shared/download.js"></script>
 </head>
-<body>
+<body class="pp">
 
   <nav class="nav scrolled sub-nav">
     <div class="nav-container">
@@ -34,11 +34,12 @@
 
   <main class="dl">
     <div class="container dl-wrap">
-      <div class="section-label">Plugin Player &middot; public beta &middot; Windows + Mac</div>
-      <h1 class="dl-title">Download <span>Plugin Player.</span></h1>
+      <span class="pp-cart" aria-hidden="true"></span>
+      <div class="section-label">Plug &amp; play &middot; free beta &middot; Windows + Mac</div>
+      <h1 class="dl-title">Download Plugin Player. <span>Free.</span></h1>
       <p class="dl-lede">
-        Camera and music reactive scenes you play with an Xbox or PlayStation controller. Every scene plays free to try,
-        with a watermark on the output; unlock the ones you love in the STORE tab.
+        Live visuals you play with a game controller. Plug it in and play: every scene plays free, with a small
+        watermark on the output, and you unlock the ones you love in the STORE tab.
       </p>
 
       <!-- shown until the release is published and buying works (shared/download.js live) -->
@@ -52,10 +53,10 @@
       <div class="dl-card" data-dl-when="live" hidden>
         <a class="btn btn-primary dl-btn" data-dl-href="windows" href="/beta/">Download for Windows</a>
         <p class="dl-meta">Version <span data-dl="version"></span> &middot; <span data-dl="size"></span> &middot; Windows 10 or 11, 64-bit &middot; <span data-dl="date"></span></p>
-        <p class="dl-notes" data-dl-if="notes" hidden>What's new: <span data-dl="notes"></span></p>
         <p class="dl-mac" data-dl-mac="soon">Mac: coming soon.</p>
         <a class="btn btn-primary dl-btn" data-dl-mac="live" data-dl-href="mac" href="/beta/" hidden>Download for Mac</a>
         <p class="dl-meta" data-dl-mac="live" hidden><span data-dl="mac-size"></span> &middot; macOS 13 or newer, Apple silicon or Intel &middot; signed and notarized by Apple</p>
+        <p class="dl-notes" data-dl-if="notes" hidden>What's new: <span data-dl="notes"></span></p>
       </div>
 
       <section class="dl-steps" data-dl-when="live" hidden>

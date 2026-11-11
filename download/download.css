@@ -94,3 +94,9 @@
 .pp .sub-cta { background: var(--pp-or); color: #111; box-shadow: 0 0 18px rgba(var(--pp-or-rgb), 0.4); }
 .pp .sub-cta:hover { background: var(--pp-or-hi); color: #111; }
 .pp .cookie-note .yes { background: var(--pp-or); color: #111; border-color: var(--pp-or); outline-color: var(--pp-or); }
+
+/* the SHA-256 checks, closed by default */
+.dl-verify { margin-top: 28px; border-top: 1px solid var(--pp-line); padding-top: 14px; font-size: 0.9rem; }
+.dl-verify summary { cursor: pointer; color: var(--pp-dim); font-family: var(--pp-mono); font-size: 0.8rem; letter-spacing: 0.04em; }
+.dl-verify summary:hover { color: var(--pp-or); }
+.dl-verify[open] summary { margin-bottom: 12px; }

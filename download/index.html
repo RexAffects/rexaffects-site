@@ -72,15 +72,18 @@
           <li>Open it from Applications. The first time, macOS asks if you want to open an app downloaded from the internet: click <strong>Open</strong>.</li>
           <li>Allow the camera if you want to use it. Plug in a controller and press a button.</li>
         </ol>
-        <p data-dl-mac="live" hidden>Mac file fingerprint (SHA-256): <code class="dl-hash" data-dl="mac-sha256"></code></p>
 
         <p>Step by step, with what to do if Smart App Control blocks it: <a href="/docs/install/">Install guide</a>. Updates arrive by themselves after this.</p>
 
-        <h2>Check the file (optional)</h2>
-        <p>This is the SHA-256 fingerprint of the exact file we published. In PowerShell, in your Downloads folder:</p>
-        <pre class="dl-code">Get-FileHash .\<span data-dl="file"></span></pre>
-        <p>The <strong>Hash</strong> it prints should match this, letter for letter:</p>
-        <pre class="dl-code dl-hash" data-dl="sha256"></pre>
+        <details class="dl-verify">
+          <summary>For the technical folks: verify your download</summary>
+          <p>Each file has a SHA-256 fingerprint. If yours matches, it's exactly the file we published.</p>
+          <p><strong>Windows</strong> (PowerShell, in your Downloads folder):</p>
+          <pre class="dl-code">Get-FileHash .\<span data-dl="file"></span></pre>
+          <pre class="dl-code dl-hash" data-dl="sha256"></pre>
+          <p data-dl-mac="live" hidden><strong>Mac</strong> (Terminal, in Downloads): <code>shasum -a 256 <span data-dl="mac-file"></span></code></p>
+          <pre class="dl-code dl-hash" data-dl-mac="live" data-dl="mac-sha256" hidden></pre>
+        </details>
       </section>
 
       <section class="dl-steps">

@@ -56,5 +56,15 @@
       [].forEach.call(document.querySelectorAll('[data-dl-href="mac"]'), function (a) { a.href = m.link; });
     }
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fill); else fill();
+  // Meta 'Download' event (Rex, Nov 11: ads optimize for downloads). Only fires when the pixel is loaded, i.e. after the visitor
+  // chose Allow in the cookie notice (shared/pixel.js); declined / GPC = no fbq = nothing sent. Same pattern as list-form.js Lead.
+  function track(platform) { try { if (window.fbq) window.fbq('trackCustom', 'Download', { platform: platform, version: D.version }); } catch (e) {} }
+  function wire() {
+    [].forEach.call(document.querySelectorAll('[data-dl-href]'), function (a) {
+      if (a.__raTracked) return; a.__raTracked = true;
+      a.addEventListener('click', function () { track(a.getAttribute('data-dl-href')); });
+    });
+  }
+  function start() { fill(); wire(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

@@ -1,5 +1,5 @@
 // /links: carry ?ref=ig|tt|yt|fb (and any utm_*) onto every link so the next page knows the platform.
-// Internal links (/beta, /live) get ?ref=...; outside links marked data-utm also get utm_* tags.
+// Internal links (/download, /live) get ?ref=...; outside links marked data-utm also get utm_* tags.
 (function () {
   var q = new URLSearchParams(location.search);
   var ref = (q.get('ref') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 20).toLowerCase();

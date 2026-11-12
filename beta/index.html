@@ -3,160 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plugin Player Beta — RexAffects</title>
-  <meta name="description" content="Plugin Player: free interactive art software. Camera and music reactive scenes you play with an Xbox or PlayStation controller. Plug in a projector and go, no extra software needed. Join the beta.">
-  <meta property="og:title" content="Plugin Player beta — play your visuals like a game">
-  <meta property="og:description" content="Camera and music reactive scenes you play with a game controller. Plug in a projector and go, no extra software needed. Join the beta.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rexaffects.com/beta/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../shared/site-extra.css">
-  <link rel="stylesheet" href="beta.css">
-  <script src="../shared/legal.js"></script>
-  <script src="../shared/pixel.js"></script>
+  <!-- The beta signup is over (public beta launched Nov 11, 2026). Old links (Instagram, emails, ManyChat) land here
+       and go straight to /download/, keeping any ?ref= / utm_* on the way. beta/media/ stays: /download/ uses it. -->
+  <title>Download Plugin Player — RexAffects</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://rexaffects.com/download/">
+  <meta http-equiv="refresh" content="0; url=/download/">
+  <script>location.replace('/download/' + location.search + location.hash);</script>
+  <style>
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: #0a0a0a; color: #f5f5f5; font: 1.05rem/1.6 "Inter", system-ui, sans-serif; text-align: center; padding: 16px; }
+    a { color: #f97316; font-weight: 700; }
+  </style>
 </head>
 <body>
-
-  <nav class="nav scrolled sub-nav">
-    <div class="nav-container">
-      <a href="/" class="nav-logo">REXAFFECTS</a>
-      <ul class="sub-links">
-        <li><a href="/beta/" aria-current="page">Beta</a></li>
-        <li><a href="/links/" class="sub-hide-sm">Links</a></li>
-        <li><a href="/live/" class="sub-cta">Book live</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main class="beta">
-    <div class="container beta-grid">
-
-      <div class="beta-copy">
-        <div class="section-label">Plugin Player &middot; Free beta &middot; live now</div>
-        <p class="beta-live"><a class="btn btn-primary" href="/download/">The beta is live: download it free (Windows + Mac)</a></p>
-        <h1 class="beta-title">Play your visuals <span>like a game.</span></h1>
-        <p class="beta-lede">
-          Plugin Player is my free interactive art software: camera and music reactive scenes you play with an
-          Xbox or PlayStation controller. Plug in a projector and go. No extra software needed.
-        </p>
-
-        <div class="beta-card lf-card" data-list-card>
-          <!-- Endpoint + on/off switch: shared/list-config.js (one file for every form on the site). -->
-          <form class="beta-form" novalidate data-list-form data-endpoint=""
-                data-source="beta" data-tags="plugin-player-beta"
-                data-closed-label="Signups open in a few days">
-            <div class="lf-field">
-              <label for="bEmail">Email</label>
-              <input id="bEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
-            </div>
-            <div class="lf-row">
-              <div class="lf-field">
-                <label for="bPhone">Mobile <em>optional, for texts</em></label>
-                <input id="bPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-0123">
-              </div>
-              <div class="lf-field">
-                <label for="bPad">Which controller do you use most? <em>optional</em></label>
-                <select id="bPad" name="controller" data-tag-prefix="pad-">
-                  <option value="">Pick one</option>
-                  <option value="playstation">PlayStation</option>
-                  <option value="xbox">Xbox</option>
-                  <option value="8bitdo">8BitDo</option>
-                  <option value="switch-pro">Nintendo Switch Pro</option>
-                  <option value="midi">A MIDI controller</option>
-                  <option value="none">None yet</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="lf-field">
-              <label for="bTool">What would you use it for? <em>optional</em></label>
-              <select id="bTool" name="useFor" data-tag-prefix="use-">
-                <option value="">Pick one</option>
-                <option value="parties">Parties &amp; hangouts</option>
-                <option value="camping">Camping &amp; festivals</option>
-                <option value="shows">Live shows &amp; DJ sets</option>
-                <option value="art">Art &amp; installations</option>
-                <option value="family">Kids &amp; family</option>
-                <option value="curious">Just curious</option>
-              </select>
-            </div>
-
-            <label class="lf-consent">
-              <input type="checkbox" name="smsConsent" value="yes">
-              <span><span data-consent-text>Text me about new plugins, drops and live shows. By checking this, you agree to receive recurring automated texts from RexAffects at this number. Consent isn't a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</span>
-                <a href="/privacy/#sms">SMS Terms</a> &middot; <a href="/privacy/">Privacy</a></span>
-            </label>
-
-            <!-- Honeypot: hidden from people; bots fill it and get dropped -->
-            <div class="lf-hp" aria-hidden="true">
-              <label>Company<input name="hp" tabindex="-1" autocomplete="off"></label>
-            </div>
-
-            <p class="lf-closed" data-list-closed hidden>The list opens in a few days. Until then, DM &ldquo;beta&rdquo; to
-              <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a> on Instagram.</p>
-            <p class="lf-error" data-list-error role="alert" hidden></p>
-
-            <button class="btn btn-primary lf-submit" type="submit">Get on the beta list</button>
-            <p class="lf-fine">Beta invites and Plugin Player news. No spam, unsubscribe anytime.</p>
-          </form>
-
-          <div class="lf-thanks" data-list-thanks hidden tabindex="-1">
-            <div class="lf-check" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <h2>Check your inbox to confirm.</h2>
-            <p>Already on the list? You're all set. Nothing in your inbox? Check spam or promotions.
-              Until then, follow along on <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a>.</p>
-          </div>
-        </div>
-
-        <ul class="beta-chips" aria-label="What it does">
-          <li>Camera reactive</li>
-          <li>Music reactive</li>
-          <li>Game controller or MIDI</li>
-          <li>Projector ready</li>
-        </ul>
-        <p class="beta-note">Windows first. Mac is in testing.</p>
-      </div>
-
-      <div class="beta-media">
-        <!--
-          THE CLIP: Rex's controller-explanation reel (web copy, H.264 720x1280, 2:38, 20 MB) and its
-          poster still. To swap it, replace those two files in beta/media/. Landscape clip? change .beta-video's
-          aspect-ratio in beta.css to 16 / 9.
-        -->
-        <video class="beta-video" controls playsinline preload="metadata"
-               poster="media/plugin-player-clip-poster.jpg">
-          <source src="media/plugin-player-clip.mp4" type="video/mp4">
-        </video>
-      </div>
-
-    </div>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <ul class="foot-links">
-        <li><a href="/docs/">Docs</a></li>
-        <li><a href="/">Home</a></li>
-        <li><a href="/live/">Book a live show</a></li>
-        <li><a href="/beta/">Plugin Player beta</a></li>
-        <li><a href="/links/">Links</a></li>
-      </ul>
-      <!-- LEGAL-FOOT (the identity comes from shared/legal.js) -->
-      <div class="legal-foot">
-        <p>RexAffects · Rex Roberts · <span data-legal="address-line">1590 E Joyce Blvd #8543, Fayetteville, AR 72703, USA</span> · <a href="mailto:support@rexaffects.com">support@rexaffects.com</a></p>
-        <p><a href="/terms/">Terms</a> · <a href="/refunds/">Refunds</a> · <a href="/eula/">EULA</a> · <a href="/privacy/">Privacy</a> · <a href="/cookies/" data-cookies>Cookies</a></p>
-      </div>
-      <p>&copy; 2026 Rex Roberts &middot; <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a></p>
-    </div>
-  </footer>
-
-  <script src="../shared/list-config.js"></script>
-  <script src="../shared/list-form.js"></script>
-  <script src="beta.js"></script>
+  <p>Plugin Player is out now. <a href="/download/">Download it free</a>.</p>
 </body>
 </html>

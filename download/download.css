@@ -20,7 +20,7 @@
     var(--pp-ink);
   color: var(--pp-txt);
 }
-.dl-wrap { max-width: 780px; }
+.dl-wrap { max-width: 1120px; }
 
 /* the cartridge, exactly the app's .wm .cart, bigger */
 .pp-cart {
@@ -100,3 +100,16 @@
 .dl-verify summary { cursor: pointer; color: var(--pp-dim); font-family: var(--pp-mono); font-size: 0.8rem; letter-spacing: 0.04em; }
 .dl-verify summary:hover { color: var(--pp-or); }
 .dl-verify[open] summary { margin-bottom: 12px; }
+
+/* the hero: the buttons + Rex's controller reel side by side; on a phone the reel goes under the buttons */
+.dl-hero { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: start; }
+.dl-main { min-width: 0; }
+.dl-media { position: sticky; top: 96px; }
+.dl-video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 16px; background: #000;
+  border: 1px solid var(--pp-line); box-shadow: 0 0 40px rgba(var(--pp-or-rgb), 0.25); }
+.dl-video-cap { margin: 10px 0 0; text-align: center; font-family: var(--pp-mono); font-size: 0.75rem; color: var(--pp-dim); letter-spacing: 0.06em; }
+.dl-steps { max-width: 780px; }
+@media (max-width: 900px) {
+  .dl-hero { display: block; }
+  .dl-media { position: static; max-width: 320px; margin: 0 auto 40px; }
+}

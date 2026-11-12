@@ -34,29 +34,39 @@
 
   <main class="dl">
     <div class="container dl-wrap">
-      <span class="pp-cart" aria-hidden="true"></span>
-      <div class="section-label">Plug &amp; play &middot; free beta &middot; Windows + Mac</div>
-      <h1 class="dl-title">Download Plugin Player. <span>Free.</span></h1>
-      <p class="dl-lede">
-        Live visuals you play with a game controller. Plug in one you already own, or scan the QR code in the app to turn
-        your phone into a controller. Beginner-friendly. No extra hardware, no card needed.
-      </p>
+      <div class="dl-hero">
+        <div class="dl-main">
+        <span class="pp-cart" aria-hidden="true"></span>
+        <div class="section-label">Plug &amp; play &middot; free beta &middot; Windows + Mac</div>
+        <h1 class="dl-title">Download Plugin Player. <span>Free.</span></h1>
+        <p class="dl-lede">
+          Live visuals you play with a game controller. Plug in one you already own, or scan the QR code in the app to turn
+          your phone into a controller. Beginner-friendly. No extra hardware, no card needed.
+        </p>
 
-      <!-- shown until the release is published and buying works (shared/download.js live) -->
-      <div class="dl-card" data-dl-when="soon">
-        <h2>The public download opens soon.</h2>
-        <p>Join the list and you'll get the link the day it opens.</p>
-        <a class="btn btn-primary" href="/beta/">Join the beta list</a>
-      </div>
+        <!-- shown until the release is published and buying works (shared/download.js live) -->
+        <div class="dl-card" data-dl-when="soon">
+          <h2>The public download opens soon.</h2>
+          <p>Join the list and you'll get the link the day it opens.</p>
+          <a class="btn btn-primary" href="/beta/">Join the beta list</a>
+        </div>
 
-      <!-- shown once shared/download.js is filled and live -->
-      <div class="dl-card" data-dl-when="live" hidden>
-        <a class="btn btn-primary dl-btn" data-dl-href="windows" href="/beta/">Download for Windows</a>
-        <p class="dl-meta">Version <span data-dl="version"></span> &middot; <span data-dl="size"></span> &middot; Windows 10 or 11, 64-bit &middot; <span data-dl="date"></span></p>
-        <p class="dl-mac" data-dl-mac="soon">Mac: coming soon.</p>
-        <a class="btn btn-primary dl-btn" data-dl-mac="live" data-dl-href="mac" href="/beta/" hidden>Download for Mac</a>
-        <p class="dl-meta" data-dl-mac="live" hidden><span data-dl="mac-size"></span> &middot; macOS 13 or newer, Apple silicon or Intel</p>
-        <p class="dl-notes" data-dl-if="notes" hidden>What's new: <span data-dl="notes"></span></p>
+        <!-- shown once shared/download.js is filled and live -->
+        <div class="dl-card" data-dl-when="live" hidden>
+          <a class="btn btn-primary dl-btn" data-dl-href="windows" href="/beta/">Download for Windows</a>
+          <p class="dl-meta">Version <span data-dl="version"></span> &middot; <span data-dl="size"></span> &middot; Windows 10 or 11, 64-bit &middot; <span data-dl="date"></span></p>
+          <p class="dl-mac" data-dl-mac="soon">Mac: coming soon.</p>
+          <a class="btn btn-primary dl-btn" data-dl-mac="live" data-dl-href="mac" href="/beta/" hidden>Download for Mac</a>
+          <p class="dl-meta" data-dl-mac="live" hidden><span data-dl="mac-size"></span> &middot; macOS 13 or newer, Apple silicon or Intel</p>
+          <p class="dl-notes" data-dl-if="notes" hidden>What's new: <span data-dl="notes"></span></p>
+        </div>
+        </div>
+        <div class="dl-media">
+          <video class="dl-video" controls playsinline preload="metadata" poster="/beta/media/plugin-player-clip-poster.jpg">
+            <source src="/beta/media/plugin-player-clip.mp4" type="video/mp4">
+          </video>
+          <p class="dl-video-cap">See it in action (sound on)</p>
+        </div>
       </div>
 
       <section class="dl-steps" data-dl-when="live" hidden>

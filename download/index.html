@@ -25,7 +25,6 @@
     <div class="nav-container">
       <a href="/" class="nav-logo">REXAFFECTS</a>
       <ul class="sub-links">
-        <li><a href="/beta/">Beta</a></li>
         <li><a href="/docs/" class="sub-hide-sm">Docs</a></li>
         <li><a href="/live/" class="sub-cta">Book live</a></li>
       </ul>
@@ -48,17 +47,20 @@
         <div class="dl-card" data-dl-when="soon">
           <h2>The public download opens soon.</h2>
           <p>Join the list and you'll get the link the day it opens.</p>
-          <a class="btn btn-primary" href="/beta/">Join the beta list</a>
+          <a class="btn btn-primary" href="/links/#join">Join the list</a>
         </div>
 
         <!-- shown once shared/download.js is filled and live -->
         <div class="dl-card" data-dl-when="live" hidden>
-          <a class="btn btn-primary dl-btn" data-dl-href="windows" href="/beta/">Download for Windows</a>
+          <a class="btn btn-primary dl-btn" data-dl-href="windows" href="https://github.com/RexAffects/plugin-player-releases/releases/latest">Download for Windows</a>
           <p class="dl-meta">Version <span data-dl="version"></span> &middot; <span data-dl="size"></span> &middot; Windows 10 or 11, 64-bit &middot; <span data-dl="date"></span></p>
           <p class="dl-mac" data-dl-mac="soon">Mac: coming soon.</p>
-          <a class="btn btn-primary dl-btn" data-dl-mac="live" data-dl-href="mac" href="/beta/" hidden>Download for Mac</a>
+          <a class="btn btn-primary dl-btn" data-dl-mac="live" data-dl-href="mac" href="https://github.com/RexAffects/plugin-player-releases/releases/latest" hidden>Download for Mac</a>
           <p class="dl-meta" data-dl-mac="live" hidden><span data-dl="mac-size"></span> &middot; macOS 13 or newer, Apple silicon or Intel</p>
-          <p class="dl-notes" data-dl-if="notes" hidden>What's new: <span data-dl="notes"></span></p>
+          <div class="dl-pitch">
+            <h2>It's never been easier to plug and play visuals.</h2>
+            <p>Get started free with your own controller, or just use your phone. The layout makes sense the second you pick it up.</p>
+          </div>
         </div>
         </div>
         <div class="dl-media">
@@ -115,7 +117,7 @@
         <li><a href="/docs/">Docs</a></li>
         <li><a href="/">Home</a></li>
         <li><a href="/live/">Book a live show</a></li>
-        <li><a href="/beta/">Plugin Player beta</a></li>
+        <li><a href="/download/">Download Plugin Player</a></li>
         <li><a href="/links/">Links</a></li>
       </ul>
       <!-- LEGAL-FOOT (the identity comes from shared/legal.js) -->

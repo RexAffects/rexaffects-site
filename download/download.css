@@ -113,3 +113,8 @@
   .dl-hero { display: block; }
   .dl-media { position: static; max-width: 320px; margin: 0 auto 40px; }
 }
+
+/* the short pitch under the buttons (Rex, Nov 12: replaces the release's "What's new" line) */
+.dl-pitch { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--pp-line); }
+.dl-card .dl-pitch h2 { font-size: 1.1rem; line-height: 1.3; margin-bottom: 8px; }
+.dl-card .dl-pitch p { margin-bottom: 0; }

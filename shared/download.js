@@ -7,20 +7,20 @@
 (function () {
   var D = window.RA_DOWNLOAD = {
     live: true,
-    version: "0.2.0",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
+    version: "0.2.1",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
     date: "November 11, 2026",               // e.g. 'November 9, 2026'
-    notes: "The public beta: Windows and Mac, a store built in, and ready to plug and play with any controller.",              // the release's first line ("What's new")
+    notes: "Decks, Blob Designer, your phone as a controller, and buttons you can actually see light up.",              // the release's first line ("What's new")
     windows: {
-      file: "Plugin-Player-Setup-0.2.0.exe",             // Plugin-Player-Setup-<version>.exe
-      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.0/Plugin-Player-Setup-0.2.0.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
-      sha256: "e1b9c5744eb8068c4ddf1b1ccec5c868bd45c4bb67b78daf939c92f7fcb4ed0e",           // of that exact file (lower-case hex, 64 characters)
-      bytes: 147828153,
+      file: "Plugin-Player-Setup-0.2.1.exe",             // Plugin-Player-Setup-<version>.exe
+      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.1/Plugin-Player-Setup-0.2.1.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
+      sha256: "daee34a74befe47c55aeeb5a8f46434f2f9b75ac7618f92c5fd605aab4118728",           // of that exact file (lower-case hex, 64 characters)
+      bytes: 148488850,
     },
     mac: {                  // the signed + notarized universal DMG (Apple silicon + Intel), same release
-      dmg: 'Plugin-Player-0.2.0-universal.dmg',              // Plugin-Player-<version>-universal.dmg
-      link: 'https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.0/Plugin-Player-0.2.0-universal.dmg',
-      hash: '987176fb041f713312e37bf3a476e014f5b547086936940a8778477c2ea33604',
-      size: 252044398,
+      dmg: 'Plugin-Player-0.2.1-universal.dmg',              // Plugin-Player-<version>-universal.dmg
+      link: 'https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.1/Plugin-Player-0.2.1-universal.dmg',
+      hash: 'bcb1a355cb23af565e55e629d66f2d4d45612cbd7435fd843238ff6259d1e086',
+      size: 252755958,
     },
   };
 

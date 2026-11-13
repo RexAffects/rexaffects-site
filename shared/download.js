@@ -7,14 +7,14 @@
 (function () {
   var D = window.RA_DOWNLOAD = {
     live: true,
-    version: "0.2.1",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
-    date: "November 11, 2026",               // e.g. 'November 9, 2026'
-    notes: "Decks, Blob Designer, your phone as a controller, and buttons you can actually see light up.",              // the release's first line ("What's new")
+    version: "0.2.2",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
+    date: "November 12, 2026",               // e.g. 'November 9, 2026'
+    notes: "Xbox-style controllers keep working when you click into another app (Resolume, OBS), and purchases unlock Test Stage.",              // the release's first line ("What's new")
     windows: {
-      file: "Plugin-Player-Setup-0.2.1.exe",             // Plugin-Player-Setup-<version>.exe
-      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.1/Plugin-Player-Setup-0.2.1.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
-      sha256: "daee34a74befe47c55aeeb5a8f46434f2f9b75ac7618f92c5fd605aab4118728",           // of that exact file (lower-case hex, 64 characters)
-      bytes: 148488850,
+      file: "Plugin-Player-Setup-0.2.2.exe",             // Plugin-Player-Setup-<version>.exe
+      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.2/Plugin-Player-Setup-0.2.2.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
+      sha256: "f1197743d4db64789bde0599318020b59429635ccff86cb92d83117defa4715a",           // of that exact file (lower-case hex, 64 characters)
+      bytes: 148494073,
     },
     mac: {                  // the signed + notarized universal DMG (Apple silicon + Intel), same release
       dmg: 'Plugin-Player-0.2.1-universal.dmg',              // Plugin-Player-<version>-universal.dmg

@@ -7,20 +7,20 @@
 (function () {
   var D = window.RA_DOWNLOAD = {
     live: true,
-    version: "0.2.2",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
-    date: "November 12, 2026",               // e.g. 'November 9, 2026'
-    notes: "Xbox-style controllers keep working when you click into another app (Resolume, OBS), and purchases unlock Test Stage.",              // the release's first line ("What's new")
+    version: "0.2.3",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
+    date: "November 13, 2026",               // e.g. 'November 9, 2026'
+    notes: "Plugin Player is now signed: Windows shows Rex Roberts as the publisher.",              // the release's first line ("What's new")
     windows: {
-      file: "Plugin-Player-Setup-0.2.2.exe",             // Plugin-Player-Setup-<version>.exe
-      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.2/Plugin-Player-Setup-0.2.2.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
-      sha256: "f1197743d4db64789bde0599318020b59429635ccff86cb92d83117defa4715a",           // of that exact file (lower-case hex, 64 characters)
-      bytes: 148494073,
+      file: "Plugin-Player-Setup-0.2.3.exe",             // Plugin-Player-Setup-<version>.exe
+      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.3/Plugin-Player-Setup-0.2.3.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
+      sha256: "a613dfd0b044e8cb8e5d4e7cc39e3fbda0199a28b5c45c0f4a5e196591423c35",           // of that exact file (lower-case hex, 64 characters)
+      bytes: 148524360,
     },
     mac: {                  // the signed + notarized universal DMG (Apple silicon + Intel), same release
-      dmg: 'Plugin-Player-0.2.1-universal.dmg',              // Plugin-Player-<version>-universal.dmg
-      link: 'https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.1/Plugin-Player-0.2.1-universal.dmg',
-      hash: 'bcb1a355cb23af565e55e629d66f2d4d45612cbd7435fd843238ff6259d1e086',
-      size: 252755958,
+      dmg: 'Plugin-Player-0.2.2-universal.dmg',              // Plugin-Player-<version>-universal.dmg
+      link: 'https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.3/Plugin-Player-0.2.2-universal.dmg',
+      hash: '7b5ffa127f3832428eab84da3824c36f35476c358571f4f542fcd19fa866983b',
+      size: 252763906,
     },
   };
 

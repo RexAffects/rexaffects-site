@@ -22,7 +22,7 @@
     terms:   { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
     eula:    { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
     refunds: { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
-    privacy: { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
+    privacy: { version: '1.1', effective: 'November 11, 2026', updated: 'November 13, 2026' },
     cookies: { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
   };
   // what the BUY sheet sends as consent.eula / consent.termsVersion (same shape as the app's legal-model.js consentFor)

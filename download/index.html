@@ -52,11 +52,53 @@
 
         <!-- shown once shared/download.js is filled and live -->
         <div class="dl-card" data-dl-when="live" hidden>
+          <!-- On a phone/tablet (download/send-link.js shows it): the installer is for a computer, so mail the link
+               (store POST /api/list, source phone-link: the link mail goes out at once and carries the list's confirm button) -->
+          <section class="sl sl-phone" data-list-card data-sl="phone" hidden>
+            <h2 class="sl-title">On your phone? <span>Send me the download link</span></h2>
+            <p class="sl-sub">Plugin Player runs on Windows and Mac. Drop your email and the link lands in your inbox, ready to open on your computer.</p>
+            <form novalidate data-list-form data-endpoint="" data-source="phone-link" data-tags="download-page" data-closed-label="Opens soon">
+              <div class="sl-row">
+                <label class="sl-label" for="slPhoneEmail">Email</label>
+                <input id="slPhoneEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+                <button class="btn btn-primary sl-btn" type="submit">Email me the link</button>
+              </div>
+              <div class="lf-hp" aria-hidden="true"><label>Company<input name="hp" tabindex="-1" autocomplete="off"></label></div>
+              <p class="lf-error" data-list-error role="alert" hidden></p>
+              <p class="sl-fine">You'll get the download link now, plus a free scene by email every month (one tap in that email to confirm). Unsubscribe anytime. <a href="/privacy/">Privacy</a></p>
+            </form>
+            <div class="sl-thanks" data-list-thanks hidden tabindex="-1">
+              <h3>Check your inbox.</h3>
+              <p>The link is on its way. Open it on your computer to download. Tap <strong>Yes, send me the monthly free scene</strong> in that email to get the free scene too.</p>
+            </div>
+          </section>
+
           <a class="btn btn-primary dl-btn" data-dl-href="windows" href="https://github.com/RexAffects/plugin-player-releases/releases/latest">Download for Windows</a>
           <p class="dl-meta">Version <span data-dl="version"></span> &middot; <span data-dl="size"></span> &middot; Windows 10 or 11, 64-bit &middot; <span data-dl="date"></span></p>
           <p class="dl-mac" data-dl-mac="soon">Mac: coming soon.</p>
           <a class="btn btn-primary dl-btn" data-dl-mac="live" data-dl-href="mac" href="https://github.com/RexAffects/plugin-player-releases/releases/latest" hidden>Download for Mac</a>
           <p class="dl-meta" data-dl-mac="live" hidden><span data-dl="mac-size"></span> &middot; macOS 13 or newer, Apple silicon or Intel</p>
+          <!-- Rex, Nov 14: one subtle line, controllers first, the phone is the bonus -->
+          <p class="dl-ctl">&#127918;&nbsp; Play it with a game controller, or use your phone as the controller.</p>
+
+          <!-- On a computer (download/send-link.js shows it): the monthly free scene, double opt-in (source desktop-monthly) -->
+          <section class="sl sl-desk" data-list-card data-sl="desktop" hidden>
+            <h3 class="sl-title-sm">Get a free scene every month</h3>
+            <form novalidate data-list-form data-endpoint="" data-source="desktop-monthly" data-tags="download-page" data-closed-label="Opens soon">
+              <div class="sl-row">
+                <label class="sl-label" for="slDeskEmail">Email</label>
+                <input id="slDeskEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+                <button class="btn btn-primary sl-btn sl-btn-sm" type="submit">Sign me up</button>
+              </div>
+              <div class="lf-hp" aria-hidden="true"><label>Company<input name="hp" tabindex="-1" autocomplete="off"></label></div>
+              <p class="lf-error" data-list-error role="alert" hidden></p>
+              <p class="sl-fine">One email a month with a free Plugin Player scene. Confirm by email, unsubscribe anytime. <a href="/privacy/">Privacy</a></p>
+            </form>
+            <div class="sl-thanks" data-list-thanks hidden tabindex="-1">
+              <h3>Check your inbox to confirm.</h3>
+              <p>One tap in that email and the free scene comes every month.</p>
+            </div>
+          </section>
           <div class="dl-pitch">
             <h2>It's never been easier to plug and play visuals.</h2>
             <p>Get started free with your own controller, or just use your phone. The layout makes sense the second you pick it up.</p>
@@ -128,5 +170,8 @@
       <p>&copy; 2026 Rex Roberts &middot; <a href="https://www.instagram.com/rexaffects/" target="_blank" rel="noopener">@rexaffects</a></p>
     </div>
   </footer>
+  <script src="send-link.js"></script>
+  <script src="../shared/list-config.js"></script>
+  <script src="../shared/list-form.js"></script>
 </body>
 </html>

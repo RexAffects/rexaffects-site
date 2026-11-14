@@ -118,3 +118,43 @@
 .dl-pitch { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--pp-line); }
 .dl-card .dl-pitch h2 { font-size: 1.1rem; line-height: 1.3; margin-bottom: 8px; }
 .dl-card .dl-pitch p { margin-bottom: 0; }
+
+/* the email box (Rex, Nov 14; download/send-link.js picks phone or desktop). Phone: the first thing in the card, the
+   installer is for a computer. Desktop: small, under the download buttons. Forms: shared/list-form.js. */
+.sl { margin: 0 0 22px; }
+.sl-phone {
+  padding: 20px; border-radius: 14px;
+  border: 1px solid rgba(var(--pp-or-rgb), 0.55);
+  background: linear-gradient(180deg, rgba(var(--pp-or-rgb), 0.10), rgba(var(--pp-or-rgb), 0.03));
+  box-shadow: 0 0 30px rgba(var(--pp-or-rgb), 0.12);
+}
+.dl-card .sl-title { font-family: var(--pp-disp); font-size: 1.2rem; line-height: 1.3; margin-bottom: 8px; color: var(--pp-txt); }
+.sl-title span { display: block; color: var(--pp-or); }
+.dl-card .sl-sub { color: var(--pp-body); font-size: 0.95rem; margin-bottom: 14px; }
+.sl-desk { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--pp-line); }
+.sl-title-sm { font-family: var(--pp-disp); font-size: 0.95rem; margin-bottom: 10px; color: var(--pp-txt); }
+.sl-row { display: flex; gap: 10px; align-items: stretch; flex-wrap: wrap; }
+.sl-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.sl-row input {
+  flex: 1 1 220px; min-width: 0;
+  background: #000; border: 1px solid var(--pp-line); border-radius: 10px; color: var(--pp-txt);
+  font: inherit; font-size: 1rem; padding: 13px 14px;
+}
+.sl-row input::placeholder { color: #666; }
+.sl-row input:focus { outline: none; border-color: var(--pp-or); box-shadow: 0 0 0 3px rgba(var(--pp-or-rgb), 0.2); }
+.dl .sl-btn { margin: 0; padding: 13px 20px; font-size: 0.92rem; justify-content: center; flex: 0 0 auto; }
+.dl .sl-btn:disabled { opacity: 0.55; cursor: default; transform: none; }
+.dl .sl-btn-sm { box-shadow: none; font-size: 0.85rem; padding: 12px 18px; }
+.dl-card .sl-fine { margin: 10px 0 0; font-size: 0.78rem; line-height: 1.5; color: var(--pp-dim); }
+.sl-fine a { color: var(--pp-dim); text-decoration: underline; text-underline-offset: 2px; }
+.sl .lf-error { color: #ff6b6b; font-size: 0.88rem; margin: 10px 0 0; }
+.sl-thanks { outline: none; }
+.sl-thanks h3 { font-family: var(--pp-disp); font-size: 1.05rem; margin-bottom: 6px; color: var(--pp-or); }
+.dl-card .sl-thanks p { margin: 0; color: var(--pp-body); font-size: 0.95rem; }
+.sl-thanks strong { color: var(--pp-txt); }
+@media (max-width: 560px) {
+  .sl-row input { flex-basis: 100%; }
+  .dl .sl-btn { width: 100%; }
+}
+/* the one controller line under the buttons (Rex, Nov 14): controllers first, the phone is the bonus */
+.dl-card .dl-ctl { margin: 14px 0 0; font-size: 0.9rem; color: var(--pp-body); }

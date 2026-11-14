@@ -134,6 +134,12 @@
     back: '‹ BACK',
   };
   var isMac = /Mac/.test(navigator.platform || '') && !/iPhone|iPad|iPod/.test(navigator.userAgent || '');
+  // A phone or tablet (the same test as download/send-link.js): Plugin Player is a desktop app, so every buy step says
+  // where the scenes will be. ~100% of the ad traffic is phones (rexaffects-store docs/MOBILE_CHECKOUT_AUDIT.md).
+  var uaStr = navigator.userAgent || '';
+  var isPhone = /iPhone|iPad|iPod|Android|Windows Phone|webOS|BlackBerry|Mobi/i.test(uaStr) || (/Mac/.test(navigator.platform || '') && navigator.maxTouchPoints > 1);
+  var PHONE_NOTE = "On your phone? Buy now and it's waiting on your computer. Plugin Player runs on Windows and Mac: I'll email you the download link.";
+  if (isPhone) document.body.classList.add('is-phone');
   // PAY stays off until A, B and C are ticked; the consent object is exactly the app's consentFor()
   var canPay = function (b) { return !!(b && b.terms && b.immediate && b.beta); };
   function consentFor(b) {
@@ -170,13 +176,14 @@
     var card = el('div', { class: 'buy-card' }, [
       el('h2', { id: 'buy-sheet-title' }, [BUY.heading(c.title, c.price)]),
       el('p', { class: 'buy-what' }, [c.plugin ? BUY.plugin(c.plugin) : BUY.what(c.list)]),
+    ].concat(isPhone && !c.plugin ? [el('p', { class: 'phone-note' }, [PHONE_NOTE])] : []).concat([
       box('terms', BUY.boxA),
       box('immediate', [BUY.boxB]),
       box('beta', [isMac ? BUY.boxCMac : BUY.boxC]),
       box('marketing', [BUY.marketing], true),
       el('p', { class: 'buy-sentence' }, [BUY.sentence]),
       el('div', { class: 'buy-row' }, [back, pay]),
-    ]);
+    ]));
     sheet = el('div', { class: 'buy-sheet', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'buy-sheet-title' }, [card]);
     back.addEventListener('click', closeSheet);
     sheet.addEventListener('click', function (e) { if (e.target === sheet) closeSheet(); });
@@ -209,6 +216,13 @@
       askFirst(c);
     });
   });
+
+  // on a phone: the same line under the BUY button of a scene page, before the sheet opens
+  if (isPhone) {
+    document.querySelectorAll('.info button.buy[data-offer]:not([data-plugin-only])').forEach(function (btn) {
+      btn.parentNode.insertBefore(el('p', { class: 'phone-note' }, [PHONE_NOTE]), btn.nextSibling);
+    });
+  }
 
   // pick packs: exactly N checkboxes (Goop and Cube Bloom are not in the list; the server refuses them anyway)
   var picker = document.querySelector('.picker');

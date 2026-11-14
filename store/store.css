@@ -155,6 +155,18 @@ button.cta[data-busy] { background: var(--accent-deep); color: #0a0a0a; box-shad
 .get-player { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 18px 22px; border: 1px solid rgba(var(--accent-rgb),.45); border-radius: 14px; margin-bottom: 14px; }
 .get-player p { color: var(--text); font-weight: 600; }
 .order[hidden] { display: none; }
+/* phones (store.js adds body.is-phone): the app is desktop-only, so the page says the scenes are waiting on the computer */
+.on-phone { display: none; }
+body.is-phone .on-phone { display: block; }
+body.is-phone li.on-phone { display: list-item; }
+body.is-phone .get-player.on-phone { display: flex; }
+body.is-phone .on-computer { display: none; }
+.waiting { margin: 0 0 24px; padding: 18px 20px; border: 1px solid rgba(var(--accent-rgb),.45); border-radius: 14px; background: linear-gradient(160deg, rgba(var(--accent-rgb),.12), rgba(251,191,36,.03) 70%), var(--surface); }
+.waiting p { color: var(--text-secondary); }
+.waiting .waiting-big { font-family: var(--disp); font-weight: 800; font-size: 1.2rem; line-height: 1.3; color: var(--text); margin-bottom: 8px; }
+.phone-note { margin: 12px 0 0; padding: 10px 14px; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; background: rgba(var(--accent-rgb),.08); color: var(--text); font-size: .95rem; }
+.buy-card .phone-note { margin: 0 0 16px; }
+@media (max-width: 480px) { .steps > li { padding: 62px 18px 16px 18px; } .get-player .cta { width: 100%; text-align: center; } }
 
 footer { padding: 40px 0; color: var(--dim); font-size: .9rem; border-top: 1px solid var(--border); text-align: center; }
 @media (max-width: 800px) { .two { grid-template-columns: 1fr; } .hero.has-video { padding: 96px 0 80px; } }

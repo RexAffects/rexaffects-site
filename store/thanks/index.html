@@ -19,9 +19,24 @@
   <section class="scene thanks"><div class="wrap narrow">
     <div class="tag">Purchase confirmed</div>
     <h1>Thanks! Your purchase is <span>confirmed.</span></h1>
-    <p class="lede">Two quick steps and you're playing.</p>
+    <p class="lede on-computer">Two quick steps and you're playing.</p>
+    <!-- On a phone (store.js adds body.is-phone): Plugin Player is a desktop app, so say where the scenes are and that
+         the purchase email carries the installer (rexaffects-store lib/emails.ts WEB_BUYER). -->
+    <div class="waiting on-phone">
+      <p class="waiting-big">Your scenes are waiting on your computer.</p>
+      <p>Hey, it's Rex. Plugin Player runs on Windows and Mac, so I just emailed you the download link. Open that email on your computer, hit the button for yours, and sign in with the same email. That's it.</p>
+    </div>
     <ol class="steps">
-      <li>
+      <li class="on-phone">
+        <h2>Open my email on your computer</h2>
+        <p>It went to the email you typed at checkout. It has a <b>Download for Windows</b> and a <b>Download for Mac</b> button. Not there? <b>Check your spam folder.</b></p>
+      </li>
+      <li class="on-phone">
+        <h2>Sign in and play</h2>
+        <p>Open Plugin Player → <b>ACCOUNT</b> and sign in with that same email. I'll email you a 6-digit code. Type it in and your scenes play clean (on up to 2 computers).</p>
+        <p class="fine">Already have Plugin Player? Skip the download and just sign in.</p>
+      </li>
+      <li class="on-computer">
         <h2>Unlock your scenes in Plugin Player</h2>
         <p><b>Bought from inside Plugin Player?</b> Your scenes unlock by themselves. If you closed the app, they unlock the next time you open it. Not unlocked? Open Plugin Player → <b>ACCOUNT</b> and sign in with the email you just used.</p>
         <p><b>Bought here on the website?</b> Open Plugin Player → <b>ACCOUNT</b> and sign in with the email you just used. We'll email you a 6-digit code; type it in and your scenes play clean (on up to 2 computers).</p>
@@ -33,9 +48,14 @@
         <p class="fine">Lost the email? Plugin Player → ACCOUNT → LIBRARY: every purchase, with its Resolume plugin download.</p>
       </li>
     </ol>
-    <div class="get-player">
+    <div class="get-player on-computer">
       <p>Don't have Plugin Player yet?</p>
-      <a class="cta" href="https://github.com/RexAffects/plugin-player-releases/releases/latest">Download Plugin Player</a>
+      <a class="cta" href="/download/">Download Plugin Player</a>
+    </div>
+    <!-- the download page shows a phone its "Send me the download link" box (store POST /api/list, source phone-link) -->
+    <div class="get-player on-phone">
+      <p>Didn't get my email?</p>
+      <a class="cta" href="/download/?utm_source=store&amp;utm_medium=thanks&amp;utm_campaign=phone-buyer">Email me the download link</a>
     </div>
     <p class="fine order" hidden>Order reference: <code></code></p>
     <p class="fine"><a href="/store/">Back to the store</a></p>

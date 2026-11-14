@@ -87,7 +87,16 @@
 @media (max-width: 560px) {
   .dl { padding-top: 96px; }
   .dl-card { padding: 22px; }
-  .dl-btn, .dl .btn-primary { width: 100%; justify-content: center; margin-right: 0; }
+  /* Full-width buttons on a phone. "Download for Windows" in Unbounded 800 needs 242px at 16px, more than a 360-390px
+     phone leaves inside the card, so it wrapped onto two left-aligned lines while "Download for Mac" stayed on one,
+     centered (Rex, Nov 14). One line each, centered, the same size: slimmer side padding and a type size that follows
+     the screen (16px from 400px up, 14.4px at 360px). */
+  .dl-btn, .dl .btn-primary {
+    width: 100%; justify-content: center; margin-right: 0;
+    text-align: center; white-space: nowrap;
+    padding-left: 12px; padding-right: 12px;
+    font-size: clamp(0.78rem, 4vw, 1rem);
+  }
 }
 
 /* the site's cyan bits, in the app's orange on this page */
@@ -154,7 +163,7 @@
 .sl-thanks strong { color: var(--pp-txt); }
 @media (max-width: 560px) {
   .sl-row input { flex-basis: 100%; }
-  .dl .sl-btn { width: 100%; }
+  .dl .sl-btn { width: 100%; padding-left: 12px; padding-right: 12px; }
 }
 /* the one controller line under the buttons (Rex, Nov 14): controllers first, the phone is the bonus */
 .dl-card .dl-ctl { margin: 14px 0 0; font-size: 0.9rem; color: var(--pp-body); }

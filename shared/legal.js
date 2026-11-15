@@ -19,9 +19,9 @@
     country: 'USA',
     support: 'support@rexaffects.com',
     // [to be set at publish]
-    terms:   { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
-    eula:    { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
-    refunds: { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
+    terms:   { version: '1.1', effective: 'November 15, 2026', updated: 'November 15, 2026' }, // 1.1: box C dropped, beta list corrected (Nov 15)
+    eula:    { version: '1.1', effective: 'November 15, 2026', updated: 'November 15, 2026' }, // 1.1: 7.1 list corrected, 7.3 no box (Nov 15)
+    refunds: { version: '1.1', effective: 'November 15, 2026', updated: 'November 15, 2026' }, // 1.1: section 4 beta list corrected (Nov 15)
     privacy: { version: '1.2', effective: 'November 11, 2026', updated: 'November 14, 2026' },
     cookies: { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
   };

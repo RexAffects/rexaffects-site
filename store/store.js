@@ -7,8 +7,9 @@
 // only after Allow on the cookie notice (shared/pixel.js window.RA_ADS). The thanks page sends one Purchase with the order's
 // id, the same id the store's server sends, so Meta counts one.
 // Legal (plugin-player planning/legal/WORDING.md 2.3 + 3): BUY never goes straight to Stripe. It opens the BUY sheet: what you
-// get, boxes A/B/C (required) and the marketing box (optional), all unticked, the "By continuing" sentence, then PAY, which stays
-// off until A, B and C are ticked. The ticks go with the checkout as `consent`, the same object the app sends
+// get, boxes A and B (required) and the marketing box (optional), all unticked, the "By continuing" sentence, then PAY, which
+// stays off until A and B are ticked. Box C (the beta shortfalls) was dropped on Nov 15, 2026 (Rex's "Option B"; the list
+// stays in EULA 7.1; rexaffects-store docs/DROP_BOX_C_GO_LIVE.md). The ticks go with the checkout as `consent`, the same object the app sends
 // (app/renderer/ui/legal-model.js consentFor; rexaffects-store lib/v2.ts consentOf records it in the Stripe session metadata).
 (function () {
   var API = (document.body.getAttribute('data-store-api') || '').replace(/\/+$/, '');
@@ -126,25 +127,22 @@
     plugin: function (title) { return 'What you get: the ' + title + ' Resolume plugin download. This is a license to use it, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
     boxA: ['I agree to the ', ['/terms/', 'Terms of Sale'], ', ', ['/refunds/', 'Refund Policy'], ' and ', ['/eula/', 'EULA'], ', and I understand there are no refunds for change of mind because I could try every scene free first.'],
     boxB: 'I want my scenes unlocked immediately. I acknowledge that, where I have a legal right to cancel within 14 days, I lose that right once the unlock starts.',
-    boxC: "Beta: I've read the list of known shortfalls (unsigned installer / SmartScreen warning · slow first launch · update feed may lag · camera capped at 1280×720 · no MIDI/OSC out · Windows only · some plugins ship after their scene) and I accept them.",
-    boxCMac: "Beta: I've read the list of known shortfalls (not notarized by Apple, right-click Open the first time · slow first launch · update feed may lag · camera capped at 1280×720 · no MIDI/OSC out · some plugins ship after their scene) and I accept them.",
     marketing: 'Email me the free scene each month (unsubscribe any time)',
     sentence: 'By continuing you agree to the Terms of Sale, Refund Policy and EULA.',
     pay: function (price) { return 'PAY US ' + price + ' + TAX ON STRIPE →'; },
     back: '‹ BACK',
   };
-  var isMac = /Mac/.test(navigator.platform || '') && !/iPhone|iPad|iPod/.test(navigator.userAgent || '');
   // A phone or tablet (the same test as download/send-link.js): Plugin Player is a desktop app, so every buy step says
   // where the scenes will be. ~100% of the ad traffic is phones (rexaffects-store docs/MOBILE_CHECKOUT_AUDIT.md).
   var uaStr = navigator.userAgent || '';
   var isPhone = /iPhone|iPad|iPod|Android|Windows Phone|webOS|BlackBerry|Mobi/i.test(uaStr) || (/Mac/.test(navigator.platform || '') && navigator.maxTouchPoints > 1);
   var PHONE_NOTE = "On your phone? Buy now and it's waiting on your computer. Plugin Player runs on Windows and Mac: I'll email you the download link.";
   if (isPhone) document.body.classList.add('is-phone');
-  // PAY stays off until A, B and C are ticked; the consent object is exactly the app's consentFor()
-  var canPay = function (b) { return !!(b && b.terms && b.immediate && b.beta); };
+  // PAY stays off until A and B are ticked; the consent object is exactly the app's consentFor() (no `beta` since Nov 15)
+  var canPay = function (b) { return !!(b && b.terms && b.immediate); };
   function consentFor(b) {
     var L = window.RA_LEGAL || {};
-    return canPay(b) ? { terms: true, immediate: true, beta: true, eula: L.eulaVersion || '', termsVersion: L.termsVersion || '', marketing: !!b.marketing } : null;
+    return canPay(b) ? { terms: true, immediate: true, eula: L.eulaVersion || '', termsVersion: L.termsVersion || '', marketing: !!b.marketing } : null;
   }
 
   var sheet = null, lastBtn = null;
@@ -164,7 +162,7 @@
   function askFirst(c) {
     closeSheet();
     lastBtn = c.btn;
-    var boxes = { terms: false, immediate: false, beta: false, marketing: false };
+    var boxes = { terms: false, immediate: false, marketing: false };
     var pay = el('button', { type: 'button', class: 'cta buy', disabled: '' }, [BUY.pay(c.price)]);
     function box(key, parts, optional) {
       var input = el('input', { type: 'checkbox', 'data-box': key });
@@ -179,7 +177,6 @@
     ].concat(isPhone && !c.plugin ? [el('p', { class: 'phone-note' }, [PHONE_NOTE])] : []).concat([
       box('terms', BUY.boxA),
       box('immediate', [BUY.boxB]),
-      box('beta', [isMac ? BUY.boxCMac : BUY.boxC]),
       box('marketing', [BUY.marketing], true),
       el('p', { class: 'buy-sentence' }, [BUY.sentence]),
       el('div', { class: 'buy-row' }, [back, pay]),

@@ -167,3 +167,8 @@
 }
 /* the one controller line under the buttons (Rex, Nov 14): controllers first, the phone is the bonus */
 .dl-card .dl-ctl { margin: 14px 0 0; font-size: 0.9rem; color: var(--pp-body); }
+/* the quiet way to the store (Rex, Nov 14): one line, never a button. Phone: under the email box. Computer: under the card. */
+.dl-card .dl-store, .dl-store { margin: 0 0 22px; font-size: 0.92rem; color: var(--pp-dim); }
+.dl-store a { color: var(--pp-or); font-weight: 600; white-space: nowrap; }
+.dl-store a:hover { color: var(--pp-or-hi); }
+.dl-store-desk { margin: -22px 0 40px; padding-left: 4px; }

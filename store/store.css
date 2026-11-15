@@ -200,3 +200,23 @@ footer .legal-foot a:hover { color: var(--text); }
 .buy-back:hover { border-color: var(--accent); color: var(--accent); }
 body.sheet-open { overflow: hidden; }
 @media (max-width: 480px) { .buy-row .cta { width: 100%; text-align: center; } .buy-back { width: 100%; } }
+/* The BUY sheet on a phone (Rex, Nov 14: it was 1,337 px tall at 360x800 and PAY was below the fold). Layout only, not one
+   word changes: the card is a bottom sheet no taller than the screen, its text scrolls inside it, and BACK + PAY stay pinned
+   at the bottom, always in view. Type 14px for the boxes, 13px for the small print (never smaller). Above the cookie notice
+   (z-index 1000) while open, so the notice never sits on PAY. Wider screens keep the centred card above. */
+@media (max-width: 600px) {
+  .buy-sheet { padding: 0; align-items: flex-end; overflow: hidden; z-index: 1001; }
+  .buy-card { display: flex; flex-direction: column; margin: 0; max-height: 100vh; max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    border-radius: 16px 16px 0 0; border-width: 1px 0 0; padding: 16px 16px 0; }
+  .buy-card > * { flex: none; }
+  .buy-card h2 { font-size: 1.02rem; line-height: 1.3; margin-bottom: 6px; }
+  .buy-card .buy-what { font-size: 13px; line-height: 1.45; margin-bottom: 10px; }
+  .buy-card .phone-note { font-size: 13px; line-height: 1.45; padding: 8px 12px; margin: 0 0 10px; }
+  .buy-box { font-size: 14px; line-height: 1.45; padding: 9px 0; gap: 12px; }
+  .buy-box input { width: 22px; height: 22px; margin-top: 0; }
+  .buy-sentence { font-size: 13px; line-height: 1.45; margin: 8px 0 10px; color: var(--text-secondary); }
+  .buy-row { position: sticky; bottom: 0; z-index: 1; flex-wrap: nowrap; gap: 10px; margin: 0 -16px; padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--surface); border-top: 1px solid var(--border-hover); box-shadow: 0 -10px 18px rgba(0,0,0,.55); }
+  .buy-row .buy-back { width: auto; flex: none; padding: 13px 10px; font-size: .85rem; white-space: nowrap; }
+  .buy-row .cta { width: auto; flex: 1 1 auto; min-width: 0; padding: 13px 6px; font-size: .82rem; text-align: center; }
+}

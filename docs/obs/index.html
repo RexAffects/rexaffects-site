@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use Plugin Player in OBS — Plugin Player docs</title>
+  <meta name="description" content="Use Plugin Player in OBS: Plugin Player help.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/site-extra.css">
+  <link rel="stylesheet" href="/docs/docs.css">
+  <script src="/shared/pixel.js"></script>
+</head>
+<body>
+  <main class="doc"><div class="container">
+    <p><a href="/docs/">‹ Plugin Player docs</a></p>
+<h1 id="use-plugin-player-in-obs">Use Plugin Player in OBS</h1>
+<p>Put a Plugin Player scene (Flashpoint's <strong>Fire Feedback</strong>, say) into an OBS stream or recording.</p>
+<p><strong>The short version:</strong> on Windows, send it over <strong>Spout</strong> and add a <strong>Spout2 Capture</strong> source in OBS (one free plugin). On a Mac, send it over <strong>Syphon</strong> and add OBS's built-in <strong>Syphon Client</strong> source. No plugin? <strong>Window Capture</strong> works on Windows too.</p>
+<p>Plugin Player has no NDI output. If OBS is on another computer, bring Plugin Player into OBS on this computer first, then send it on from OBS (for example with the free DistroAV plugin).</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul><li><strong>Fire Feedback needs something moving.</strong> Flashpoint's fire comes off motion in the picture: your camera, a video file or the demo clip. On Windows only one app can use a camera at a time, so let Plugin Player have the webcam and <strong>don't add the same webcam in OBS</strong>. You're already in the picture Plugin Player sends.</li><li><strong>A scene you haven't bought</strong> goes out with the RexAffects watermark at 720p detail, over Spout, Syphon and a full-screen window alike. Once you own it, it's clean 1080p. Cube Bloom is free. See <a href="/docs/unlock/"><code>UNLOCK.md</code></a>.</li><li><strong>Just recording, not streaming?</strong> Plugin Player's own <strong>REC</strong> button records the clean picture to a video file (<a href="/docs/readme/"><code>README.md</code></a> › <em>Recording</em>). OBS is for when you want it in a stream or mixed with other things.</li></ul>
+<h2 id="windows-spout-recommended">Windows: Spout (recommended)</h2>
+<p>Spout hands OBS the picture straight from the graphics card: full quality, no app buttons, nothing to crop.</p>
+<ol><li>Close OBS. Download the <strong>OBS Spout2 Plugin</strong> installer (<code>OBS_Spout2_Plugin_Install_v…exe</code>) from its releases page: https://github.com/Off-World-Live/obs-spout2-plugin/releases. Run it and keep the suggested folder. It needs <strong>OBS 33 or newer</strong> (on OBS 32, use plugin version 1.13.0).</li><li>In Plugin Player, click <strong>⧉ OUTPUT</strong>. At the bottom of the box, <strong>SPOUT OUT · SEND TO RESOLUME</strong> works for OBS too: turn it to <strong>SPOUT ON</strong>. It says <strong>WAITING FOR AN APP</strong> until OBS picks it up.</li><li>Open OBS. In <strong>Sources</strong>, click <strong>+</strong> › <strong>Spout2 Capture</strong>, name it, click <strong>OK</strong>.</li><li>In its settings, pick <strong>Plugin Player</strong> from the list of senders. If there's a composite mode setting, <strong>Opaque</strong> or <strong>Default</strong> is right (Plugin Player sends a solid picture). Click <strong>OK</strong>.</li><li>The scene shows up in OBS. Plugin Player's box now says <strong>SENDING AS "Plugin Player"</strong>.</li><li>If it doesn't fill the OBS canvas: right-click the source › <strong>Transform</strong> › <strong>Fit to screen</strong>.</li></ol>
+<p>Spout carries only the picture: never the app's buttons, panels or the controller plate. Plugin Player can stay in a normal window with all its buttons while you play.</p>
+<h2 id="windows-window-capture-nothing-to-install">Windows: Window Capture (nothing to install)</h2>
+<ol><li>In Plugin Player, press <strong>G</strong>: the buttons and panels disappear and the picture fills the window. Make the window 16:9 (or press <strong>F11</strong> for fullscreen) so there are no black bars.</li><li>In OBS: <strong>Sources</strong> › <strong>+</strong> › <strong>Window Capture</strong> › <strong>OK</strong>.</li><li><strong>Window</strong>: pick the Plugin Player window. <strong>Capture Method</strong>: the <strong>Windows 10 (1903 and up)</strong> one (leave Automatic if that works). Click <strong>OK</strong>.</li><li>Right-click the source › <strong>Transform</strong> › <strong>Fit to screen</strong>. Crop any edge with <strong>Alt + drag</strong> on the source.</li></ol>
+<p>Use <strong>Window Capture</strong>, not Game Capture. Press <strong>G</strong> again to get the buttons back after the stream. Spout is still the better picture: Window Capture copies what's on your screen, so it's capped at your window's size.</p>
+<h2 id="mac-syphon">Mac: Syphon</h2>
+<p>Syphon is built into Plugin Player and into OBS: nothing to install. Plugin Player needs macOS 13 (Ventura) or newer.</p>
+<ol><li>Update OBS to the newest version (older 32.0 builds could show a Syphon source blank; fixed in 32.0.2).</li><li>In Plugin Player, click <strong>⧉ OUTPUT</strong> and turn the switch at the bottom of the box to <strong>SYPHON ON</strong>.</li><li>In OBS: <strong>Sources</strong> › <strong>+</strong> › <strong>Syphon Client</strong>, name it, <strong>OK</strong>.</li><li><strong>Source</strong>: pick the one that says <strong>Plugin Player</strong>. Leave <strong>Allow Transparency</strong> off. Click <strong>OK</strong>.</li><li>Right-click the source › <strong>Transform</strong> › <strong>Fit to screen</strong> if it doesn't fill the canvas.</li></ol>
+<h2 id="a-clean-picture-that-matches-obs">A clean picture that matches OBS</h2>
+<ul><li><strong>Size.</strong> Plugin Player sends <strong>1920×1080</strong> (or 1280×720 with <strong>⧉ OUTPUT › OUTPUT QUALITY › 720p</strong>). Set OBS's <strong>Settings › Video › Base (Canvas) Resolution</strong> to the same. Streaming at 720p? Pick 720p in both: lighter on the graphics card than shrinking 1080p.</li><li><strong>Frame rate.</strong> Set <strong>⧉ OUTPUT › MAX FRAME RATE</strong> to the same number as OBS's <strong>Settings › Video › Common FPS Values</strong> (30 or 60; never above 60 over Spout). 30 is plenty for slow fire and halves the work.</li><li><strong>No buttons in the picture.</strong> Spout and Syphon never carry them. With Window Capture, press <strong>G</strong> first.</li><li><strong>Map in one place.</strong> Spout and Syphon send the picture before Plugin Player's MAP-tab mapping, so a projector mapping never ends up in your stream.</li></ul>
+<h2 id="transparent-background-not-yet">Transparent background? Not yet</h2>
+<p>Plugin Player always sends a solid picture: the black around the fire is real black, not see-through. To lay the fire over a camera or a game in OBS, put the Plugin Player source on top, right-click it › <strong>Blending Mode</strong> › <strong>Screen</strong> (or <strong>Additive</strong>). Black drops out and the bright fire stays.</p>
+<h2 id="laptops-with-two-graphics-chips">Laptops with two graphics chips</h2>
+<p>Spout only works when Plugin Player and OBS run on the <strong>same</strong> graphics chip. On a laptop with an NVIDIA or AMD card plus the built-in one: Windows <strong>Settings › System › Display › Graphics</strong> › add <strong>Plugin Player</strong> and <strong>OBS</strong> › set <strong>both</strong> to <strong>High performance</strong> › restart both apps. Plugin Player shows this tip itself the first time you turn Spout on (<strong>HOW</strong> opens the steps). Full row: <a href="/docs/troubleshooting/"><code>TROUBLESHOOTING.md</code></a> › <em>Laptop: Spout says ON, but Resolume (or OBS) shows black</em>.</p>
+<h2 id="if-it-doesnt-work">If it doesn't work</h2>
+<div class="doc-table"><table><thead><tr><th>What you see</th><th>Fix</th></tr></thead><tbody><tr><td><strong>Spout2 Capture</strong> isn't in OBS's <strong>+</strong> list</td><td>Close OBS and run the plugin installer again. Check your OBS version (Help › About): plugin 1.14 and up need OBS 33; another plugin can clash with it (the plugin's page lists one). OBS must use its default Direct3D 11 renderer (Settings › Advanced).</td></tr><tr><td>The source is black</td><td>Two graphics chips: see above. Check Plugin Player's box says <strong>SPOUT ON</strong> and the source has <strong>Plugin Player</strong> picked.</td></tr><tr><td><strong>Plugin Player</strong> isn't in the sender list</td><td>Turn <strong>SPOUT ON</strong> first, then open the source's settings again.</td></tr><tr><td>The picture is upside down</td><td>Start Plugin Player with <code>--spout-invert</code> (<a href="/docs/output/"><code>OUTPUT.md</code></a> › <em>Where to type flags</em>).</td></tr><tr><td>The fire doesn't move</td><td>Flashpoint needs motion: turn the camera on in Plugin Player (<strong>V</strong>), or play a video file. Close the webcam in OBS so Plugin Player can have it.</td></tr><tr><td>A watermark in the stream</td><td>The scene isn't yours yet: <a href="/docs/unlock/"><code>UNLOCK.md</code></a>.</td></tr><tr><td>Choppy</td><td>Lower <strong>MAX FRAME RATE</strong> to 30 and <strong>OUTPUT QUALITY</strong> to 720p; laptop on the charger, Windows power mode <strong>Best performance</strong>.</td></tr><tr><td>Window Capture is black</td><td>Switch the capture method (the Windows 10 one, or BitBlt); don't minimize Plugin Player. Or use Spout.</td></tr><tr><td>Mac: the Syphon source is blank</td><td>Update OBS; pick the source again in its settings; check the Plugin Player button says <strong>SYPHON ON</strong>.</td></tr></tbody></table></div>
+<p>More on every output (projector, Spout into Resolume, Syphon): <a href="/docs/output/"><code>OUTPUT.md</code></a>.</p>
+  </div></main>
+  <footer class="footer">
+    <div class="container">
+      <ul class="foot-links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/download/">Download Plugin Player</a></li>
+        <li><a href="/privacy/">Privacy &amp; SMS Terms</a></li>
+      </ul>
+      <p>&copy; 2026 Rex Roberts. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

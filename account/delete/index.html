@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+  DELETE YOUR PLUGIN PLAYER ACCOUNT (branch account-delete; NOT LIVE until Rex says go).
+  Why: Google Play requires an app with accounts to offer deletion in the app AND on a web page that works without the app
+  (Play Console Help 13327111; plugin-player planning/PLAY_LAUNCH_CHECKLIST.md B6, docs/research/deep/google-play-launch.md #32).
+  This URL goes in Play Console > App content > Data safety > "Delete account URL".
+
+  SPEC
+  - A plain account page, NOT a store page (Rex, Nov 15: no store before the app): no prices, no store links, no pixel.
+  - Two steps, the same calls as the app's ACCOUNT > DELETE MY ACCOUNT (rexaffects-store lib/account.ts, branch account-delete;
+    both paths are in the store's CORS_PATHS, so this page may call them from https://rexaffects.com):
+      1. POST /api/account/delete/start   { email }        -> 200 { ok } (always, for any valid email: no probing who has an
+                                                              account) | 400 malformed | 429 rate-limited
+      2. POST /api/account/delete/confirm { email, code }  -> 200 { ok, kept: { purchases } } | 400 bad-code / expired |
+                                                              429 too-many | 409 pass-renews { store: 'stripe' | 'play' }
+  - What goes and what stays: the same words as the app (plugin-player app/mobile-app/account-ui.js DELETE_WORDS), which
+    match planning/legal/PRIVACY.md section 7. Change all three together.
+  - A Pass that still renews blocks the delete: the page says where to cancel it (Google Play, or the computer app).
+  - Nothing is stored in the browser. The email and the code are sent only to the store, over HTTPS.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete your account — RexAffects</title>
+  <meta name="description" content="Delete your Plugin Player account and the data that goes with it.">
+  <link rel="canonical" href="https://rexaffects.com/account/delete/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../shared/site-extra.css">
+  <link rel="stylesheet" href="../../shared/legal.css">
+  <style>
+    .del-card { max-width: 34rem; margin: 1.5rem 0 3rem; padding: 1.5rem; border: 1px solid #f97316; border-radius: 14px; background: #0d0f16; }
+    .del-card label { display: block; font-weight: 600; margin: 1rem 0 .4rem; }
+    .del-card input { width: 100%; box-sizing: border-box; height: 48px; padding: 0 12px; border-radius: 10px; border: 1px solid #ffffff33; background: #000; color: #fff; font-size: 17px; }
+    .del-card button { margin-top: 1rem; min-height: 48px; padding: 0 1.4rem; border-radius: 10px; border: 0; font-weight: 800; letter-spacing: .1em; cursor: pointer; }
+    .del-go { background: #ff4d4d; color: #000; }
+    .del-link { background: none; color: #f97316; text-decoration: underline; padding: 0; min-height: 0; letter-spacing: 0; font-weight: 600; }
+    .del-msg { margin-top: 1rem; font-weight: 700; color: #ff6b6b; }
+    .del-ok { color: #4ade80; }
+    .del-small { font-size: .9rem; opacity: .8; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body data-store-api="https://rexaffects-store.vercel.app">
+
+  <nav class="nav scrolled sub-nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">REXAFFECTS</a>
+    </div>
+  </nav>
+
+  <main class="pv legal">
+    <div class="container">
+      <div class="section-label">Your account</div>
+      <h1>Delete your Plugin Player account</h1>
+
+      <p>This deletes the account you sign in to Plugin Player with (on a computer or a phone). You don't need the app for it.</p>
+      <h2>What we delete</h2>
+      <p>Your sign-in, the devices on your account, your feedback, your email list entry and your email settings. Every device is signed out.</p>
+      <h2>What we keep</h2>
+      <p>The purchase records the law and Stripe or Google need: a scrambled copy of your email, what you bought, and the payment ids, so a refund or chargeback can still be matched to the sale (US tax records are usually kept for 7 years). If you sign in again later with the same email, what you bought comes back with it. See our <a href="/privacy/">Privacy Policy</a>, section 7.</p>
+      <p><strong>Paying for the Pass?</strong> Cancel it first: in Google Play (Play Store &gt; your profile &gt; Payments &amp; subscriptions &gt; Subscriptions) if you bought it on your phone, or in Plugin Player on your computer.</p>
+
+      <div class="del-card">
+        <form id="del-start">
+          <label for="del-email">Your account's email</label>
+          <input id="del-email" type="email" autocomplete="email" required placeholder="you@email.com">
+          <button type="submit" class="del-go" id="del-send">EMAIL ME A CODE</button>
+          <p class="del-small">We email a 6-digit code to make sure it's you. Nothing is deleted yet.</p>
+        </form>
+        <form id="del-confirm" hidden>
+          <p>We sent a code to <strong id="del-to"></strong> (if it has an account with us). It works for 15 minutes.</p>
+          <label for="del-code">The 6-digit code</label>
+          <input id="del-code" inputmode="numeric" autocomplete="one-time-code" maxlength="7" required placeholder="123456">
+          <button type="submit" class="del-go" id="del-do">DELETE MY ACCOUNT</button>
+          <p><button type="button" class="del-link" id="del-back">Use another email</button></p>
+        </form>
+        <p class="del-msg" id="del-msg" role="status" aria-live="polite"></p>
+      </div>
+
+      <p class="del-small">Questions, or no access to that inbox any more? Email <a href="mailto:support@rexaffects.com">support@rexaffects.com</a>: we answer within 30 days.</p>
+    </div>
+  </main>
+
+  <script>
+  (function () {
+    var API = document.body.getAttribute('data-store-api');
+    var $ = function (id) { return document.getElementById(id); };
+    var email = '';
+    var say = function (text, good) { var m = $('del-msg'); m.textContent = text || ''; m.className = 'del-msg' + (good ? ' del-ok' : ''); };
+    var ERR = {
+      malformed: 'That email doesn’t look right.', 'rate-limited': 'Too many tries. Wait a few minutes.',
+      'bad-code': 'That code didn’t match. Check the newest email.', expired: 'That code ran out. Send a new one.',
+      'too-many': 'Too many tries. Send a new code in a few minutes.'
+    };
+    function post(path, body) {
+      return fetch(API + path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j || {} }; }); });
+    }
+    $('del-start').addEventListener('submit', function (e) {
+      e.preventDefault(); say('');
+      email = $('del-email').value.trim();
+      $('del-send').disabled = true;
+      post('/api/account/delete/start', { email: email }).then(function (r) {
+        if (r.status === 200) { $('del-to').textContent = email; $('del-start').hidden = true; $('del-confirm').hidden = false; $('del-code').focus(); }
+        else say(ERR[r.body.error] || 'Something went wrong. Try again.');
+      }).catch(function () { say('No connection. Try again.'); }).then(function () { $('del-send').disabled = false; });
+    });
+    $('del-confirm').addEventListener('submit', function (e) {
+      e.preventDefault(); say('');
+      var code = $('del-code').value.replace(/\s+/g, '');
+      if (!/^\d{6}$/.test(code)) { say(ERR['bad-code']); return; }
+      $('del-do').disabled = true;
+      post('/api/account/delete/confirm', { email: email, code: code }).then(function (r) {
+        if (r.status === 200 && r.body.ok) { $('del-confirm').hidden = true; say('Your account is deleted. Thanks for playing.', true); return; }
+        if (r.status === 409 && r.body.error === 'pass-renews') {
+          say(r.body.store === 'play'
+            ? 'Your Pass still renews. Cancel it in Google Play first (Play Store > your profile > Payments & subscriptions > Subscriptions), then use the same code again.'
+            : 'Your Pass still renews. Cancel it in Plugin Player on your computer first (ACCOUNT > MANAGE), then use the same code again.');
+          return;
+        }
+        say(ERR[r.body.error] || 'That didn’t work. Try again.');
+      }).catch(function () { say('No connection. Try again.'); }).then(function () { $('del-do').disabled = false; });
+    });
+    $('del-back').addEventListener('click', function () { $('del-confirm').hidden = true; $('del-start').hidden = false; say(''); });
+  })();
+  </script>
+</body>
+</html>

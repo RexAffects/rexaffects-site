@@ -22,7 +22,7 @@
     terms:   { version: '1.3', effective: 'November 17, 2026', updated: 'November 17, 2026' }, // 1.3: seller is now RexAffects LLC (Nov 17). 1.2: 2.8 the Pass (renewal, cancel, price lock, grace), US spelling (Nov 16). 1.1: box C dropped, beta list corrected (Nov 15)
     eula:    { version: '1.2', effective: 'November 17, 2026', updated: 'November 17, 2026' }, // 1.2: seller is now RexAffects LLC, US spelling (Nov 17). 1.1: 7.1 list corrected, 7.3 no box (Nov 15)
     refunds: { version: '1.2', effective: 'November 17, 2026', updated: 'November 17, 2026' }, // 1.2: seller is now RexAffects LLC, US spelling (Nov 17). 1.1: section 4 beta list corrected (Nov 15)
-    privacy: { version: '1.3', effective: 'November 11, 2026', updated: 'November 17, 2026' }, // 1.3: RexAffects LLC is the controller, US spelling (Nov 17)
+    privacy: { version: '1.4', effective: 'November 11, 2026', updated: 'November 18, 2026' }, // 1.4: 2.2 the app's anonymous counts, asked once, off in ABOUT (Rex approved, Nov 18). 1.3: RexAffects LLC is the controller, US spelling (Nov 17)
     cookies: { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
   };
   // what the BUY sheet sends as consent.eula / consent.termsVersion (same shape as the app's legal-model.js consentFor)

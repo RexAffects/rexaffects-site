@@ -19,12 +19,12 @@
     country: 'USA',
     support: 'support@rexaffects.com',
     // [to be set at publish]
-    // DRAFT (branch drop-waiver, Rex Nov 19): set the real go-live date in these three lines at publish, and the same versions in
-    // plugin-player app/shared/legal.cjs. 1.4 / 1.3 / 1.4: the 14-day waiver box is gone; EU/EEA/UK buyers keep 14 days to cancel.
-    terms:   { version: '1.4', effective: 'November 19, 2026', updated: 'November 19, 2026' }, // 1.4: no waiver box, 3.2 + 7.1 + 7.2 (Nov 19 draft). 1.3: seller is now RexAffects LLC (Nov 17). 1.2: 2.8 the Pass (renewal, cancel, price lock, grace), US spelling (Nov 16). 1.1: box C dropped, beta list corrected (Nov 15)
+    // LIVE Nov 19, 2026 (pricing test go-live): Terms 1.4 / Refunds 1.3 / Privacy 1.5. The 14-day waiver box is gone; EU/EEA/UK
+    // buyers keep 14 days to cancel. Keep the same versions in plugin-player app/shared/legal.cjs.
+    terms:   { version: '1.4', effective: 'November 19, 2026', updated: 'November 19, 2026' }, // 1.4: no waiver box, 3.2 + 7.1 + 7.2 (Nov 19). 1.3: seller is now RexAffects LLC (Nov 17). 1.2: 2.8 the Pass (renewal, cancel, price lock, grace), US spelling (Nov 16). 1.1: box C dropped, beta list corrected (Nov 15)
     eula:    { version: '1.2', effective: 'November 17, 2026', updated: 'November 17, 2026' }, // 1.2: seller is now RexAffects LLC, US spelling (Nov 17). 1.1: 7.1 list corrected, 7.3 no box (Nov 15)
-    refunds: { version: '1.3', effective: 'November 19, 2026', updated: 'November 19, 2026' }, // 1.3: section 1 + 7, EU/EEA/UK 14 days to cancel (Nov 19 draft). 1.2: seller is now RexAffects LLC, US spelling (Nov 17). 1.1: section 4 beta list corrected (Nov 15)
-    privacy: { version: '1.5', effective: 'November 11, 2026', updated: 'November 19, 2026' }, // 1.5: the consent row names the Terms box (Nov 19 draft; after branch privacy-counts' 1.4, the anonymous counts). 1.3: RexAffects LLC is the controller, US spelling (Nov 17)
+    refunds: { version: '1.3', effective: 'November 19, 2026', updated: 'November 19, 2026' }, // 1.3: section 1 + 7, EU/EEA/UK 14 days to cancel (Nov 19). 1.2: seller is now RexAffects LLC, US spelling (Nov 17). 1.1: section 4 beta list corrected (Nov 15)
+    privacy: { version: '1.5', effective: 'November 11, 2026', updated: 'November 19, 2026' }, // 1.5: the consent row names the Terms box (Nov 19). 1.4: 2.2 the app's anonymous counts, asked once, off in ABOUT (Rex approved, Nov 18). 1.3: RexAffects LLC is the controller, US spelling (Nov 17)
     cookies: { version: '1.0', effective: 'November 11, 2026', updated: 'November 11, 2026' },
   };
   // what the BUY sheet sends as consent.eula / consent.termsVersion (same shape as the app's legal-model.js consentFor)

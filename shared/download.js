@@ -7,20 +7,20 @@
 (function () {
   var D = window.RA_DOWNLOAD = {
     live: true,
-    version: "0.2.4",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
-    date: "November 15, 2026",               // e.g. 'November 9, 2026'
-    notes: "A sharper camera at 1080p, MIDI controllers that set themselves up, a bigger button legend, and Frame Stack and Cube Bloom fixed on every graphics card.",              // the release's first line ("What's new")
+    version: "0.2.5",            // e.g. '0.2.0' (the app's own version, the release tag is 'v' + this)
+    date: "November 19, 2026",               // e.g. 'November 9, 2026'
+    notes: "Buy scenes for the app alone and add a few at once in the new cart, your controller can drive the mouse on Windows, and FEEDBACK tells you when it's sent.",              // the release's first line ("What's new")
     windows: {
-      file: "Plugin-Player-Setup-0.2.4.exe",             // Plugin-Player-Setup-<version>.exe
-      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.4/Plugin-Player-Setup-0.2.4.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
-      sha256: "999c1caf7a9740d0162a79da9b5ad3ed68c8344e443c76d48c6fcf88435f8292",           // of that exact file (lower-case hex, 64 characters)
-      bytes: 148570808,
+      file: "Plugin-Player-Setup-0.2.5.exe",             // Plugin-Player-Setup-<version>.exe
+      url: "https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.5/Plugin-Player-Setup-0.2.5.exe",              // https://github.com/RexAffects/plugin-player-releases/releases/download/v<version>/<file>
+      sha256: "be92d269d621bd095f301a487abae44fe55d002b3b21c0c5727e83366da57bba",           // of that exact file (lower-case hex, 64 characters)
+      bytes: 148600104,
     },
     mac: {                  // the signed + notarized universal DMG (Apple silicon + Intel), same release
-      dmg: 'Plugin-Player-0.2.4-universal.dmg',              // Plugin-Player-<version>-universal.dmg
-      link: 'https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.4/Plugin-Player-0.2.4-universal.dmg',
-      hash: 'b9870a457c1bb92541383a06332715662a800224252a330162bc18ad111c8cfd',
-      size: 252742229,
+      dmg: 'Plugin-Player-0.2.5-universal.dmg',              // Plugin-Player-<version>-universal.dmg
+      link: 'https://github.com/RexAffects/plugin-player-releases/releases/download/v0.2.5/Plugin-Player-0.2.5-universal.dmg',
+      hash: '622d2405638d3b6294780e747549edf76335f5f666402421a5e2c097a30e651b',
+      size: 252772322,
     },
   };
 

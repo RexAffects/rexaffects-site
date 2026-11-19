@@ -134,7 +134,6 @@
     what: function (list) { return 'What you get: ' + list + ' unlocked clean at full output resolution on up to 2 of your computers, and the matching Resolume plugin download for each. This is a license to use them, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
     plugin: function (title) { return 'What you get: the ' + title + ' Resolume plugin download. This is a license to use it, not ownership. Tax is added at checkout. Payment by Stripe ("Sold through Link"), who emails your receipt.'; },
     boxA: ['I agree to the ', ['/terms/', 'Terms of Sale'], ', ', ['/refunds/', 'Refund Policy'], ' and ', ['/eula/', 'EULA'], ', and I understand there are no refunds for change of mind because I could try every scene free first.'],
-    boxB: 'I want my scenes unlocked immediately. I acknowledge that, where I have a legal right to cancel within 14 days, I lose that right once the unlock starts.',
     marketing: 'Email me the free scene each month (unsubscribe any time)',
     sentence: 'By continuing you agree to the Terms of Sale, Refund Policy and EULA.',
     pay: function (price) { return 'PAY US ' + price + ' + TAX ON STRIPE →'; },
@@ -146,11 +145,12 @@
   var isPhone = /iPhone|iPad|iPod|Android|Windows Phone|webOS|BlackBerry|Mobi/i.test(uaStr) || (/Mac/.test(navigator.platform || '') && navigator.maxTouchPoints > 1);
   var PHONE_NOTE = "On your phone? Buy now and it's waiting on your computer. Plugin Player runs on Windows and Mac: I'll email you the download link.";
   if (isPhone) document.body.classList.add('is-phone');
-  // PAY stays off until A and B are ticked; the consent object is exactly the app's consentFor() (no `beta` since Nov 15)
-  var canPay = function (b) { return !!(b && b.terms && b.immediate); };
+  // PAY stays off until A (the Terms) is ticked; the consent object is exactly the app's consentFor() (no `beta` since Nov 15,
+  // no `immediate` since Nov 19: Rex dropped the 14-day waiver box, so EU/EEA/UK buyers keep their 14-day right, Terms 7.2)
+  var canPay = function (b) { return !!(b && b.terms); };
   function consentFor(b) {
     var L = window.RA_LEGAL || {};
-    return canPay(b) ? { terms: true, immediate: true, eula: L.eulaVersion || '', termsVersion: L.termsVersion || '', marketing: !!b.marketing } : null;
+    return canPay(b) ? { terms: true, eula: L.eulaVersion || '', termsVersion: L.termsVersion || '', marketing: !!b.marketing } : null;
   }
 
   var sheet = null, lastBtn = null;
@@ -170,7 +170,7 @@
   function askFirst(c) {
     closeSheet();
     lastBtn = c.btn;
-    var boxes = { terms: false, immediate: false, marketing: false };
+    var boxes = { terms: false, marketing: false };
     var pay = el('button', { type: 'button', class: 'cta buy', disabled: '' }, [BUY.pay(c.price)]);
     function box(key, parts, optional) {
       var input = el('input', { type: 'checkbox', 'data-box': key });
@@ -184,7 +184,6 @@
       el('p', { class: 'buy-what' }, [c.plugin ? BUY.plugin(c.plugin) : BUY.what(c.list)]),
     ].concat(isPhone && !c.plugin ? [el('p', { class: 'phone-note' }, [PHONE_NOTE])] : []).concat([
       box('terms', BUY.boxA),
-      box('immediate', [BUY.boxB]),
       box('marketing', [BUY.marketing], true),
       el('p', { class: 'buy-sentence' }, [BUY.sentence]),
       el('div', { class: 'buy-row' }, [back, pay]),

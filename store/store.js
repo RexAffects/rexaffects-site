@@ -68,6 +68,14 @@
   function applyDeals(d) {
     if (!d || !d.prices || !d.founders) return;
     var on = d.founders.on === true;
+    // Rex, Nov 19 (pricing test): a pack the server does not sell right now (Pick 5 while the test runs: it is in offSale) is not
+    // shown; the moment the server sells it again it is back. A picked size that just went away falls back to the first one.
+    document.querySelectorAll('[data-hide-off]').forEach(function (el) {
+      var off = !d.prices[el.getAttribute('data-hide-off')];
+      el.hidden = off;
+      var r = el.querySelector('input[type=radio]');
+      if (r && off && r.checked) { var first = document.querySelector('input[name=pick-size]'); if (first) { first.checked = true; first.dispatchEvent(new Event('change', { bubbles: true })); } }
+    });
     document.querySelectorAll('[data-deal]').forEach(function (card) {
       var id = card.getAttribute('data-deal');
       var usd = d.prices[id];

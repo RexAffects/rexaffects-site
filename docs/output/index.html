@@ -62,8 +62,11 @@
 <p>Run Plugin Player from a terminal: <code>"Plugin Player.exe" --spout</code> <code>[to confirm at beta: the installed executable name and whether the shortcut accepts flags in its Target field]</code>.</p>
 <h2 id="5-overlay-on-output-coming">5. OVERLAY ON OUTPUT <code>[coming]</code></h2>
 <p>The toggle under the controller legend. When built, it draws the controller plate and its legend into the projector picture, so a room can see which button does what. Today the switch does nothing.</p>
-<h2 id="6-recording-coming">6. Recording <code>[coming]</code></h2>
-<p>The <strong>REC —</strong> chip in the header is a placeholder. Capturing the output to a video file is planned. Until then use OBS or Windows Game Bar (Win+G) on Plugin Player's window.</p>
+<h2 id="6-recording">6. Recording</h2>
+<p>REC is built in, but the public beta leaves its chip out of the header for now: start Plugin Player with <code>--rec-chip</code> (see <em>Where to type flags</em> above) and <strong>REC OFF</strong> appears next to the other chips.</p>
+<p>Click the <strong>REC OFF</strong> chip to start; click it again to stop. It records the picture the projector shows (the scene, the Effect Layer and your mapping, never the app's buttons) straight to a video file, with no screen capture involved.</p>
+<ul><li><strong>While recording</strong> the chip turns red and counts the time (<strong>REC 00:12</strong>). <strong>SAVING…</strong> shows for a moment after you stop.</li><li><strong>The file</strong> lands in <strong>Videos\Plugin Player</strong> (on a Mac, <strong>Movies › Plugin Player</strong>), named with the date and time, for example <code>Plugin Player 2026-11-19 21-04-07.mp4</code>. It is an MP4 (H.264) at 60 fps and the output size (the <strong>OUT</strong> badge, 1920×1080 by default); if the computer has no MP4 encoder it saves a WebM instead. A <strong>SAVED</strong> bar offers <strong>OPEN FOLDER</strong>.</li><li><strong>No sound</strong> is in the file: lay your track under it in your editor.</li><li><strong>Size:</strong> about 30 MB per 10 s at 1080p. A recording you forget stops by itself after an hour.</li><li><strong>Watermark:</strong> scenes that are not yet yours keep their RexAffects mark in the recording, exactly as on the wall. BLACKOUT records as black.</li><li><strong>REC FAILED</strong>: the bar says why (a full disk, say). Send the log if the reason is not clear.</li><li><strong>OUTPUT QUALITY</strong> (720p / 1080p, §1) cannot change during a recording, because one recording keeps one size: stop REC first.</li></ul>
+<p>For a stream, or to mix Plugin Player with other sources, use OBS (<a href="/docs/obs/">OBS.md</a>).</p>
   </div></main>
   <footer class="footer">
     <div class="container">
